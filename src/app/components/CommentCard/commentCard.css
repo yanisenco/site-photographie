@@ -1,0 +1,51 @@
+.testimonials {
+  display: flex;
+  gap: 16px;
+}
+
+.card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  min-height: 250px; /* Hauteur minimum identique */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.card .name {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.card .text {
+  font-size: 1em;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Ombre de fond pour donner de la profondeur */
+.card::before {
+  content: "“";
+  font-size: 3em;
+  color: #ffc107; /* Couleur orange */
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+.card::after {
+  content: "”";
+  font-size: 3em;
+  color: #ffc107;
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+}

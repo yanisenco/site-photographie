@@ -1,0 +1,16 @@
+/* appleEffect.css */
+.video-background {
+  position: absolute; /* Remplace fixed par absolute */
+  top: 50%;
+  left: 50%;
+  width: 100vw; /* Largeur du conteneur */
+  height: auto; /* Garde la proportion */
+  transform: translate(-50%, -50%);
+  z-index: 0; /* Assurez-vous qu'il soit derrière le contenu de la div */
+}
+
+.container {
+  height: 400vh;
+  position: relative;
+  overflow: hidden; /* Empêche le contenu de dépasser */
+}
