@@ -1,6 +1,6 @@
-import Gallery from "../components/Gallery/Gallery";
-import PageTemplate from "../components/PageTemplate/PageTemplate";
-import SectionTitle from "../components/SectionTitle/SectionTitle";
+import Gallery from "../../components/Gallery/Gallery";
+import PageTemplate from "../../components/PageTemplate/PageTemplate";
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 export default function Page() {
   const images = [

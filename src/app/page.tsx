@@ -1,14 +1,22 @@
-import ContactBlock from "./components/ContactBlock/ContactBlock";
-import PageLink from "./components/PageLink/PageLink";
-import PageTemplate from "./components/PageTemplate/PageTemplate";
-import SectionTitle from "./components/SectionTitle/SectionTitle";
-import WelcomeInsert from "./components/WelcomeInsert/WelcomeInsert";
-import CommentCarrousel from "./components/CommentCarrousel/CommentCarrousel";
+"use client";
+import { useEffect, useState } from "react";
+import ContactBlock from "../components/ContactBlock/ContactBlock";
+import PageLink from "../components/PageLink/PageLink";
+import PageTemplate from "../components/PageTemplate/PageTemplate";
+import SectionTitle from "../components/SectionTitle/SectionTitle";
+import WelcomeInsert from "../components/WelcomeInsert/WelcomeInsert";
+import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
 import photo1 from "./image/girly.jpg";
 import photo2 from "./image/paysage.jpg";
-import AboutUsSection from "./components/AboutUsSection/AboutUsSection";
+import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
 
 export default function Home() {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("/api/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
   return (
     <PageTemplate>
       <div className="grid grid-rows-[20px_1fr_20px]  min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
