@@ -11,7 +11,7 @@ import photo2 from "./image/paysage.jpg";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
 
 export default function Home() {
-  const [users, setUsers] = useState([]);
+  const [, setUsers] = useState([]);
   useEffect(() => {
     fetch("/api/users")
       .then((response) => response.json())
@@ -27,16 +27,19 @@ export default function Home() {
             photo={photo1}
             title={"Portrait studio"}
             color={"bg-[#1e3d59]"}
+            link={"/service/portrait-studio"}
           />
           <PageLink
             photo={photo2}
             title={"Portrait extérieur"}
             color={"bg-[#ff6e40]"}
+            link={"/service/portrait-exterieur"}
           />
           <PageLink
             photo={photo2}
-            title={"Portrait extérieur"}
+            title={"Portrait sportif"}
             color={"bg-[#ffc13b]"}
+            link={"/service/portrait-sportif"}
           />
           <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
           <CommentCarrousel />

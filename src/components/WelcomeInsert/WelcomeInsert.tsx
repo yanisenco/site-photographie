@@ -29,8 +29,11 @@ export default function WelcomeInsert() {
       />
       <p ref={textRef} className="text-center text-xl ">
         {" "}
-        Bienvenue sur notre site, où chaque évènement sportif et chaque instant
-        partagé avec vos animaux de compagnie sont capturés avec passion.
+        Bienvenue sur notre site de photographie ! Nous sommes un duo de
+        photographes spécialisés en portraits animaliers, portraits humains, ou
+        les deux ensemble, en studio ou en extérieur. Nous proposons aussi des
+        services en photographie sportive. Notre mission : immortaliser chaque
+        instant avec authenticité pour créer des souvenirs inoubliables.
         Ensemble, immortalisons vos moments les plus intenses et les plus
         tendres en œuvres d&apos;art intemporelles.
       </p>

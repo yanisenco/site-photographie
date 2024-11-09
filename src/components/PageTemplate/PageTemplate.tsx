@@ -11,7 +11,7 @@ export default function PageTemplate({ children }: PageTemplateProps) {
   return (
     <>
       <Header />
-      <div className=" w-9/12 m-auto">{children}</div>
+      <div className="pt-20 w-9/12 m-auto">{children}</div>
       <Footer />
     </>
   );

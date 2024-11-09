@@ -1,13 +1,30 @@
 // models/User.js
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+
+const SALT_ROUNDS = 10;
 
 const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  // Ajoutez d'autres champs selon vos besoins
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
 });
 
-// Vérifiez si le modèle a déjà été défini (nécessaire pour éviter des erreurs lors de l'utilisation de Next.js)
-const User = mongoose.models.User || mongoose.model("User", userSchema);
+// Middleware pour hacher le mot de passe avant de sauvegarder
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
 
-export default User;
+  try {
+    const salt = await bcrypt.genSalt(SALT_ROUNDS);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+  } catch (error) {
+    next(error as mongoose.CallbackError);
+  }
+});
+
+// Méthode pour comparer le mot de passe lors de la connexion
+userSchema.methods.comparePassword = function (candidatePassword: string) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
+
+export default mongoose.models.User || mongoose.model("User", userSchema);

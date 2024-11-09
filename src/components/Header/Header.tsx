@@ -79,26 +79,26 @@ export default function Header() {
                 <ul className="absolute left-0 mt-2 bg-[#f5f0e1] rounded-lg shadow-lg ">
                   <li>
                     <Link
-                      href="#choice1"
+                      href="/service/portrait-studio"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                     >
-                      Choice 1
+                      Portrait studio
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#choice2"
+                      href="/service/portrait-exterieur"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                     >
-                      Choice 2
+                      Portrait extérieur
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="#choice3"
+                      href="/service/portrait-sportif"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                     >
-                      Choice 3
+                      Sortrait sportif
                     </Link>
                   </li>
                 </ul>

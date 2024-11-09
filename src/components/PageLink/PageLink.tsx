@@ -12,9 +12,10 @@ interface PageLinkProps {
   photo: StaticImageData;
   title: string;
   color: string;
+  link: string;
 }
 
-export default function PageLink({ photo, title, color }: PageLinkProps) {
+export default function PageLink({ photo, title, color, link }: PageLinkProps) {
   const linkRef = useRef(null);
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function PageLink({ photo, title, color }: PageLinkProps) {
   }, []);
 
   return (
-    <Link href="/service" className={`pageLink rounded ${color}`} ref={linkRef}>
+    <Link href={link} className={`pageLink rounded ${color}`} ref={linkRef}>
       <div className="titleSection">
         <p className="title">{title}</p>
       </div>
