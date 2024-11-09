@@ -5,10 +5,10 @@ interface CommentCardProps {
 
 export default function CommentCard({ name, comment }: CommentCardProps) {
   return (
-    <div className="rounded-lg p-5 shadow-md w-full max-w-xs min-h-[250px] flex flex-col justify-center items-center text-center relative shadow-lg shadow-[#ffc13b]">
+    <div className="rounded-lg p-5 shadow-md w-full max-w-xs min-h-[250px] flex flex-col justify-center items-center text-center relative shadow-xl shadow-[#1e3d59] bg-[#ffc13b2b] ">
       <svg
         className="absolute h-10 w-10 -right-4 -top-4"
-        fill="#ffc13b"
+        fill="#1e3d59"
         version="1.1"
         id="Capa_1"
         xmlns="http://www.w3.org/2000/svg"

@@ -37,12 +37,15 @@ export default function PageLink({ photo, title, color, link }: PageLinkProps) {
   }, []);
 
   return (
-    <Link href={link} className={`pageLink rounded ${color}`} ref={linkRef}>
-      <div className="titleSection">
-        <p className="title">{title}</p>
-      </div>
-      <div className="imageSection">
-        <Image className="picture" src={photo} alt="Portrait icon" />
+    <Link href={link} ref={linkRef}>
+      <div className="container">
+        <div className="card sm:h-[60vh] sm:w-[22vw]">
+          <h2>{title}</h2>
+          <i className="fas fa-arrow-right"></i>
+          <Image src={photo} alt={title} className="pic" />
+
+          <button className={`${color}`}></button>
+        </div>
       </div>
     </Link>
   );

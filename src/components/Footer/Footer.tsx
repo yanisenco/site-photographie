@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="rounded-lg shadow-inner shadow-[#ff6e40] m-auto w-9/12 my-6">
@@ -7,24 +9,18 @@ export default function Footer() {
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
           <li>
-            <a href="#" className="hover:underline me-4 md:me-6">
-              About
-            </a>
+            <Link
+              href="/private-policy"
+              className="hover:underline me-4 md:me-6"
+            >
+              Mentions Légales
+            </Link>
           </li>
+
           <li>
-            <a href="/private-policy" className="hover:underline me-4 md:me-6">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline me-4 md:me-6">
-              Licensing
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:underline">
+            <Link href="/#contact" className="hover:underline">
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

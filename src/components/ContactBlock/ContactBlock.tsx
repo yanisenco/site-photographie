@@ -54,7 +54,7 @@ const Contact = () => {
         className="relative z-10 overflow-hidden py-20 dark:bg-dark lg:py-[120px]"
         id="contact"
       >
-        <div className="container">
+        <div className="">
           <div className="-mx-4 flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 max-w-[570px] lg:mb-0">

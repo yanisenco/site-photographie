@@ -5,10 +5,12 @@ import PageLink from "../components/PageLink/PageLink";
 import PageTemplate from "../components/PageTemplate/PageTemplate";
 import SectionTitle from "../components/SectionTitle/SectionTitle";
 import WelcomeInsert from "../components/WelcomeInsert/WelcomeInsert";
-import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
-import photo1 from "./image/girly.jpg";
-import photo2 from "./image/paysage.jpg";
+import photo1 from "@/image/masterpiece.jpg";
+import photo2 from "@/image/photo 1.jpg";
+import photo3 from "@/image/velo.webp";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
+import Section from "@/components/Section/Section";
+import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
 
 export default function Home() {
   const [, setUsers] = useState([]);
@@ -19,37 +21,39 @@ export default function Home() {
   }, []);
   return (
     <PageTemplate>
-      <div className="grid grid-rows-[20px_1fr_20px]  min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+      <div>
+        <main>
           <WelcomeInsert />
           <SectionTitle idSection={"services"} title={"Services"} />
-          <PageLink
-            photo={photo1}
-            title={"Portrait studio"}
-            color={"bg-[#1e3d59]"}
-            link={"/service/portrait-studio"}
-          />
-          <PageLink
-            photo={photo2}
-            title={"Portrait extérieur"}
-            color={"bg-[#ff6e40]"}
-            link={"/service/portrait-exterieur"}
-          />
-          <PageLink
-            photo={photo2}
-            title={"Portrait sportif"}
-            color={"bg-[#ffc13b]"}
-            link={"/service/portrait-sportif"}
-          />
-          <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
-          <CommentCarrousel />
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
+            <PageLink
+              photo={photo1}
+              title={"Portrait studio"}
+              color={"bg-[#1e3d59]"}
+              link={"/service/portrait-studio"}
+            />
+            <PageLink
+              photo={photo2}
+              title={"Portrait extérieur"}
+              color={"bg-[#ff6e40]"}
+              link={"/service/portrait-exterieur"}
+            />
+            <PageLink
+              photo={photo3}
+              title={"Photo sportif"}
+              color={"bg-[#ffc13b]"}
+              link={"/service/portrait-sportif"}
+            />
+          </div>
           <SectionTitle
             idSection={"a-propos-de-nous"}
             title={"À propos de nous"}
           />
           <AboutUsSection />
-
-          {/* <AppleEffect /> */}
+          {/* <Section>
+            <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
+            <CommentCarrousel />
+          </Section> */}
 
           <ContactBlock />
         </main>

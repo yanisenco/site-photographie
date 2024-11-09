@@ -23,13 +23,13 @@ export default function Header() {
             height={32}
           />
           <span className="self-center text-2xl font-semibold whitespace-nowrap ">
-            Focus et Lumière
+            Focus & Lumière
           </span>
         </Link>
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-[#f5f0e2] focus:outline-none focus:ring-2 focus:ring-gray-200 "
           aria-controls="navbar-solid-bg"
           aria-expanded={isOpen}
         >
@@ -54,11 +54,11 @@ export default function Header() {
           className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
           id="navbar-solid-bg"
         >
-          <ul className="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+          <ul className="flex flex-col font-medium mt-4 rounded-lg bg-[#f5f0e1] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent ">
             <li className="relative">
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex block py-2 px-3 md:p-0 text-white bg-[#f5f0e1] rounded md:bg-transparent md:text-[#ff6e40]  md:dark:bg-transparent"
+                className="flex block py-2 px-3 md:p-0 rounded  md:text-[#ff6e40] "
               >
                 Services
                 <svg
