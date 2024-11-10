@@ -1,171 +1,112 @@
 "use client";
-
 import { useState } from "react";
+import Image from "next/image";
+import photo1 from "@/image/grosse tete.jpg";
+import photo2 from "@/image/photo 1.jpg";
+import photo3 from "@/image/velo.webp";
 
-interface PricingTabProps {
-  yearly: boolean;
-  popular?: boolean;
-  planName: string;
-  price: {
-    monthly: number;
-    yearly: number;
+export default function PricingTab() {
+  const [rotation, setRotation] = useState(0);
+
+  const [selected, setSelected] = useState(0); // Track the selected position (0, 1, or 2)
+
+  // Function to handle the click event to move the indicator
+  const handleSelect = (position: number) => {
+    setSelected(position);
+    setRotation(position * 90);
   };
-  planDescription: string;
-  features: string[];
-}
 
-function PricingTab(props: PricingTabProps) {
   return (
-    <div className={`h-full ${props.popular ? "dark" : ""}`}>
-      <div className="relative flex flex-col h-full p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-900 shadow shadow-slate-950/5">
-        {props.popular && (
-          <div className="absolute top-0 right-0 mr-6 -mt-4">
-            <div className="inline-flex items-center text-xs font-semibold py-1.5 px-3 bg-emerald-500 text-white rounded-full shadow-sm shadow-slate-950/5">
-              Most Popular
+    <div className="flex flex-col overflow-hidden">
+      {/* Rotate Button */}
+      <div className="flex justify-center  items-center">
+        {/* Container for the button */}
+        <div className="relative flex w-fit h-12 rounded-full ">
+          {/* Background to show 3 options */}
+          <div className="flex w-full h-full justify-between items-center px-2">
+            <button
+              onClick={() => handleSelect(0)}
+              className={`flex-1 h-full text-center font-semibold ${
+                selected === 0 ? "text-white bg-[#ff6e40]" : " bg-transparent"
+              } rounded-full transition-colors`}
+            >
+              Portrait Studio
+            </button>
+            <button
+              onClick={() => handleSelect(1)}
+              className={`flex-1 h-full text-center font-semibold ${
+                selected === 1 ? "text-white bg-[#ff6e40]" : " bg-transparent"
+              } rounded-full transition-colors`}
+            >
+              Portrait Extérieur
+            </button>
+            <button
+              onClick={() => handleSelect(2)}
+              className={`flex-1 h-full text-center font-semibold ${
+                selected === 2 ? "text-white bg-[#ff6e40]" : " bg-transparent"
+              } rounded-full transition-colors`}
+            >
+              Photo Sportive
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="flex">
+        {/* Full Circle with Four Colored Quarters */}
+        <div className="w-[600px] h-[600px]">
+          <div
+            className="relative w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] "
+            style={{
+              transform: `rotate(${rotation}deg)`,
+              transformOrigin: "center",
+              transition: "transform 0.3s ease",
+            }}
+          >
+            {/* Top-right quarter */}
+            <div className="absolute top-0 right-0 w-1/2 h-1/2 z-30">
+              <Image
+                src={photo1}
+                alt={""}
+                className=""
+                width={400}
+                height={400}
+              />
+            </div>
+
+            {/* Top-left quarter */}
+            <div className="absolute top-0 left-0 w-1/2 h-1/2 -rotate-90 z-20">
+              <Image
+                src={photo2}
+                alt={""}
+                className=""
+                width={400}
+                height={400}
+              />
+            </div>
+
+            {/* Bottom-left quarter */}
+            <div className="absolute bottom-0 left-0 w-1/2 h-1/2 -rotate-180 z-10">
+              <Image
+                src={photo3}
+                alt={""}
+                className=""
+                width={400}
+                height={400}
+              />
             </div>
           </div>
-        )}
-        <div className="mb-5">
-          <div className="text-slate-900 dark:text-slate-200 font-semibold mb-1">
-            {props.planName}
-          </div>
-          <div className="inline-flex items-baseline mb-2">
-            <span className="text-slate-900 dark:text-slate-200 font-bold text-3xl">
-              $
-            </span>
-            <span className="text-slate-900 dark:text-slate-200 font-bold text-4xl">
-              {props.yearly ? props.price.yearly : props.price.monthly}
-            </span>
-            <span className="text-slate-500 font-medium">/mo</span>
-          </div>
-          <div className="text-sm text-slate-500 mb-5">
-            {props.planDescription}
-          </div>
-          <a
-            className="w-full inline-flex justify-center whitespace-nowrap rounded-lg bg-indigo-500 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm shadow-indigo-950/10 hover:bg-indigo-600 focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150"
-            href="#0"
-          >
-            Purchase Plan
-          </a>
         </div>
-        <div className="text-slate-900 dark:text-slate-200 font-medium mb-3">
-          Includes:
+        <div className="m-auto mx-10 drop-shadow-lg z-40">
+          <p className="text-4xl mb-8">
+            <b>2 photos :{""}</b> {selected === 0 ? "40€" : "35€"}
+          </p>
+          <p className="text-4xl mb-8">
+            <b>5 photos :{""}</b> {selected === 0 ? "75€" : "70€"}
+          </p>
+          <p className="text-4xl">
+            <b>10 photos :{""}</b> {selected === 0 ? "130€" : "125€"}
+          </p>
         </div>
-        <ul className="text-slate-600 dark:text-slate-400 text-sm space-y-3 grow">
-          {props.features.map((feature, index) => {
-            return (
-              <li key={index} className="flex items-center">
-                <svg
-                  className="w-3 h-3 fill-emerald-500 mr-3 shrink-0"
-                  viewBox="0 0 12 12"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M10.28 2.28L3.989 8.575 1.695 6.28A1 1 0 00.28 7.695l3 3a1 1 0 001.414 0l7-7A1 1 0 0010.28 2.28z" />
-                </svg>
-                <span>{feature}</span>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
-export default function PricingTable() {
-  const [yearly, setYearly] = useState<boolean>(true);
-
-  return (
-    <div>
-      {/* Pricing toggle */}
-      <div className="flex justify-center max-w-[14rem] m-auto mb-8 lg:mb-16">
-        <div className="relative flex w-full p-1 bg-white dark:bg-slate-900 rounded-full">
-          <span
-            className="absolute inset-0 m-1 pointer-events-none"
-            aria-hidden="true"
-          >
-            <span
-              className={`absolute inset-0 w-1/2 bg-indigo-500 rounded-full shadow-sm shadow-indigo-950/10 transform transition-transform duration-150 ease-in-out ${
-                yearly ? "translate-x-0" : "translate-x-full"
-              }`}
-            ></span>
-          </span>
-          <button
-            className={`relative flex-1 text-sm font-medium h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 ease-in-out ${
-              yearly ? "text-white" : "text-slate-500 dark:text-slate-400"
-            }`}
-            onClick={() => setYearly(true)}
-            aria-pressed={yearly}
-          >
-            Portrait studio
-          </button>
-          <button
-            className={`relative flex-1 text-sm font-medium h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 ease-in-out ${
-              yearly ? "text-slate-500 dark:text-slate-400" : "text-white"
-            }`}
-            onClick={() => setYearly(false)}
-            aria-pressed={!yearly}
-          >
-            Portrait exterieur
-          </button>
-          <button
-            className={`relative flex-1 text-sm font-medium h-8 rounded-full focus-visible:outline-none focus-visible:ring focus-visible:ring-indigo-300 dark:focus-visible:ring-slate-600 transition-colors duration-150 ease-in-out ${
-              yearly ? "text-slate-500 dark:text-slate-400" : "text-white"
-            }`}
-            onClick={() => setYearly(false)}
-            aria-pressed={!yearly}
-          >
-            Photo sportif
-          </button>
-        </div>
-      </div>
-
-      <div className="max-w-sm mx-auto grid gap-6 lg:grid-cols-3 items-start lg:max-w-none">
-        {/* Pricing tab 1 */}
-        <PricingTab
-          yearly={yearly}
-          planName="Essential"
-          price={{ yearly: 29, monthly: 35 }}
-          planDescription="There are many variations available, but the majority have suffered."
-          features={[
-            "Unlimited placeholder texts",
-            "Consectetur adipiscing elit",
-            "Excepteur sint occaecat cupidatat",
-            "Officia deserunt mollit anim",
-          ]}
-        />
-
-        {/* Pricing tab 2 */}
-        <PricingTab
-          yearly={yearly}
-          popular={true}
-          planName="Perform"
-          price={{ yearly: 49, monthly: 55 }}
-          planDescription="There are many variations available, but the majority have suffered."
-          features={[
-            "Unlimited placeholder texts",
-            "Consectetur adipiscing elit",
-            "Excepteur sint occaecat cupidatat",
-            "Officia deserunt mollit anim",
-            "Predefined chunks as necessary",
-          ]}
-        />
-
-        {/* Pricing tab 3 */}
-        <PricingTab
-          yearly={yearly}
-          planName="Enterprise"
-          price={{ yearly: 79, monthly: 85 }}
-          planDescription="There are many variations available, but the majority have suffered."
-          features={[
-            "Unlimited placeholder texts",
-            "Consectetur adipiscing elit",
-            "Excepteur sint occaecat cupidatat",
-            "Officia deserunt mollit anim",
-            "Predefined chunks as necessary",
-            "Free from repetition",
-          ]}
-        />
       </div>
     </div>
   );

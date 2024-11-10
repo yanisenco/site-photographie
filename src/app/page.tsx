@@ -9,8 +9,8 @@ import photo1 from "@/image/masterpiece.jpg";
 import photo2 from "@/image/photo 1.jpg";
 import photo3 from "@/image/velo.webp";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
-import Section from "@/components/Section/Section";
-import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
+// import Section from "@/components/Section/Section";
+// import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
 
 export default function Home() {
   const [, setUsers] = useState([]);
@@ -20,10 +20,10 @@ export default function Home() {
       .then((data) => setUsers(data));
   }, []);
   return (
-    <PageTemplate>
-      <div>
+    <div>
+      <WelcomeInsert />
+      <PageTemplate>
         <main>
-          <WelcomeInsert />
           <SectionTitle idSection={"services"} title={"Services"} />
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <PageLink
@@ -57,7 +57,7 @@ export default function Home() {
 
           <ContactBlock />
         </main>
-      </div>
-    </PageTemplate>
+      </PageTemplate>{" "}
+    </div>
   );
 }

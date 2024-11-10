@@ -82,8 +82,8 @@ const Gallery = ({ images }: GalleryProps) => {
               src={image.src}
               alt={image.alt}
               className={styles.image}
-              layout="responsive"
-              objectFit="cover"
+              // layout="responsive"
+              // objectFit="cover"
               quality={80}
               width={800}
               height={800}
