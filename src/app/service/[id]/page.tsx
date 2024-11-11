@@ -3,7 +3,7 @@ import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 
 interface ServiceParams {
-  id: string;
+  params: Promise<{ id: string }>;
 }
 export async function generateStaticParams() {
   return [
@@ -12,8 +12,8 @@ export async function generateStaticParams() {
     { id: "portrait-sportif" },
   ];
 }
-export default async function Service({ params }: { params: ServiceParams }) {
-  const { id } = await params;
+export default async function Service({ params }: ServiceParams) {
+  const id = (await params).id;
 
   const Content = [
     {
@@ -23,56 +23,28 @@ export default async function Service({ params }: { params: ServiceParams }) {
         "Nous proposons des services de photographie en studio pour capturer des portraits uniques de votre animal, de vous-même, ou en duo avec votre compagnon à quatre pattes. Que ce soit pour capturer la personnalité d’un individu, la beauté de votre animal, ou des moments de complicité, nos séances sont conçues pour créer des images authentiques et mémorables.",
       images: [
         {
-          src: "https://i.ibb.co/wrHY2ch/1.webp",
+          src: "https://i.ibb.co/gTqs91q/209-A4546-11zon.webp",
           alt: "",
         },
 
         {
-          src: "https://i.ibb.co/4dmYwbR/5.webp",
+          src: "https://i.ibb.co/6wX9j8V/209-A4612-11zon.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/vhthSLm/4.webp",
+          src: "https://i.ibb.co/RSR9XxW/1-11zon.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/LSz23xP/8.webp",
+          src: "https://i.ibb.co/nDj1KnX/2-11zon.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/L66bvSS/2.webp",
+          src: "https://i.ibb.co/r3gNwX1/3-11zon.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/b6K1pDh/7.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/HhLp96G/3.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/X8JyP0s/6.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/kqgzCL6/12.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/vjzdKPN/13.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/bzmmgt4/10.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/b5VNvs1/9.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/Vg4XZN1/11.webp",
+          src: "https://i.ibb.co/2tgwZ5y/4-11zon.webp",
           alt: "",
         },
       ],
@@ -118,6 +90,14 @@ export default async function Service({ params }: { params: ServiceParams }) {
         },
         {
           src: "https://i.ibb.co/dKMqm3L/Gentiane.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/J3MKmGM/209A3120.jpg",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/wsFFcVT/209-A3264-11zon.webp",
           alt: "",
         },
       ],

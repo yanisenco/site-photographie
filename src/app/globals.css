@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unna:wght@400&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,10 +16,17 @@
   }
 }
 
-body {
+body,
+.limelight {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Limelight", sans-serif;
+}
+
+p,
+.unna {
+  font-family: "Unna", serif;
+  font-size: x-large;
 }
 
 html {

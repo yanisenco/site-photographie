@@ -19,7 +19,7 @@ export default function PricingTab() {
   return (
     <div className="flex flex-col overflow-hidden">
       {/* Rotate Button */}
-      <div className="flex justify-center  items-center">
+      <div className="flex justify-center z-10 items-center">
         {/* Container for the button */}
         <div className="relative flex w-fit h-12 rounded-full ">
           {/* Background to show 3 options */}
@@ -51,11 +51,11 @@ export default function PricingTab() {
           </div>
         </div>
       </div>
-      <div className="flex">
+      <div className="flex flex-col-reverse sm:flex-row">
         {/* Full Circle with Four Colored Quarters */}
         <div className="w-[600px] h-[600px]">
           <div
-            className="relative w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] "
+            className="relative hidden sm:table z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] "
             style={{
               transform: `rotate(${rotation}deg)`,
               transformOrigin: "center",
@@ -96,14 +96,14 @@ export default function PricingTab() {
             </div>
           </div>
         </div>
-        <div className="m-auto mx-10 drop-shadow-lg z-40">
-          <p className="text-4xl mb-8">
+        <div className="mt-10 sm:m-auto mx-10 drop-shadow-lg z-40">
+          <p className="text-4xl limelight mb-8 p-6 rounded-full">
             <b>2 photos :{""}</b> {selected === 0 ? "40€" : "35€"}
           </p>
-          <p className="text-4xl mb-8">
+          <p className="text-4xl limelight mb-8 p-6 rounded-full">
             <b>5 photos :{""}</b> {selected === 0 ? "75€" : "70€"}
           </p>
-          <p className="text-4xl">
+          <p className="text-4xl limelight p-6 rounded-full">
             <b>10 photos :{""}</b> {selected === 0 ? "130€" : "125€"}
           </p>
         </div>

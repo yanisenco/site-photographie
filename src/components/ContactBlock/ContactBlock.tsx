@@ -1,70 +1,52 @@
-interface ContactTextAreaProps {
-  row: number;
-  placeholder: string;
-  name: string;
-  defaultValue: string;
-}
-
-const ContactTextArea = ({
-  row,
-  placeholder,
-  name,
-  defaultValue,
-}: ContactTextAreaProps) => {
-  return (
-    <>
-      <div className="mb-6">
-        <textarea
-          rows={row}
-          placeholder={placeholder}
-          name={name}
-          className="w-full resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-          defaultValue={defaultValue}
-        />
-      </div>
-    </>
-  );
-};
-
-interface ContactInputBoxProps {
-  type: string;
-  placeholder: string;
-  name: string;
-}
-
-const ContactInputBox = ({ type, placeholder, name }: ContactInputBoxProps) => {
-  return (
-    <>
-      <div className="mb-6">
-        <input
-          type={type}
-          placeholder={placeholder}
-          name={name}
-          className="w-full rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-        />
-      </div>
-    </>
-  );
-};
+"use client";
+import { useState } from "react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    details: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, phone, details } = formData;
+
+    // Assemble the full message content
+    const fullMessage = `${details}\n\n---\nNom: ${name}\nEmail: ${email}\nTéléphone: ${phone}`;
+
+    // Create mailto link
+    const mailtoLink = `mailto:ianaletrillard3@gmail.com?subject=Demande informations/devis&body=${encodeURIComponent(
+      fullMessage
+    )}`;
+
+    // Open the mail client with the formatted email
+    window.location.href = mailtoLink;
+  };
+
   return (
     <>
       <section
         className="relative z-10 overflow-hidden py-20 dark:bg-dark lg:py-[120px]"
         id="contact"
       >
-        <div className="">
+        <div>
           <div className="-mx-4 flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
-              <div className="mb-12 max-w-[570px] lg:mb-0">
-                <h2 className="mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
+              <div className="mb-12 lg:mb-0">
+                <h1 className="mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
                   Prenez contact avec nous
-                </h2>
-                <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eius tempor incididunt ut labore e dolore magna aliqua. Ut
-                  enim adiqua minim veniam quis nostrud exercitation ullamco
+                </h1>
+                <p className="mb-9">
+                  Pour toutes demandes de séances photos en Loire-Atlantique,
+                  questions ou informations supplémentaires, n&apos;hésitez pas
+                  à nous contacter sur nos réseaux sociaux ou par mail. Nous
+                  vous répondrons dans les plus brefs délais.
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -81,15 +63,45 @@ const Contact = () => {
                       />
                     </svg>
                   </div>
-                  <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold ">Our Location</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">
-                      99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                  <div className="w-fit">
+                    <h2 className="mb-1 text-2xl font-bold ">Notre Adresse</h2>
+                    <p className="w-fit">
+                      Saint-Nazaire, Loire-Atlantique 44600
                     </p>
                   </div>
                 </div>
 
                 <div className="mb-8 flex w-full max-w-[370px]">
+                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 32 32"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M 11.46875 5 C 7.917969 5 5 7.914063 5 11.46875 L 5 20.53125 C 5 24.082031 7.914063 27 11.46875 27 L 20.53125 27 C 24.082031 27 27 24.085938 27 20.53125 L 27 11.46875 C 27 7.917969 24.085938 5 20.53125 5 Z M 11.46875 7 L 20.53125 7 C 23.003906 7 25 8.996094 25 11.46875 L 25 20.53125 C 25 23.003906 23.003906 25 20.53125 25 L 11.46875 25 C 8.996094 25 7 23.003906 7 20.53125 L 7 11.46875 C 7 8.996094 8.996094 7 11.46875 7 Z M 21.90625 9.1875 C 21.402344 9.1875 21 9.589844 21 10.09375 C 21 10.597656 21.402344 11 21.90625 11 C 22.410156 11 22.8125 10.597656 22.8125 10.09375 C 22.8125 9.589844 22.410156 9.1875 21.90625 9.1875 Z M 16 10 C 12.699219 10 10 12.699219 10 16 C 10 19.300781 12.699219 22 16 22 C 19.300781 22 22 19.300781 22 16 C 22 12.699219 19.300781 10 16 10 Z M 16 12 C 18.222656 12 20 13.777344 20 16 C 20 18.222656 18.222656 20 16 20 C 13.777344 20 12 18.222656 12 16 C 12 13.777344 13.777344 12 16 12 Z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div className="w-fit">
+                    <h2 className="mb-1 text-2xl font-bold ">
+                      Réseaux Sociaux
+                    </h2>
+
+                    <a
+                      href="https://www.instagram.com/focusetlumiere/"
+                      target="_blank"
+                      className="unna"
+                    >
+                      @focusetlumiere
+                    </a>
+                  </div>
+                </div>
+
+                <div className="mb-8 flex w-full">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
                     <svg
                       width="32"
@@ -119,71 +131,62 @@ const Contact = () => {
                       </defs>
                     </svg>
                   </div>
-                  <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold ">Phone Number</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">
-                      (+62)81 414 257 9980
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mb-8 flex w-full max-w-[370px]">
-                  <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
-                    <svg
-                      width="32"
-                      height="32"
-                      viewBox="0 0 32 32"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M28 4.7998H3.99998C2.29998 4.7998 0.849976 6.1998 0.849976 7.9498V24.1498C0.849976 25.8498 2.24998 27.2998 3.99998 27.2998H28C29.7 27.2998 31.15 25.8998 31.15 24.1498V7.8998C31.15 6.1998 29.7 4.7998 28 4.7998ZM28 7.0498C28.05 7.0498 28.1 7.0498 28.15 7.0498L16 14.8498L3.84998 7.0498C3.89998 7.0498 3.94998 7.0498 3.99998 7.0498H28ZM28 24.9498H3.99998C3.49998 24.9498 3.09998 24.5498 3.09998 24.0498V9.2498L14.8 16.7498C15.15 16.9998 15.55 17.0998 15.95 17.0998C16.35 17.0998 16.75 16.9998 17.1 16.7498L28.8 9.2498V24.0998C28.9 24.5998 28.5 24.9498 28 24.9498Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </div>
-                  <div className="w-full">
-                    <h4 className="mb-1 text-xl font-bold ">Email Address</h4>
-                    <p className="text-base text-body-color dark:text-dark-6">
-                      info@yourdomain.com
-                    </p>
+                  <div className="w-fit">
+                    <h2 className="mb-1 text-2xl font-bold ">
+                      Numéro de Téléphone
+                    </h2>
+                    <a className="unna" href="tel:0781951503">
+                      (+33) 7 81 95 15 03
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
             <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <form>
-                  <ContactInputBox
+                <form onSubmit={handleSubmit}>
+                  <input
+                    className="w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
                     type="text"
                     name="name"
-                    placeholder="Your Name"
+                    placeholder="Votre Nom"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
-                  <ContactInputBox
+                  <input
+                    className="w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
                     type="text"
                     name="email"
-                    placeholder="Your Email"
+                    placeholder="Votre Email"
+                    value={formData.email}
+                    onChange={handleChange}
                   />
-                  <ContactInputBox
+                  <input
+                    className="w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
                     type="text"
                     name="phone"
-                    placeholder="Your Phone"
+                    placeholder="Votre Téléphone"
+                    value={formData.phone}
+                    onChange={handleChange}
                   />
-                  <ContactTextArea
-                    row={4}
-                    placeholder="Your Message"
+                  <textarea
+                    rows={4}
                     name="details"
-                    defaultValue=""
+                    className="w-full h-48 mb-3 resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
+                    placeholder="Votre Message"
+                    value={formData.details}
+                    onChange={handleChange}
                   />
                   <div>
                     <button
                       type="submit"
                       className="w-full rounded border border-primary bg-[#1e3d59] p-3 text-white transition hover:bg-opacity-90"
                     >
-                      Send Message
+                      Envoyer le message
                     </button>
                   </div>
                 </form>
+
                 <div>
                   <span className="absolute -right-9 -top-10 z-[-1]">
                     <svg
