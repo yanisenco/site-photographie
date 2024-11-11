@@ -1,5 +1,3 @@
-"use client";
-import { useEffect, useState } from "react";
 import ContactBlock from "../components/ContactBlock/ContactBlock";
 import PageLink from "../components/PageLink/PageLink";
 import PageTemplate from "../components/PageTemplate/PageTemplate";
@@ -13,12 +11,6 @@ import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
 // import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
 
 export default function Home() {
-  const [, setUsers] = useState([]);
-  useEffect(() => {
-    fetch("/api/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data));
-  }, []);
   return (
     <div>
       <WelcomeInsert />
@@ -57,7 +49,7 @@ export default function Home() {
 
           <ContactBlock />
         </main>
-      </PageTemplate>{" "}
+      </PageTemplate>
     </div>
   );
 }

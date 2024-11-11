@@ -98,7 +98,7 @@ export default function Header() {
                       href="/service/portrait-sportif"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                     >
-                      Sortrait sportif
+                      Portrait sportif
                     </Link>
                   </li>
                 </ul>

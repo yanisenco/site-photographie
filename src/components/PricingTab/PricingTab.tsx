@@ -53,7 +53,7 @@ export default function PricingTab() {
       </div>
       <div className="flex flex-col-reverse sm:flex-row">
         {/* Full Circle with Four Colored Quarters */}
-        <div className="w-[600px] h-[600px]">
+        <div className="w-[0px] h-[20px] sm:w-[600px] sm:h-[600px]">
           <div
             className="relative hidden sm:table z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] "
             style={{
