@@ -50,13 +50,14 @@ const Gallery = ({ images }: GalleryProps) => {
     if (imageRefs.current.length > 0) {
       gsap.fromTo(
         imageRefs.current,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 50, force3D: true },
         {
           opacity: 1,
           y: 0,
-          duration: 0.6,
+          duration: 2,
           stagger: 0.1,
-          ease: "power2.out",
+          ease: "power3.out",
+          force3D: true,
         }
       );
     }
@@ -82,11 +83,10 @@ const Gallery = ({ images }: GalleryProps) => {
               src={image.src}
               alt={image.alt}
               className={styles.image}
-              // layout="responsive"
-              // objectFit="cover"
-              quality={80}
+              quality={70}
               width={800}
               height={800}
+              loading="lazy"
             />
           </div>
         ))}

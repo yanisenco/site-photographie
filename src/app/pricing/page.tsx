@@ -2,6 +2,10 @@ import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import PricingTab from "@/components/PricingTab/PricingTab";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 
+export async function generateStaticParams() {
+  return [{ slug: "pricing" }];
+}
+
 export default function Pricing() {
   return (
     <PageTemplate>

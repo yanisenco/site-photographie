@@ -23,28 +23,44 @@ export default async function Service({ params }: ServiceParams) {
         "Nous proposons des services de photographie en studio pour capturer des portraits uniques de votre animal, de vous-même, ou en duo avec votre compagnon à quatre pattes. Que ce soit pour capturer la personnalité d’un individu, la beauté de votre animal, ou des moments de complicité, nos séances sont conçues pour créer des images authentiques et mémorables.",
       images: [
         {
-          src: "https://i.ibb.co/gTqs91q/209-A4546-11zon.webp",
+          src: "https://i.ibb.co/FhVb8hj/209-A5504-min.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/dWR6pqD/209-A5536-min.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/28QStRw/209-A5704-min.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/hMWZSmp/2-min.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/GPHfk6S/209-A4612-min.webp",
           alt: "",
         },
 
         {
-          src: "https://i.ibb.co/6wX9j8V/209-A4612-11zon.webp",
+          src: "https://i.ibb.co/my3BZ63/4-min.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/RSR9XxW/1-11zon.webp",
+          src: "https://i.ibb.co/bgBNcqS/209-A4546-min.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/nDj1KnX/2-11zon.webp",
+          src: "https://i.ibb.co/YhPQV4d/3-min.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/r3gNwX1/3-11zon.webp",
+          src: "https://i.ibb.co/M68CFMf/1-min.webp",
           alt: "",
         },
         {
-          src: "https://i.ibb.co/2tgwZ5y/4-11zon.webp",
+          src: "https://i.ibb.co/ZS3tQgN/209-A4508-min.webp",
           alt: "",
         },
       ],

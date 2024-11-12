@@ -9,7 +9,7 @@ export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-[#f5f0e1] shadow-lg shadow-[#ffc13b2b]">
+    <nav className="sticky top-0 w-full z-50 bg-[#f5f0e1] shadow-lg shadow-[#ffc13b2b]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href="/"
@@ -17,8 +17,8 @@ export default function Header() {
         >
           <Image
             src={Logo}
-            className="h-8"
-            alt="Flowbite Logo"
+            className="h-10 w-10"
+            alt="Logo Focus et Lumière"
             width={32}
             height={32}
           />

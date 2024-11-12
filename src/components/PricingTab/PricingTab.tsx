@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import photo1 from "@/image/grosse tete.jpg";
-import photo2 from "@/image/photo 1.jpg";
+import photo1 from "@/image/grosse tete.webp";
+import photo2 from "@/image/photo 1.webp";
 import photo3 from "@/image/velo.webp";
 
 export default function PricingTab() {
