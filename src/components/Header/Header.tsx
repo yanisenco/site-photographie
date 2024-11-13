@@ -8,6 +8,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null); // Ref pour l'encart dropdown
+  const buttonDropdownnRef = useRef(null); // Ref pour l'encart dropdown
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -18,7 +19,12 @@ export default function Header() {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !(dropdownRef.current as HTMLElement).contains(event.target as Node)
+        !(dropdownRef.current as HTMLElement).contains(event.target as Node) &&
+        buttonDropdownnRef.current &&
+        !(buttonDropdownnRef.current as HTMLElement).contains(
+          event.target as Node
+        ) &&
+        isDropdownOpen
       ) {
         setIsDropdownOpen(false);
       }
@@ -125,6 +131,7 @@ export default function Header() {
               <button
                 onClick={() => toggleDropdown()}
                 className="flex block py-2 px-3 md:p-0 rounded md:text-[#ff6e40] "
+                ref={buttonDropdownnRef}
               >
                 Services
                 <svg
@@ -152,6 +159,7 @@ export default function Header() {
                     <Link
                       href="/service/portrait-studio"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
+                      onClick={() => setIsOpen(false)}
                     >
                       Portrait studio
                     </Link>
@@ -160,6 +168,7 @@ export default function Header() {
                     <Link
                       href="/service/portrait-exterieur"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
+                      onClick={() => setIsOpen(false)}
                     >
                       Portrait extérieur
                     </Link>
@@ -168,6 +177,7 @@ export default function Header() {
                     <Link
                       href="/service/portrait-sportif"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
+                      onClick={() => setIsOpen(false)}
                     >
                       Portrait sportif
                     </Link>
@@ -178,7 +188,8 @@ export default function Header() {
             <li>
               <Link
                 href="/pricing"
-                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40]"
+                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                onClick={() => setIsOpen(false)}
               >
                 Tarifs
               </Link>
@@ -186,7 +197,8 @@ export default function Header() {
             <li>
               <Link
                 href="/#contact"
-                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] "
+                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                onClick={() => setIsOpen(false)}
               >
                 Contact
               </Link>
@@ -194,7 +206,8 @@ export default function Header() {
             <li>
               <Link
                 href="/#a-propos-de-nous"
-                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] "
+                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                onClick={() => setIsOpen(false)}
               >
                 À propos de nous
               </Link>

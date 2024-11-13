@@ -34,7 +34,7 @@ const Contact = () => {
   return (
     <>
       <section
-        className="relative z-10 overflow-hidden py-20 dark:bg-dark lg:py-[120px]"
+        className="relative z-10 overflow-hidden py-20 dark:bg-dark "
         id="contact"
       >
         <div>
