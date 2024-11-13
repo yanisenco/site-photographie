@@ -15,7 +15,7 @@ export default function Home() {
     <div>
       <WelcomeInsert />
       <PageTemplate>
-        <main>
+        <main id={"homepage"}>
           <SectionTitle idSection={"services"} title={"Services"} />
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-3">
             <PageLink

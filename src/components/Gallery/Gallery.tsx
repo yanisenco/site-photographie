@@ -46,8 +46,11 @@ const Gallery = ({ images }: GalleryProps) => {
   };
 
   useEffect(() => {
-    // Animation d'apparition avec GSAP
-    if (imageRefs.current.length > 0) {
+    // Vérifier la taille de l'écran pour ne pas appliquer GSAP sur mobile
+    const isMobile = window.innerWidth <= 768; // Défini comme mobile si la largeur est inférieure ou égale à 768px
+
+    if (!isMobile && imageRefs.current.length > 0) {
+      // Animation d'apparition avec GSAP, seulement pour les écrans plus larges
       gsap.fromTo(
         imageRefs.current,
         { opacity: 0, y: 50, force3D: true },
