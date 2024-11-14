@@ -9,7 +9,7 @@ export async function generateStaticParams() {
   return [
     { id: "portrait-studio" },
     { id: "portrait-exterieur" },
-    { id: "portrait-sportif" },
+    { id: "photo-sportive" },
   ];
 }
 export default async function Service({ params }: ServiceParams) {
@@ -20,7 +20,7 @@ export default async function Service({ params }: ServiceParams) {
       id: "portrait-studio",
       title: "Portrait studio",
       description:
-        "Nous proposons des services de photographie en studio pour capturer des portraits uniques de votre animal, de vous-même, ou en duo avec votre compagnon à quatre pattes. Que ce soit pour capturer la personnalité d’un individu, la beauté de votre animal, ou des moments de complicité, nos séances sont conçues pour créer des images authentiques et mémorables.",
+        "Découvrez nos séances photo de studio à domicile conçues pour capturer la personnalité et la beauté de chacun. Vous souhaitez un portrait individuel, un duo avec votre animal de compagnie, ou simplement des photos mettant en lumière votre fidèle compagnon, nous apportons tout le nécessaire pour vous offrir une expérience professionnelle et agréable.Lors de chaque séance photo de studio, nous prenons le temps de comprendre votre style et vos attentes. Nous vous guiderons dans les poses et expressions pour un résultat authentique et naturel. Grâce à notre matériel professionnel et nos connaissances en composition, pour que chaque photo révèle l’essence de nos modèles. Une séance photo de studio à domicile est idéale pour créer des souvenirs intemporels et pour immortaliser la complicité entre vous et votre animal de compagnie. Pour un cadeau ou pour vous-même, nous sommes là pour vous offrir des portraits de qualité dont vous ne serez pas déçu.",
       images: [
         {
           src: "https://i.ibb.co/FhVb8hj/209-A5504-min.webp",
@@ -63,13 +63,25 @@ export default async function Service({ params }: ServiceParams) {
           src: "https://i.ibb.co/ZS3tQgN/209-A4508-min.webp",
           alt: "",
         },
+        {
+          src: "https://i.ibb.co/LPdQkj2/209-A4533-min.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/gFDV27s/209-A5440-min.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/746dfzq/209-A5731-min.webp",
+          alt: "",
+        },
       ],
     },
     {
       id: "portrait-exterieur",
       title: "Portrait en extérieur",
       description:
-        "Nos séances de photos portrait en extérieur offrent un cadre naturel et authentique pour des portraits uniques. Des photos individuelles, ou avec vos animaux, nous capturons chaque moment en jouant avec la lumière naturelle et le décor environnant. Parcs, plages, forêts ou sites urbains : chaque lieu ajoute un style unique à vos portraits, reflétant votre personnalité.",
+        "Vivez une expérience unique avec une prestation de photo portrait en extérieur, spécialement pensée pour capturer la beauté naturelle de chacun dans des décors authentiques. Pour un portrait individuel, dévoiler la complicité entre vous et votre animal de compagnie, ou un shooting exclusif pour votre fidèle ami à quatre pattes. Nous sélectionnons ensemble des lieux qui mettent en valeur la personnalité de chaque modèle. Pendant cette séance photo en plein air, nous tirons parti de la lumière naturelle et de l’environnement pour créer des images vivantes et pleines d’émotions. Nous prenons le temps de vous guider dans les poses, tout en laissant place à la spontanéité pour des photos authentiques. Offrant ainsi des compositions variées.",
       images: [
         {
           src: "https://i.ibb.co/FwpYwdw/Triskell.webp",
@@ -87,10 +99,10 @@ export default async function Service({ params }: ServiceParams) {
       ],
     },
     {
-      id: "portrait-sportif",
-      title: "Portrait sportif",
+      id: "photo-sportive",
+      title: "Photo sportive",
       description:
-        "Nos photos d’action et de sport saisissent l’énergie et la force de chaque instant, que ce soit lors d’événements sportifs, d’entraînements ou de séances personnalisées, en extérieur ou en intérieur. Nous mettons en lumière chaque mouvement avec précision, capturant la puissance et la passion des athlètes. Des sports individuels aux compétitions d’équipe, nous réalisons des images dynamiques qui reflètent la détermination et l’engagement de chaque performance.",
+        "Immortalisez vos exploits sportifs avec nos shootings conçus pour capter l’énergie, la technique et l’émotion qui vous animent. Nous nous adaptons à votre discipline pour offrir des photos dynamiques et percutantes pour tout type de sport et de niveau. Nous pourrons saisir chaque mouvement clé d'une action intense. Grâce à notre équipement professionnel et notre expertise en photographie sportive, nous garantissons des images de haute qualité qui révèlent votre passion et votre détermination. Une séance photo sportive est parfaite pour les athlètes voulant suivre leur progression. Elle convient aussi aux équipes qui souhaitent garder des souvenirs de leurs événements. C'est également une belle façon de capturer des moments de plaisir dans l’effort.",
       images: [
         {
           src: "https://i.ibb.co/nmyx8C1/papa-face.webp",
@@ -98,10 +110,6 @@ export default async function Service({ params }: ServiceParams) {
         },
         {
           src: "https://i.ibb.co/q7x5gn9/d-rapage.webp",
-          alt: "",
-        },
-        {
-          src: "https://i.ibb.co/ZXRcTHY/face.webp",
           alt: "",
         },
         {
@@ -114,6 +122,18 @@ export default async function Service({ params }: ServiceParams) {
         },
         {
           src: "https://i.ibb.co/wsFFcVT/209-A3264-11zon.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/C13BCGP/209A0365.jpg",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/xgL31PY/papa-dos.webp",
+          alt: "",
+        },
+        {
+          src: "https://i.ibb.co/j4qZ9gq/209-A0354-11zon.webp",
           alt: "",
         },
       ],

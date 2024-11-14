@@ -27,17 +27,21 @@ export default function AboutUsSection() {
   }, []);
 
   return (
-    <p ref={textRef} className="text-center text-xl ">
+    <p ref={textRef} className="text-center  ">
       {" "}
-      Guidé par une profonde passion pour les animaux et la photographie,
-      j&apos;ai choisi de réunir ces deux intérêts et ainsi de commencer mon
-      aventure en tant que photographe. Depuis plus d&apos;un an, je me consacre
-      à capturer les moments précieux de la vie des animaux dans la nature et à
-      immortaliser l&apos;énergie des événements sportifs. Rapidement, cette
-      passion s&apos;est transformée en une véritable vocation.
-      Aujourd&apos;hui, je suis ravi de mettre mon regard artistique et mes
-      compétences au service de ceux qui souhaitent conserver des souvenirs
-      inoubliables
+      Guidés par une profonde passion pour la photographie depuis plus de deux
+      ans, nous avons chacun exploré l&apos;art de la photographie à notre
+      manière, développant des styles et des compétences spécifiques. En
+      travaillant sur des projets individuels, nous avons découvert la richesse
+      que pouvait apporter un regard complémentaire. Ainsi, notre duo s&apos;est
+      formé en unissant nos talents pour proposer des photos uniques et
+      authentiques. Notre complémentarité est devenue la clé de notre identité
+      en tant que duo de photographes : l’un de nous est spécialisé dans les
+      photos en studio, capturant la personnalité et les émotions ; l’autre
+      exerce la photographie en plein air, saisissant l&apos;authenticité et le
+      naturel. Notre parcours a naturellement évolué vers la création de notre
+      propre entreprise, pour partager notre passion de manière professionnelle
+      avec nos clients.
     </p>
   );
 }

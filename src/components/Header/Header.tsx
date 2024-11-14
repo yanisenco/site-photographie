@@ -8,7 +8,11 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null); // Ref pour l'encart dropdown
-  const buttonDropdownnRef = useRef(null); // Ref pour l'encart dropdown
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false);
+    setIsOpen(false);
+  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -19,12 +23,7 @@ export default function Header() {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !(dropdownRef.current as HTMLElement).contains(event.target as Node) &&
-        buttonDropdownnRef.current &&
-        !(buttonDropdownnRef.current as HTMLElement).contains(
-          event.target as Node
-        ) &&
-        isDropdownOpen
+        !(dropdownRef.current as HTMLElement).contains(event.target as Node)
       ) {
         setIsDropdownOpen(false);
       }
@@ -127,11 +126,10 @@ export default function Header() {
           id="navbar-solid-bg"
         >
           <ul className="flex flex-col font-medium mt-4 rounded-lg bg-[#f5f0e1] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent text-xl ">
-            <li className="relative">
+            <li className="relative" ref={dropdownRef}>
               <button
                 onClick={() => toggleDropdown()}
                 className="flex block py-2 px-3 md:p-0 rounded md:text-[#ff6e40] "
-                ref={buttonDropdownnRef}
               >
                 Services
                 <svg
@@ -151,15 +149,12 @@ export default function Header() {
                 </svg>
               </button>
               {isDropdownOpen && (
-                <ul
-                  className="absolute left-0 mt-2 bg-[#f5f0e1] rounded-lg shadow-lg "
-                  ref={dropdownRef}
-                >
+                <ul className="absolute left-0 mt-2 bg-[#f5f0e1] rounded-lg shadow-lg ">
                   <li>
                     <Link
                       href="/service/portrait-studio"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => closeDropdown()}
                     >
                       Portrait studio
                     </Link>
@@ -168,18 +163,18 @@ export default function Header() {
                     <Link
                       href="/service/portrait-exterieur"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => closeDropdown()}
                     >
                       Portrait extérieur
                     </Link>
                   </li>
                   <li>
                     <Link
-                      href="/service/portrait-sportif"
+                      href="/service/photo-sportive"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => closeDropdown()}
                     >
-                      Portrait sportif
+                      Photo sportive
                     </Link>
                   </li>
                 </ul>
@@ -189,7 +184,7 @@ export default function Header() {
               <Link
                 href="/pricing"
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
-                onClick={() => setIsOpen(false)}
+                onClick={() => closeDropdown()}
               >
                 Tarifs
               </Link>
@@ -198,7 +193,7 @@ export default function Header() {
               <Link
                 href="/#contact"
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
-                onClick={() => setIsOpen(false)}
+                onClick={() => closeDropdown()}
               >
                 Contact
               </Link>
@@ -207,7 +202,7 @@ export default function Header() {
               <Link
                 href="/#a-propos-de-nous"
                 className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
-                onClick={() => setIsOpen(false)}
+                onClick={() => closeDropdown()}
               >
                 À propos de nous
               </Link>

@@ -39,11 +39,9 @@ export default function PageLink({ photo, title, color, link }: PageLinkProps) {
   return (
     <Link href={link} ref={linkRef}>
       <div className="container">
-        <div className="card lg:h-[60vh] lg:w-[22vw]">
-          <h2>{title}</h2>
-          <i className="fas fa-arrow-right"></i>
+        <div className="card lg:h-[60vh] lg:w-[22vw] min-w-fit">
           <Image src={photo} alt={title} className="pic" />
-
+          <h2 className=" text-6xl sm:text-3xl lg:text-7xl">{title}</h2>
           <button className={`${color}`}></button>
         </div>
       </div>

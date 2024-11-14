@@ -11,12 +11,14 @@ export default function Pricing() {
     <PageTemplate>
       <SectionTitle idSection={"pricing"} title={"Tarifs"} />
       <p className="mb-4">
-        Vous trouverez les différentes formules que nous proposons. Pour des
-        demandes spécifiques n&apos;hésitez pas à nous contacter afin que nous
-        puissions parler de votre projet ensemble. Ce qui est important pour
-        nous est de vous offrir un service de qualité et de répondre à vos
-        attentes. C&apos;est pour cela que nous vous proposons des formules
-        adaptées à vos besoins et à votre budget.
+        Vous trouverez ici notre grille tarifaire couvrant trois services
+        principaux : portrait en studio à domicile, portrait en extérieur dans
+        le lieu de votre choix et photographie sportive. Nous proposons
+        également des séances photo sur-mesure, combinant plusieurs services.
+        Nous réaliserons un devis pour ces demandes personnalisées en fonction
+        de vos envies. À noter : les frais de déplacement sont à la charge du
+        demandeur. Contactez-nous pour programmer votre séance photo et capturer
+        vos meilleurs souvenirs !
       </p>
       <PricingTab />
     </PageTemplate>

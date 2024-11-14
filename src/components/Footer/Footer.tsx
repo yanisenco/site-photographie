@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="rounded-lg shadow-inner shadow-[#ff6e40] m-auto w-9/12 my-6">
-      <div className="mx-5 p-4 md:flex md:items-center md:justify-between">
+    <footer className="mt-6 shadow-inner shadow-[#ffc13b80]">
+      <div className="p-4 md:flex md:items-center md:justify-between m-auto w-9/12">
         <span className="text-sm sm:text-center">
           © 2024 Focus et Lumière. Tous droits réservés.
         </span>

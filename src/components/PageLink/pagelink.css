@@ -14,10 +14,9 @@
       z-index: 99;
       position: absolute;
       bottom: 0;
-      font-size: 60px;
       font-weight: 700;
-      color: #fff;
-      margin-left: 15px;
+      color: #f5f0e1;
+      margin: 0 0 15px 15px;
     }
 
     .pic {
@@ -29,16 +28,12 @@
       transition: all 0.3s ease;
     }
 
-    &:hover i {
-      opacity: 1;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
-
     button {
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 15%;
+      height: 5%;
+      bottom: -10;
+      left: -10;
       opacity: 0;
       border: none;
       border-radius: 30px;
@@ -47,7 +42,7 @@
     }
 
     &:hover button {
-      transform: scale(19);
+      transform: scale(12);
       opacity: 70%;
     }
 

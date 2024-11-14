@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import photo1 from "@/image/grosse tete.webp";
 import photo2 from "@/image/photo 1.webp";
-import photo3 from "@/image/velo.webp";
+import photo3 from "@/image/surf_yaniskalash.webp";
 
 export default function PricingTab() {
   const [rotation, setRotation] = useState(0);
@@ -67,7 +67,7 @@ export default function PricingTab() {
               <Image
                 src={photo1}
                 alt={""}
-                className=""
+                className="rounded-t-3xl"
                 width={400}
                 height={400}
               />
@@ -78,18 +78,18 @@ export default function PricingTab() {
               <Image
                 src={photo2}
                 alt={""}
-                className=""
+                className="rounded-t-3xl"
                 width={400}
                 height={400}
               />
             </div>
 
             {/* Bottom-left quarter */}
-            <div className="absolute bottom-0 left-0 w-1/2 h-1/2 -rotate-180 z-10">
+            <div className="absolute bottom-0 left-0 w-1/2 h-1/2 -rotate-180 z-10 ">
               <Image
                 src={photo3}
                 alt={""}
-                className=""
+                className="rounded-t-3xl"
                 width={400}
                 height={400}
               />
