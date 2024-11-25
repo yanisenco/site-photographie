@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import photo1 from "@/image/grosse tete.webp";
 import photo2 from "@/image/photo 1.webp";
-import photo3 from "@/image/surf_yaniskalash.webp";
+import photo3 from "@/image/kitesurf.webp";
 
 export default function PricingTab() {
   const [rotation, setRotation] = useState(0);

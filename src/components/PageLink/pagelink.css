@@ -1,53 +1,44 @@
-.container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.card {
+  position: relative;
+  overflow: hidden;
 
-  .card {
-    position: relative;
-    overflow: hidden;
+  h2 {
+    z-index: 99;
+    position: absolute;
+    bottom: 0;
+    font-weight: 700;
+    color: #f5f0e1;
+    margin: 0 0 15px 15px;
+  }
 
-    h2 {
-      z-index: 99;
-      position: absolute;
-      bottom: 0;
-      font-weight: 700;
-      color: #f5f0e1;
-      margin: 0 0 15px 15px;
-    }
+  .pic {
+    z-index: 100;
+    width: 100%;
+    height: auto;
+    background-size: 100% 100%;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+  }
 
-    .pic {
-      z-index: 100;
-      width: 100%;
-      height: auto;
-      background-size: 100% 100%;
-      filter: grayscale(100%);
-      transition: all 0.3s ease;
-    }
+  button {
+    position: absolute;
+    width: 15%;
+    height: 5%;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    transition: all 0.3s ease;
+  }
 
-    button {
-      position: absolute;
-      width: 15%;
-      height: 5%;
-      bottom: -10;
-      left: -10;
-      opacity: 0;
-      border: none;
-      border-radius: 30px;
-      outline: none;
-      transition: all 0.3s ease;
-    }
+  &:hover button {
+    transform: scale(12);
+    opacity: 70%;
+  }
 
-    &:hover button {
-      transform: scale(12);
-      opacity: 70%;
-    }
-
-    &:hover .pic {
-      filter: grayscale(0);
-    }
+  &:hover .pic {
+    filter: grayscale(0);
   }
 }

@@ -5,7 +5,7 @@ import SectionTitle from "../components/SectionTitle/SectionTitle";
 import WelcomeInsert from "../components/WelcomeInsert/WelcomeInsert";
 import photo1 from "@/image/masterpiece.webp";
 import photo2 from "@/image/photo 1.webp";
-import photo3 from "@/image/surf_yaniskalash.webp";
+import photo3 from "@/image/kitesurf.webp";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
 // import Section from "@/components/Section/Section";
 // import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";

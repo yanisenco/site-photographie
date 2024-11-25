@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap.xml",
+        destination: "/api/sitemap", // Route vers l'API qui génère le sitemap
+      },
+    ];
+  },
 };
 
 export default nextConfig;
