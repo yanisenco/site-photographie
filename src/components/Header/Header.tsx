@@ -53,6 +53,7 @@ export default function Header() {
         <Link
           href="/#homepage"
           className="flex items-center space-x-3 rtl:space-x-reverse"
+          rel="canonical"
         >
           <Image
             src={Logo}
@@ -85,39 +86,36 @@ export default function Header() {
               y1="6"
               x2="20"
               y2="6"
-              className={`transition-transform duration-300 ${
+              className={`origin-center transition-transform duration-300 ${
                 isOpen ? "rotate-45 translate-y-1 -translate-x-1" : ""
               }`}
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              style={{ transformOrigin: "center" }} // Centrer la rotation
             />
             <line
               x1="4"
               y1="12"
               x2="20"
               y2="12"
-              className={`transition-opacity duration-300 ${
+              className={`origin-center transition-opacity duration-300 ${
                 isOpen ? "opacity-0" : "opacity-100"
               }`}
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              style={{ transformOrigin: "center" }} // Centrer la rotation (même si invisibilité)
             />
             <line
               x1="4"
               y1="18"
               x2="20"
               y2="18"
-              className={`transition-transform duration-300 ${
+              className={`origin-center transition-transform duration-300 ${
                 isOpen ? "-rotate-45 -translate-y-1 -translate-x-1" : ""
               }`}
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              style={{ transformOrigin: "center" }} // Centrer la rotation
             />
           </svg>
         </button>

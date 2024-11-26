@@ -6,14 +6,14 @@ import photo2 from "@/image/photo 1.webp";
 import photo3 from "@/image/kitesurf.webp";
 
 export default function PricingTab() {
-  const [rotation, setRotation] = useState(0);
+  const [rotation, setRotation] = useState("");
 
   const [selected, setSelected] = useState(0); // Track the selected position (0, 1, or 2)
 
   // Function to handle the click event to move the indicator
   const handleSelect = (position: number) => {
     setSelected(position);
-    setRotation(position * 90);
+    setRotation(`rotate-${position * 90}`);
   };
 
   return (
@@ -55,12 +55,7 @@ export default function PricingTab() {
         {/* Full Circle with Four Colored Quarters */}
         <div className="w-[0px] h-[20px] lg:w-[600px] lg:h-[600px]">
           <div
-            className="relative hidden lg:table z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] "
-            style={{
-              transform: `rotate(${rotation}deg)`,
-              transformOrigin: "center",
-              transition: "transform 0.3s ease",
-            }}
+             className={`origin-center ${rotation} relative hidden lg:block z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] transition-transform duration-300 ease-out`}
           >
             {/* Top-right quarter */}
             <div className="absolute top-0 right-0 w-1/2 h-1/2 z-30">
