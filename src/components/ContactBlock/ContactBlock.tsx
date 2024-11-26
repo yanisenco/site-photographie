@@ -34,21 +34,18 @@ const Contact = () => {
   return (
     <>
       <section
-        className="relative z-10 overflow-hidden py-20 dark:bg-dark "
-        id="contact"
+        className="relative z-10 overflow-hidden"
       >
         <div>
-          <div className="-mx-4 flex flex-wrap lg:justify-between">
+          <div className="flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 lg:mb-0">
-                <h1 className="mb-6 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px]">
-                  Prenez contact avec nous
-                </h1>
                 <p className="mb-9">
-                  Pour toutes demandes de séances photos en Loire-Atlantique,
-                  questions ou informations supplémentaires, n&apos;hésitez pas
-                  à nous contacter sur nos réseaux sociaux ou par mail. Nous
-                  vous répondrons dans les plus brefs délais.
+                Vous avez un projet ou une question concernant une séance photo en Loire-Atlantique ? Que ce soit pour une séance en studio, en extérieur, ou lors d’un événement spécial, nous sommes à votre disposition pour répondre à toutes vos demandes.
+
+Pour toute information supplémentaire ou pour discuter de vos besoins, n’hésitez pas à nous contacter par mail ou via nos réseaux sociaux. Nous mettons un point d’honneur à vous répondre dans les plus brefs délais pour vous accompagner dans la réalisation de votre projet photo.
+
+Réservez dès maintenant votre séance photo personnalisée avec notre duo de photographes professionnels à Saint-Nazaire et immortalisez vos moments précieux avec authenticité et créativité !
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -68,7 +65,7 @@ const Contact = () => {
                   <div className="w-fit">
                     <h2 className="mb-1 text-2xl font-bold ">Notre Adresse</h2>
                     <p className="w-fit">
-                      Saint-Nazaire, Loire-Atlantique 44600
+                    Saint-Nazaire, Loire-Atlantique 44600
                     </p>
                   </div>
                 </div>
@@ -144,9 +141,9 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
+            <div className="w-full p-6 lg:w-1/2 xl:w-5/12">
               <div className="relative rounded-lg p-8 shadow-lg dark:bg-dark-2 sm:p-12">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="unna">
                   <input
                     className="w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
                     type="text"

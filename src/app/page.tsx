@@ -17,22 +17,18 @@ export default function Home() {
       <PageTemplate>
         <main id={"homepage"}>
           <p className="mt-6">
-            Bienvenue sur le site de notre duo de photographes professionnels,
-            basé en Loire-Atlantique. Passionnés par l&apos;art de la
-            photographie, nous proposons des services sur-mesure adaptés à vos
-            besoins afin de vous proposer des clichés de vos animaux domestique,
-            des portraits, ou des photos sportives. Notre expertise s&apos;étend
-            dans l&apos;ensemble de la région des Pays de la Loire. Nous sommes
-            disponibles les week-ends et jours fériés, pour des séances photo de
-            studio à domicile ou en extérieur. Immortalisez dès maintenant un
-            moment spécial, offrez une photo unique à un proche, ou révélez la
-            complicité avec vos animaux. Nous mettons notre savoir-faire à votre
-            service pour capturer des instants authentiques et mémorables.
-            Créons ensemble des images qui vous ressemblent, dans une ambiance
-            conviviale et professionnelle. Contactez-nous pour réserver votre
-            séance photo !
+          Situés à Saint-Nazaire, nous intervenons dans toute la Loire-Atlantique et la région des Pays de la Loire, notamment à La Baule, Guérande, Pornichet, ou encore Nantes. Nous sommes disponibles les week-ends et les jours fériés pour des séances photo en studio, à domicile ou en extérieur, 
+          dans des lieux emblématiques ou proches de la nature. Notre expertise inclut la photographie de portrait, idéale pour capturer
+          des moments uniques de partage. Nous sommes également spécialisés dans les photos animalières, mettant en lumière la 
+          complicité entre vous et vos animaux de compagnie. Enfin, notre passion pour le sport nous permet de 
+          photographier vos exploits ou vos événements sportifs avec précision et créativité.Que vous souhaitiez offrir une photo
+          personnalisée à un proche, immortaliser un moment spécial, ou créer des images authentiques qui racontent votre histoire,
+          nous mettons notre savoir-faire de photographes professionnels à votre service. Dans une ambiance à la fois conviviale 
+          et professionnelle, nous vous accompagnons pour transformer chaque instant en œuvre d’art intemporelle. Faites appel à 
+          notre duo de photographes à Saint-Nazaire pour des clichés qui vous ressemblent !Contactez-nous dès aujourd’hui pour 
+          réserver votre séance photo et donner vie à vos souvenirs.
           </p>
-          <SectionTitle idSection={"services"} title={"Services"} />
+          <SectionTitle idSection={"services"} title={"Services"} level={2}/>
           <p>
             Nous proposons trois styles de shooting différents que vous pouvez
             explorer. Aussi, nous vous proposons des shootings sur-mesure afin
@@ -83,6 +79,7 @@ export default function Home() {
           <SectionTitle
             idSection={"a-propos-de-nous"}
             title={"À propos de nous"}
+            level={3}
           />
           <AboutUsSection />
 
@@ -90,6 +87,11 @@ export default function Home() {
             <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
             <CommentCarrousel />
           </Section> */}
+          <SectionTitle
+            idSection={"contact"}
+            title={"Prenez contact avec nous"}
+            level={6}
+          />
           <ContactBlock />
         </main>
       </PageTemplate>

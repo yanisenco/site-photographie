@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import photo1 from "@/image/grosse tete.webp";
 import photo2 from "@/image/photo 1.webp";
@@ -13,8 +13,8 @@ export default function PricingTab() {
   // Function to handle the click event to move the indicator
   const handleSelect = (position: number) => {
     setSelected(position);
-    setRotation(`rotate-${position * 90}`);
   };
+
 
   return (
     <div className="flex flex-col overflow-hidden">
@@ -55,7 +55,7 @@ export default function PricingTab() {
         {/* Full Circle with Four Colored Quarters */}
         <div className="w-[0px] h-[20px] lg:w-[600px] lg:h-[600px]">
           <div
-             className={`origin-center ${rotation} relative hidden lg:block z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] transition-transform duration-300 ease-out`}
+             className={`origin-center rotate-${selected * 90} relative hidden lg:block z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] transition-transform duration-300 ease-out`}
           >
             {/* Top-right quarter */}
             <div className="absolute top-0 right-0 w-1/2 h-1/2 z-30">

@@ -44,12 +44,11 @@ export default function WelcomeInsert() {
       >
         <h1 className="text-6xl font-bold">Vos photos dans les alentours de Saint-Nazaire</h1>
         <p className="unna my-6">
-          Bienvenue sur notre site de photographie ! Nous sommes un duo de
-          photographes sur Saint-Nazaire et plus largement en Loire-Atlantique. Spécialisés en portraits animaliers et humains,
-          nous proposons aussi des services en photographie sportive. Notre mission est d'immortaliser
-          chaque instant avec authenticité pour créer des souvenirs
-          inoubliables. Ensemble, figeons vos moments les plus intenses et
-          les plus tendres en œuvres d&apos;art intemporelles.
+        Bienvenue sur notre site de photographie professionnelle ! Nous sommes un duo de photographes passionnés
+        basé à Saint-Nazaire, au cœur de la Loire-Atlantique. En tant que photographes professionnels,
+        nous unissons nos talents pour capturer vos plus beaux moments, que ce soit à travers des portraits animaliers,
+        des portraits humains ou des photos de sport. Spécialisés dans la photographie d’animaux de compagnie, 
+        nous nous déplaçons également dans les environs de Saint-Nazaire pour des séances photo en extérieur ou en studio.
         </p>
         <Link href="/#homepage"
         id="downArrow">

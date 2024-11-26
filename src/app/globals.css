@@ -28,6 +28,9 @@ p,
   font-family: "Unna", serif;
   font-size: large;
 }
+button{
+  font-family: "Limelight", sans-serif;
+}
 
 html {
   scroll-behavior: smooth;

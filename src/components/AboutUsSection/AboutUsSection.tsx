@@ -2,46 +2,85 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SectionTitle from "../SectionTitle/SectionTitle";
 
 export default function AboutUsSection() {
-  const textRef = useRef(null);
+  const paragraphsRef = useRef<HTMLParagraphElement[]>([]);
+
+  const addToRefs = (el: HTMLParagraphElement | null) => {
+    if (el && !paragraphsRef.current.includes(el)) {
+      paragraphsRef.current.push(el);
+    }
+  };
 
   useEffect(() => {
     // Enregistrement de ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animation en fondu lorsque l'élément entre dans la vue
-    gsap.fromTo(
-      textRef.current,
-      { opacity: 0 }, // Opacité de départ
-      {
-        opacity: 1,
-        duration: 2,
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 80%", // Commence l'animation lorsque le haut de l'élément atteint 80% de la hauteur de la fenêtre
-          toggleActions: "play none none reverse", // Joue l'animation à l'entrée, pas à la sortie
-        },
+    // Appliquer l'animation à chaque paragraphe
+    paragraphsRef.current.forEach((paragraph, index) => {
+      if (paragraph) {
+        gsap.fromTo(
+          paragraph,
+          { opacity: 0 }, // Opacité de départ
+          {
+            opacity: 1,
+            duration: 1.5,
+            delay: index * 0.2, // Décalage pour un effet de cascade
+            scrollTrigger: {
+              trigger: paragraph,
+              start: "top 80%", // L'animation démarre lorsque le haut de l'élément atteint 80% de la fenêtre
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
       }
-    );
+    });
   }, []);
 
   return (
-    <p ref={textRef} className="text-center  ">
-      {" "}
-      Guidés par une profonde passion pour la photographie depuis plus de deux
-      ans, nous avons chacun exploré l&apos;art de la photographie à notre
-      manière, développant des styles et des compétences spécifiques. En
-      travaillant sur des projets individuels, nous avons découvert la richesse
-      que pouvait apporter un regard complémentaire. Ainsi, notre duo s&apos;est
-      formé en unissant nos talents pour proposer des photos uniques et
-      authentiques. Notre complémentarité est devenue la clé de notre identité
-      en tant que duo de photographes : l’un de nous est spécialisé dans les
-      photos en studio, capturant la personnalité et les émotions ; l’autre
-      exerce la photographie en plein air, saisissant l&apos;authenticité et le
-      naturel. Notre parcours a naturellement évolué vers la création de notre
-      propre entreprise, pour partager notre passion de manière professionnelle
-      avec nos clients.
-    </p>
+    <>
+      <p ref={addToRefs} className="text-center">
+        <strong>Une passion commune pour la photographie, deux regards complémentaires</strong>
+        <br />
+        Depuis plus de deux ans, nous cultivons une profonde passion pour la photographie, chacun explorant cet art à sa manière.
+        À travers nos expériences individuelles, nous avons développé des styles distincts et des compétences spécifiques qui, une
+        fois réunis, enrichissent notre vision et notre travail. C’est en travaillant sur des projets variés que nous avons découvert
+        la puissance d’un regard complémentaire, et ainsi, notre duo de photographes professionnels à Saint-Nazaire est né. En
+        combinant nos talents, nous proposons des photos uniques, authentiques et empreintes d'émotion.
+      </p>
+      <SectionTitle
+        title="Notre complémentarité, la clé de notre identité"
+        level={4}
+        idSection="notre-identité"
+        size="s"
+      />
+      <div ref={addToRefs}>
+        <ul className="px-[13px]">
+        <li className="unna mb-2">
+          &#8226; <strong>Photographie en studio</strong> : L’un de nous se spécialise dans la capture de la personnalité et des émotions en studio. Parfait pour des portraits intimes, des photos de famille ou des shootings professionnels.
+        </li>
+        <li className="unna mb-2">
+          &#8226; <strong>Photographie en extérieur</strong> : L’autre excelle dans l’art de saisir l'authenticité et le naturel en plein air, créant des clichés spontanés et vivants, idéaux pour des photos animalières, des séances lifestyle, ou encore des événements sportifs.
+        </li>
+      </ul>
+      <p >
+        Ensemble, nous avons décidé de donner une nouvelle dimension à notre passion en créant notre entreprise de photographie à Saint-Nazaire, en Loire-Atlantique. Nous offrons désormais notre expertise et notre créativité pour accompagner nos clients dans la réalisation de leurs projets photo.
+      </p>
+      </div>
+      
+      <SectionTitle
+        title="Une expérience sur-mesure pour chaque client"
+        level={5}
+        idSection="une-experience-sur-mesure"
+        size="s"
+      />
+      <p ref={addToRefs}>
+        Notre mission est de transformer vos moments spéciaux en œuvres d'art intemporelles, grâce à une approche à la fois conviviale et professionnelle. Que ce soit en studio, en extérieur ou lors d’événements, nous mettons à votre disposition notre savoir-faire pour capturer des instants mémorables.
+        <br />
+        <br />
+        Contactez notre duo de photographes à Saint-Nazaire dès aujourd’hui pour planifier une séance photo adaptée à vos besoins !
+      </p>
+    </>
   );
 }
