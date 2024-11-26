@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
 const Contact = () => {
@@ -33,19 +34,33 @@ const Contact = () => {
 
   return (
     <>
-      <section
-        className="relative z-10 overflow-hidden"
-      >
+      <section className="relative z-10 overflow-hidden">
         <div>
           <div className="flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
               <div className="mb-12 lg:mb-0">
                 <p className="mb-9">
-                Vous avez un projet ou une question concernant une séance photo en Loire-Atlantique ? Que ce soit pour une séance en studio, en extérieur, ou lors d’un événement spécial, nous sommes à votre disposition pour répondre à toutes vos demandes.
-
-Pour toute information supplémentaire ou pour discuter de vos besoins, n’hésitez pas à nous contacter par mail ou via nos réseaux sociaux. Nous mettons un point d’honneur à vous répondre dans les plus brefs délais pour vous accompagner dans la réalisation de votre projet photo.
-
-Réservez dès maintenant votre séance photo personnalisée avec notre duo de photographes professionnels à Saint-Nazaire et immortalisez vos moments précieux avec authenticité et créativité !
+                  Vous avez un projet ou une question concernant une séance
+                  photo en Loire-Atlantique ? Que ce soit pour une{" "}
+                  <Link href={"/service/portrait-studio"}>
+                    séance en studio,
+                  </Link>{" "}
+                  <Link href={"/service/portrait-exterieur"}>
+                    en extérieur,
+                  </Link>{" "}
+                  <Link href={"/service/photo-sportive"}>
+                    ou lors d’un événement spécial,
+                  </Link>{" "}
+                  nous sommes à votre disposition pour répondre à toutes vos
+                  demandes. Pour toute information supplémentaire ou pour
+                  discuter de vos besoins, n’hésitez pas à nous contacter par
+                  mail ou via nos réseaux sociaux. Nous mettons un point
+                  d’honneur à vous répondre dans les plus brefs délais pour vous
+                  accompagner dans la réalisation de votre projet photo.
+                  Réservez dès maintenant votre séance photo personnalisée avec
+                  notre duo de photographes professionnels à Saint-Nazaire et
+                  immortalisez vos moments précieux avec authenticité et
+                  créativité !
                 </p>
                 <div className="mb-8 flex w-full max-w-[370px]">
                   <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
@@ -65,7 +80,7 @@ Réservez dès maintenant votre séance photo personnalisée avec notre duo de p
                   <div className="w-fit">
                     <h2 className="mb-1 text-2xl font-bold ">Notre Adresse</h2>
                     <p className="w-fit">
-                    Saint-Nazaire, Loire-Atlantique 44600
+                      Saint-Nazaire, Loire-Atlantique 44600
                     </p>
                   </div>
                 </div>

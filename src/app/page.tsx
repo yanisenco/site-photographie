@@ -7,6 +7,7 @@ import photo1 from "@/images/photo-face-chat.webp";
 import photo2 from "@/images/photo-cheval-blanc-ambiance-feerique.webp";
 import photo3 from "@/images/kitesurfeur.webp";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
+import Link from "next/link";
 // import Section from "@/components/Section/Section";
 // import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
 
@@ -17,18 +18,44 @@ export default function Home() {
       <PageTemplate>
         <main id={"homepage"}>
           <p className="mt-6">
-          Situés à Saint-Nazaire, nous intervenons dans toute la Loire-Atlantique et la région des Pays de la Loire, notamment à La Baule, Guérande, Pornichet, ou encore Nantes. Nous sommes disponibles les week-ends et les jours fériés pour des séances photo en studio, à domicile ou en extérieur, 
-          dans des lieux emblématiques ou proches de la nature. Notre expertise inclut la photographie de portrait, idéale pour capturer
-          des moments uniques de partage. Nous sommes également spécialisés dans les photos animalières, mettant en lumière la 
-          complicité entre vous et vos animaux de compagnie. Enfin, notre passion pour le sport nous permet de 
-          photographier vos exploits ou vos événements sportifs avec précision et créativité.Que vous souhaitiez offrir une photo
-          personnalisée à un proche, immortaliser un moment spécial, ou créer des images authentiques qui racontent votre histoire,
-          nous mettons notre savoir-faire de photographes professionnels à votre service. Dans une ambiance à la fois conviviale 
-          et professionnelle, nous vous accompagnons pour transformer chaque instant en œuvre d’art intemporelle. Faites appel à 
-          notre duo de photographes à Saint-Nazaire pour des clichés qui vous ressemblent !Contactez-nous dès aujourd’hui pour 
-          réserver votre séance photo et donner vie à vos souvenirs.
+            Situés à Saint-Nazaire, nous intervenons dans toute la
+            Loire-Atlantique et la région des Pays de la Loire, notamment à La
+            Baule, Guérande, Pornichet, ou encore Nantes. Nous sommes
+            disponibles les week-ends et les jours fériés pour des séances photo
+            en studio, à domicile ou en extérieur, dans des lieux emblématiques
+            ou proches de la nature. Notre expertise inclut
+            <Link href={"/service/portrait-studio"}>
+              la photographie de portrait,
+            </Link>{" "}
+            idéale pour capturer des moments uniques de partage. Nous sommes
+            également spécialisés dans{" "}
+            <Link href={"/service/portrait-exterieur"}>
+              les photos animalières,
+            </Link>{" "}
+            mettant en lumière la complicité entre vous et vos animaux de
+            compagnie. Enfin, notre passion pour{" "}
+            <Link href={"/service/photo-sportive"}>le sport</Link> nous permet
+            de photographier vos exploits ou vos événements sportifs avec
+            précision et créativité.Que vous souhaitiez{" "}
+            <Link href={"/pricing"}>offrir une photo personnalisée</Link> à un
+            proche, immortaliser un moment spécial, ou créer des images
+            authentiques qui racontent votre histoire, nous mettons notre
+            savoir-faire de photographes professionnels à votre service. Dans
+            une ambiance à la fois conviviale et professionnelle, nous vous
+            accompagnons pour transformer chaque instant en œuvre d’art
+            intemporelle. Faites appel à notre duo de photographes à
+            Saint-Nazaire pour des clichés qui vous ressemblent !
+            <Link href={"/#contact"}>
+              {" "}
+              Contactez-nous dès aujourd’hui pour réserver votre séance photo et
+              donner vie à vos souvenirs.
+            </Link>{" "}
           </p>
-          <SectionTitle idSection={"services"} title={"Services"} level={2}/>
+          <SectionTitle
+            idSection={"services"}
+            title={"Services sur-mesure en fonction de vos envies"}
+            level={2}
+          />
           <p>
             Nous proposons trois styles de shooting différents que vous pouvez
             explorer. Aussi, nous vous proposons des shootings sur-mesure afin

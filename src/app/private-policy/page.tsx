@@ -12,13 +12,14 @@ export default function PrivatePolicy() {
         Le site <strong>focusetlumiere.fr</strong> est édité par :
       </p>
       <p>
-        <strong>Nom de la société</strong> : Focus et Lumière
+        <strong>Nom de la société</strong> : Focus & Lumière
       </p>
       <p>
         <strong>Forme juridique</strong> : micro-entreprise
       </p>
       <p>
-        <strong>Adresse</strong> : 6 rue Georges Escoulan, Saint-Nazaire, Loire-Atlantique (44600)
+        <strong>Adresse</strong> : 6 rue Georges Escoulan, Saint-Nazaire,
+        Loire-Atlantique (44600)
       </p>
       <p>
         <strong>Téléphone</strong> : 07 81 95 15 03
@@ -27,8 +28,7 @@ export default function PrivatePolicy() {
         <strong>Email</strong> : ianaletrillard3@gmail.com
       </p>
       <p>
-        <strong>Numéro d’immatriculation</strong> : [Numéro SIRET ou autre
-        numéro d’identification]
+        <strong>Numéro d’immatriculation</strong> : 93511180700019
       </p>
       <p>
         <strong>Directeur de la publication</strong> : Yanis ENCOGNERE
@@ -43,7 +43,10 @@ export default function PrivatePolicy() {
         <strong>Adresse</strong> : 7 Place DE LA GARE 57200 SARREGUEMINES
       </p>
       <p>
-        <strong>Site web</strong> : <Link href={"https://www.ionos.fr/"} target="_blank" rel="noopener">https://www.ionos.fr/</Link>
+        <strong>Site web</strong> :{" "}
+        <Link href={"https://www.ionos.fr/"} target="_blank" rel="noopener">
+          https://www.ionos.fr/
+        </Link>
       </p>
 
       <h2>Propriété intellectuelle</h2>
