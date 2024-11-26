@@ -1,5 +1,6 @@
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import Link from "next/link";
 
 export default function PrivatePolicy() {
   return (
@@ -14,39 +15,35 @@ export default function PrivatePolicy() {
         <strong>Nom de la société</strong> : Focus et Lumière
       </p>
       <p>
-        <strong>Forme juridique</strong> : auto-entrepreneur
+        <strong>Forme juridique</strong> : micro-entreprise
       </p>
       <p>
-        <strong>Adresse</strong> : [Adresse complète]
+        <strong>Adresse</strong> : 6 rue Georges Escoulan, Saint-Nazaire, Loire-Atlantique (44600)
       </p>
       <p>
-        <strong>Téléphone</strong> : [Numéro de téléphone]
+        <strong>Téléphone</strong> : 07 81 95 15 03
       </p>
       <p>
-        <strong>Email</strong> : [Adresse email de contact]
+        <strong>Email</strong> : ianaletrillard3@gmail.com
       </p>
       <p>
         <strong>Numéro d’immatriculation</strong> : [Numéro SIRET ou autre
         numéro d’identification]
       </p>
       <p>
-        <strong>Directeur de la publication</strong> : [Nom du responsable de la
-        publication]
+        <strong>Directeur de la publication</strong> : Yanis ENCOGNERE
       </p>
 
       <h2>Hébergement du site</h2>
       <p>Le site est hébergé par :</p>
       <p>
-        <strong>Nom de l’hébergeur</strong> : [Nom de l’hébergeur]
+        <strong>Nom de l’hébergeur</strong> : IONOS SARL
       </p>
       <p>
-        <strong>Adresse</strong> : [Adresse complète de l’hébergeur]
+        <strong>Adresse</strong> : 7 Place DE LA GARE 57200 SARREGUEMINES
       </p>
       <p>
-        <strong>Téléphone</strong> : [Numéro de téléphone de l’hébergeur]
-      </p>
-      <p>
-        <strong>Site web</strong> : [Site de l’hébergeur]
+        <strong>Site web</strong> : <Link href={"https://www.ionos.fr/"} target="_blank" rel="noopener">https://www.ionos.fr/</Link>
       </p>
 
       <h2>Propriété intellectuelle</h2>
@@ -73,7 +70,7 @@ export default function PrivatePolicy() {
       <p>
         Vous disposez d’un droit d’accès, de rectification, d’effacement,
         d’opposition et de portabilité de vos données en nous contactant par
-        email à [Adresse email de contact].
+        email à ianaletrillard3@gmail.com .
       </p>
 
       <h2>Cookies</h2>
@@ -99,10 +96,7 @@ export default function PrivatePolicy() {
         légales, vous pouvez nous contacter :
       </p>
       <p>
-        <strong>Par email</strong> : [Adresse email de contact]
-      </p>
-      <p>
-        <strong>Par courrier</strong> : [Adresse postale]
+        <strong>Par email</strong> : ianaletrillard3@gmail.com
       </p>
     </PageTemplate>
   );
