@@ -1,13 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import photo1 from "@/image/grosse tete.webp";
-import photo2 from "@/image/photo 1.webp";
-import photo3 from "@/image/kitesurf.webp";
+import photo1 from "@/images/photo-bouledogue-francais-contre-plongee.webp";
+import photo2 from "@/images/photo-cheval-blanc-ambiance-feerique.webp";
+import photo3 from "@/images/kitesurfeur.webp";
 
 export default function PricingTab() {
-  const [rotation, setRotation] = useState("");
-
   const [selected, setSelected] = useState(0); // Track the selected position (0, 1, or 2)
 
   // Function to handle the click event to move the indicator

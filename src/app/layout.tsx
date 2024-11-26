@@ -41,6 +41,13 @@ export default function RootLayout({
           name="description"
           content="Focus & Lumière, duo de photographes professionnels à Saint-Nazaire. Découvrez nos services de photographie pour en savoir plus sur nous et notre travail."
         />
+        <meta property="og:title" content="Focus et Lumière - Duo de Photographes à Saint-Nazaire"/>
+        <meta property="og:description" content="Découvrez Focus et Lumière, votre duo de photographes professionnels à Saint-Nazaire, spécialisé en portraits humains, animaliers et photographie sportive. Capturez vos moments les plus précieux avec authenticité et créativité."/>
+        <meta property="og:image" content="https://focusetlumiere.fr/photo-face-chat.webp"/>
+        <meta property="og:url" content="https://focusetlumiere.fr"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:site_name" content="Focus et Lumière"/>
+        <meta property="og:locale" content="fr_FR"/>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

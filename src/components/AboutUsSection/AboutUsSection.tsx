@@ -17,7 +17,7 @@ export default function AboutUsSection() {
     // Enregistrement de ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Appliquer l'animation à chaque paragraphe
+    // Appliquer l&apos;animation à chaque paragraphe
     paragraphsRef.current.forEach((paragraph, index) => {
       if (paragraph) {
         gsap.fromTo(
@@ -29,7 +29,7 @@ export default function AboutUsSection() {
             delay: index * 0.2, // Décalage pour un effet de cascade
             scrollTrigger: {
               trigger: paragraph,
-              start: "top 80%", // L'animation démarre lorsque le haut de l'élément atteint 80% de la fenêtre
+              start: "top 80%", // L&apos;animation démarre lorsque le haut de l&apos;élément atteint 80% de la fenêtre
               toggleActions: "play none none reverse",
             },
           }
@@ -47,7 +47,7 @@ export default function AboutUsSection() {
         À travers nos expériences individuelles, nous avons développé des styles distincts et des compétences spécifiques qui, une
         fois réunis, enrichissent notre vision et notre travail. C’est en travaillant sur des projets variés que nous avons découvert
         la puissance d’un regard complémentaire, et ainsi, notre duo de photographes professionnels à Saint-Nazaire est né. En
-        combinant nos talents, nous proposons des photos uniques, authentiques et empreintes d'émotion.
+        combinant nos talents, nous proposons des photos uniques, authentiques et empreintes d&apos;émotion.
       </p>
       <SectionTitle
         title="Notre complémentarité, la clé de notre identité"
@@ -61,7 +61,7 @@ export default function AboutUsSection() {
           &#8226; <strong>Photographie en studio</strong> : L’un de nous se spécialise dans la capture de la personnalité et des émotions en studio. Parfait pour des portraits intimes, des photos de famille ou des shootings professionnels.
         </li>
         <li className="unna mb-2">
-          &#8226; <strong>Photographie en extérieur</strong> : L’autre excelle dans l’art de saisir l'authenticité et le naturel en plein air, créant des clichés spontanés et vivants, idéaux pour des photos animalières, des séances lifestyle, ou encore des événements sportifs.
+          &#8226; <strong>Photographie en extérieur</strong> : L’autre excelle dans l’art de saisir l&apos;authenticité et le naturel en plein air, créant des clichés spontanés et vivants, idéaux pour des photos animalières, des séances lifestyle, ou encore des événements sportifs.
         </li>
       </ul>
       <p >
@@ -76,7 +76,7 @@ export default function AboutUsSection() {
         size="s"
       />
       <p ref={addToRefs}>
-        Notre mission est de transformer vos moments spéciaux en œuvres d'art intemporelles, grâce à une approche à la fois conviviale et professionnelle. Que ce soit en studio, en extérieur ou lors d’événements, nous mettons à votre disposition notre savoir-faire pour capturer des instants mémorables.
+        Notre mission est de transformer vos moments spéciaux en œuvres d&apos;art intemporelles, grâce à une approche à la fois conviviale et professionnelle. Que ce soit en studio, en extérieur ou lors d’événements, nous mettons à votre disposition notre savoir-faire pour capturer des instants mémorables.
         <br />
         <br />
         Contactez notre duo de photographes à Saint-Nazaire dès aujourd’hui pour planifier une séance photo adaptée à vos besoins !

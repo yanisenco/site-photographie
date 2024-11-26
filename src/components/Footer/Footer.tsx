@@ -27,6 +27,7 @@ export default function Footer() {
             <Link
               href="https://www.facebook.com/profile.php?id=61567770331945"
               target="_blank"
+              rel="noopener"
               className=" ml-4 rounded-full p-2 shadow-md hover:shadow-inner"
               >
               <span className="[&>svg]:h-5 [&>svg]:w-5">
@@ -43,6 +44,7 @@ export default function Footer() {
               href="https://www.google.com/maps/place/Focus+%26+Lumi%C3%A8re/@47.2768234,-2.2391615,13z/data=!4m6!3m5!1s0x4805650c727b2f11:0x6eae1052bd1a2961!8m2!3d47.281767!4d-2.224451!16s%2Fg%2F11y8_q3v5b?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D"
               className="ml-2 rounded-full p-2 shadow-md hover:shadow-inner"
               target="_blank"
+              rel="noopener"
             >
               <span className="mx-auto [&>svg]:h-5 [&>svg]:w-5">
                 <svg
@@ -57,6 +59,7 @@ export default function Footer() {
             <Link
               href="https://www.instagram.com/focusetlumiere/"
               target="_blank"
+              rel="noopener"  
               className="ml-2 rounded-full p-2 shadow-md hover:shadow-inner"
               >
               <span className="mx-auto [&>svg]:h-5 [&>svg]:w-5">

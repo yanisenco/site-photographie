@@ -93,6 +93,7 @@ Réservez dès maintenant votre séance photo personnalisée avec notre duo de p
                     <a
                       href="https://www.instagram.com/focusetlumiere/"
                       target="_blank"
+                      rel="noopener"
                       className="unna"
                     >
                       @focusetlumiere
