@@ -153,6 +153,7 @@ export default function Header() {
                       href="/service/portrait-studio"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
+                      rel="canonical"
                     >
                       Portrait studio
                     </Link>
@@ -162,6 +163,7 @@ export default function Header() {
                       href="/service/portrait-exterieur"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
+                      rel="canonical"
                     >
                       Portrait extérieur
                     </Link>
@@ -171,6 +173,7 @@ export default function Header() {
                       href="/service/photo-sportive"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
+                      rel="canonical"
                     >
                       Photo sportive
                     </Link>
@@ -183,6 +186,7 @@ export default function Header() {
                 href="/pricing"
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
+                rel="canonical"
               >
                 Tarifs
               </Link>
@@ -192,6 +196,7 @@ export default function Header() {
                 href="/#contact"
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
+                rel="canonical"
               >
                 Contact
               </Link>
@@ -201,6 +206,7 @@ export default function Header() {
                 href="/#a-propos-de-nous"
                 className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
+                rel="canonical"
               >
                 À propos de nous
               </Link>

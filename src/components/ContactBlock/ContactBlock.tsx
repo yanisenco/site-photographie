@@ -42,13 +42,13 @@ const Contact = () => {
                 <p className="mb-9">
                   Vous avez un projet ou une question concernant une séance
                   photo en Loire-Atlantique ? Que ce soit pour une{" "}
-                  <Link href={"/service/portrait-studio"}>
+                  <Link href={"/service/portrait-studio"} rel="canonical">
                     séance en studio,
                   </Link>{" "}
-                  <Link href={"/service/portrait-exterieur"}>
+                  <Link href={"/service/portrait-exterieur"} rel="canonical">
                     en extérieur,
                   </Link>{" "}
-                  <Link href={"/service/photo-sportive"}>
+                  <Link href={"/service/photo-sportive"} rel="canonical">
                     ou lors d’un événement spécial,
                   </Link>{" "}
                   nous sommes à votre disposition pour répondre à toutes vos

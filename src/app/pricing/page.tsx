@@ -14,16 +14,16 @@ export default function Pricing() {
       <p className="mb-4">
         Vous trouverez ici notre grille tarifaire couvrant trois services
         principaux :{" "}
-        <Link href={"/service/portrait-studio"}>
+        <Link href={"/service/portrait-studio"} rel="canonical">
           portrait en studio à domicile,
         </Link>{" "}
-        <Link href={"/service/portrait-exterieur"}>
+        <Link href={"/service/portrait-exterieur"} rel="canonical">
           portrait en extérieur dans le lieu de votre choix
         </Link>{" "}
-        <Link href={"/service/photo-sportive"}>et photographie sportive.</Link>{" "}
+        <Link href={"/service/photo-sportive"} rel="canonical">et photographie sportive.</Link>{" "}
         Nous proposons également des séances photo sur-mesure, combinant
         plusieurs services.{" "}
-        <Link href={"/#contact"}>
+        <Link href={"/#contact"} rel="canonical">
           Nous réaliserons un devis pour ces demandes personnalisées en fonction
           de vos envies.
         </Link>{" "}

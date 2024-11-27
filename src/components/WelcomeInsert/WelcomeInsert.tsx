@@ -51,7 +51,8 @@ export default function WelcomeInsert() {
         nous nous déplaçons également dans les environs de Saint-Nazaire pour des séances photo en extérieur ou en studio.
         </p>
         <Link href="/#homepage"
-        id="downArrow">
+        id="downArrow"
+        rel="canonical">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

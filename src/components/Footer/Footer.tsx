@@ -19,7 +19,7 @@ export default function Footer() {
           </li>
 
           <li>
-            <Link href="/#contact" className="hover:underline">
+            <Link href="/#contact" className="hover:underline" rel="canonical">
               Contact
             </Link>
           </li>
