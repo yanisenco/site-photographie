@@ -65,7 +65,7 @@ export default function AboutUsSection() {
       <div ref={addToRefs}>
         <ul className="px-[13px]">
           <li className="unna mb-2">
-            <Link href="/service/portrait-studio" rel="canonical">
+            <Link href="/service/portrait-studio" rel="canonical" title="redirection-page-photo-studio">
               &#8226; <strong>Photographie en studio</strong>: L’un de nous se
               spécialise dans la capture de la personnalité et des émotions en
               studio. Parfait pour des portraits intimes, des photos de famille
@@ -73,13 +73,13 @@ export default function AboutUsSection() {
             </Link>
           </li>
           <li className="unna mb-2">
-            <Link href="/service/portrait-exterieur" rel="canonical">
+            <Link href="/service/portrait-exterieur" rel="canonical" title="redirection-page-photo-exterieur">
               &#8226; <strong>Photographie en extérieur</strong>: L’autre
               excelle dans l’art de saisir l&apos;authenticité et le naturel en
               plein air, créant des clichés spontanés et vivants, idéaux pour
               des photos animalières, des séances lifestyle, ou encore des{" "}
             </Link>
-            <Link href="/service/photo-sportive" rel="canonical">événements sportifs.</Link>
+            <Link href="/service/photo-sportive" rel="canonical" title="redirection-page-photos-sportives">événements sportifs.</Link>
           </li>
         </ul>
         <p>
@@ -101,13 +101,13 @@ export default function AboutUsSection() {
         Notre mission est de transformer vos moments spéciaux en œuvres
         d&apos;art intemporelles, grâce à une approche à la fois conviviale et
         professionnelle. Que ce soit en{" "}
-        <Link href="/service/portrait-studio" rel="canonical">studio, </Link>
-        <Link href="/service/portrait-exterieur" rel="canonical">en extérieur</Link> ou lors
+        <Link href="/service/portrait-studio" rel="canonical" title="redirection-page-photo-studio">studio, </Link>
+        <Link href="/service/portrait-exterieur" rel="canonical" title="redirection-page-photo-exterieur">en extérieur</Link> ou lors
         d’événements, nous mettons à votre disposition notre savoir-faire pour
         capturer des instants mémorables.
         <br />
         <br />
-        <Link href="/#contact" rel="canonical">
+        <Link href="/#contact" rel="canonical" title="redirection-section-contact">
           Contactez notre duo de photographes à Saint-Nazaire dès aujourd’hui
           pour planifier une séance photo adaptée à vos besoins !
         </Link>

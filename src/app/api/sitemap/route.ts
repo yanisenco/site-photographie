@@ -27,9 +27,9 @@ export async function GET(): Promise<Response> {
       url: "https://focusetlumiere.fr/_not-found ",
       lastModified: "2024-11-15",
     },
-    { url: "https://focusetlumiere.fr/pricing", lastModified: "2024-11-15" },
+    { url: "https://focusetlumiere.fr/tarifs", lastModified: "2024-11-15" },
     {
-      url: "https://focusetlumiere.fr/private-policy",
+      url: "https://focusetlumiere.fr/mentions-legales",
       lastModified: "2024-11-15",
     },
   ];

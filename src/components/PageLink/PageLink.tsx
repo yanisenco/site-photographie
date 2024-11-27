@@ -37,7 +37,7 @@ export default function PageLink({ photo, title, color, link }: PageLinkProps) {
   }, []);
 
   return (
-    <Link href={link} ref={linkRef} rel="canonical">
+    <Link href={link} ref={linkRef} rel="canonical" title={`redirection-page-${link}"`}>
       <div className="card min-h-fit min-w-fit">
         <Image src={photo} alt={title} className="pic" />
         <p className="text-6xl sm:text-[4vw]">{title}</p>

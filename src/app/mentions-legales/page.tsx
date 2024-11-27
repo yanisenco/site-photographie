@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function PrivatePolicy() {
   return (
     <PageTemplate>
-      <SectionTitle idSection={"private-policy"} title={"Mentions Légales"} />
+      <SectionTitle idSection={"mentions-legales"} title={"Mentions Légales"} />
 
       <h2>Éditeur du site</h2>
       <p>
@@ -44,7 +44,7 @@ export default function PrivatePolicy() {
       </p>
       <p>
         <strong>Site web</strong> :{" "}
-        <Link href={"https://www.ionos.fr/"} target="_blank" rel="noopener">
+        <Link href={"https://www.ionos.fr/"} target="_blank" rel="noopener" title="redirection-site-officiel-ionos">
           https://www.ionos.fr/
         </Link>
       </p>

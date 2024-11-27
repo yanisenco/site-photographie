@@ -24,20 +24,20 @@ export default function Home() {
             disponibles les week-ends et les jours fériés pour des séances photo
             en studio, à domicile ou en extérieur, dans des lieux emblématiques
             ou proches de la nature. Notre expertise inclut
-            <Link href={"/service/portrait-studio"} rel="canonical">
+            <Link href={"/service/portrait-studio"} rel="canonical" title="redirection-page-photo-studio">
               la photographie de portrait,
             </Link>{" "}
             idéale pour capturer des moments uniques de partage. Nous sommes
             également spécialisés dans{" "}
-            <Link href={"/service/portrait-exterieur"} rel="canonical">
+            <Link href={"/service/portrait-exterieur"} rel="canonical" title="redirection-page-photo-exterieur">
               les photos animalières,
             </Link>{" "}
             mettant en lumière la complicité entre vous et vos animaux de
             compagnie. Enfin, notre passion pour{" "}
-            <Link href={"/service/photo-sportive"} rel="canonical">le sport</Link> nous permet
+            <Link href={"/service/photo-sportive"} rel="canonical" title="redirection-page-photos-sportives">le sport</Link> nous permet
             de photographier vos exploits ou vos événements sportifs avec
             précision et créativité.Que vous souhaitiez{" "}
-            <Link href={"/pricing"} rel="canonical">offrir une photo personnalisée</Link> à un
+            <Link href={"/tarifs"} rel="canonical" title="redirection-page-tarifs">offrir une photo personnalisée</Link> à un
             proche, immortaliser un moment spécial, ou créer des images
             authentiques qui racontent votre histoire, nous mettons notre
             savoir-faire de photographes professionnels à votre service. Dans
@@ -45,7 +45,7 @@ export default function Home() {
             accompagnons pour transformer chaque instant en œuvre d’art
             intemporelle. Faites appel à notre duo de photographes à
             Saint-Nazaire pour des clichés qui vous ressemblent !
-            <Link href={"/#contact"} rel="canonical">
+            <Link href={"/#contact"} rel="canonical" title="redirection-section-contact">
               {" "}
               Contactez-nous dès aujourd’hui pour réserver votre séance photo et
               donner vie à vos souvenirs.

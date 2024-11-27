@@ -54,6 +54,7 @@ export default function Header() {
           href="/#homepage"
           className="flex items-center space-x-3 rtl:space-x-reverse"
           rel="canonical"
+          title="redirection-page-acceuil"
         >
           <Image
             src={Logo}
@@ -154,6 +155,7 @@ export default function Header() {
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
                       rel="canonical"
+                      title="redirection-page-photo-studio"
                     >
                       Portrait studio
                     </Link>
@@ -164,6 +166,7 @@ export default function Header() {
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
                       rel="canonical"
+                      title="redirection-page-photo-exterieur"
                     >
                       Portrait extérieur
                     </Link>
@@ -174,6 +177,7 @@ export default function Header() {
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
                       rel="canonical"
+                      title="redirection-page-photos-sportives"
                     >
                       Photo sportive
                     </Link>
@@ -183,10 +187,11 @@ export default function Header() {
             </li>
             <li>
               <Link
-                href="/pricing"
+                href="/tarifs"
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
                 rel="canonical"
+                title="redirection-page-tarifs"
               >
                 Tarifs
               </Link>
@@ -197,6 +202,7 @@ export default function Header() {
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
                 rel="canonical"
+                title="redirection-section-contact"
               >
                 Contact
               </Link>
@@ -207,6 +213,7 @@ export default function Header() {
                 className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
                 rel="canonical"
+                title="redirection-section-a-propos-de-nous"
               >
                 À propos de nous
               </Link>

@@ -1,74 +1,82 @@
-/* eslint-disable @next/next/no-page-custom-font */
-import type { Metadata } from "next";
 import "./globals.css";
-import Head from "next/head";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
   description:
     "Focus & Lumière, duo de photographes professionnels à Saint-Nazaire. Découvrez nos services de photographie pour en savoir plus sur nous et notre travail.",
+  keywords: [
+    "photographes Saint-Nazaire",
+    "photos animalières",
+    "photos sportives",
+    "portraits",
+    "photographie professionnelle",
+    "photographie",
+    "photos",
+    "photo",
+    "Saint-Nazaire",
+    "Saint-Brevin",
+    "Nantes",
+    "La Baule",
+    "Pornichet",
+    "brière",
+    "Savenay",
+    "Pornic",
+    "Loire-Atlantique",
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    "max-snippet": -1,
+    "max-image-preview": "large",
+    "max-video-preview": -1,
+  },
+  icons: {
+    icon: "/flavicon.ico",
+  },
+  alternates: {
+    canonical: "https://focusetlumiere.fr",
+  },
+  openGraph: {
+    type: "website",
+    locale: "fr_FR",
+    url: "https://focusetlumiere.fr",
+    title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+    description:
+      "Découvrez Focus et Lumière, votre duo de photographes professionnels à Saint-Nazaire, spécialisé en portraits humains, animaliers et photographie sportive.",
+    siteName: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+    images: [
+      {
+        url: "https://focusetlumiere.fr/images/photo-face-chat.webp",
+        width: 1200,
+        height: 630,
+        alt: "Photo professionnelle de Focus & Lumière",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+    description:
+      "Photographes professionnels à Saint-Nazaire, spécialisés en portraits et photographie animalière.",
+    images: ["https://focusetlumiere.fr/images/photo-face-chat.webp"],
+  },
 };
+
+export const generateViewport = () => ({
+  width: "device-width",
+  initialScale: 1,
+});
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="fr">
-      <Head>
-        {/* Balise viewport pour le responsive */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {/* Balise favicon */}
-        <link rel="icon" href="/logoFocusEtLumiere.png" />
-        {/* Balises SEO principales */}
-        <meta
-          name="robots"
-          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
-        />
-        <title>
-          Focus & Lumière, photographes professionnels à Saint-Nazaire
-        </title>
-        <meta
-          name="description"
-          content="Focus & Lumière, duo de photographes professionnels à Saint-Nazaire. Découvrez nos services de photographie pour en savoir plus sur nous et notre travail."
-        />
-        <meta
-          name="keywords"
-          content="photographes Saint-Nazaire, photos animalières, photos sportives, portraits, photographie professionnelle, photographie, photos, photo, Saint-Nazaire, Saint-Brevin, Nantes, La Baule, Pornichet, brière, Savenay, Pornic, Loire-Atlantique"
-        />
-        {/* Open Graph pour réseaux sociaux */}
-        <meta
-          property="og:title"
-          content="Focus & Lumière, photographes professionnels à Saint-Nazaire"
-        />
-        <meta
-          property="og:description"
-          content="Découvrez Focus et Lumière, votre duo de photographes professionnels à Saint-Nazaire, spécialisé en portraits humains, animaliers et photographie sportive. Capturez vos moments les plus précieux avec authenticité et créativité."
-        />
-        <meta
-          property="og:image"
-          content="https://focusetlumiere.fr/images/photo-face-chat.webp"
-        />
-        <meta property="og:url" content="https://focusetlumiere.fr" />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:site_name"
-          content="Focus & Lumière, photographes professionnels à Saint-Nazaire"
-        />
-        <meta property="og:locale" content="fr_FR" />
-        {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Focus & Lumière, photographes professionnels à Saint-Nazaire" />
-        <meta
-          name="twitter:description"
-          content="Photographes professionnels à Saint-Nazaire, spécialisés en portraits et photographie d'animaux de compagnie."
-        />
-        <meta
-          name="twitter:image"
-          content="https://focusetlumiere.fr/images/photo-face-chat.webp"
-        />
-        {/* JSON-LD Schema.org */}
+      <head>
+      <link rel="apple-touch-icon" href="/logoFocusEtLumiere.png" sizes="180x180" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -100,11 +108,14 @@ export default function RootLayout({
                 "@type": "Place",
                 name: [
                   "Saint-Nazaire",
+                  "Saint-Brevin",
                   "Nantes",
                   "La Baule",
-                  "Pornic",
+                  "Pornichet",
+                  "brière",
                   "Savenay",
-                  "Saint-Brevin",
+                  "Pornic",
+                  "Loire-Atlantique",
                 ],
               },
               sameAs: [
@@ -130,8 +141,8 @@ export default function RootLayout({
             }),
           }}
         />
-      </Head>
-      <body>{children}</body>
-    </html>
-  );
+    </head>
+    <body>{children}</body>
+  </html>
+);
 }

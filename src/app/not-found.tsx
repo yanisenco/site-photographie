@@ -6,7 +6,7 @@ const Custom404 = () => {
       <div className="p-8">
         <h1 className="text-9xl font-bold text-red-600">404</h1>
         <p className="text-3xl my-4">Oups ! La page que vous cherchez n&apos;existe pas.</p>
-        <Link href="/" rel="canonical" className="text-3xl text-blue-500">
+        <Link href="/" rel="canonical" className="text-3xl text-blue-500" title='retour-accueil'>
          Retour à l&apos;accueil
         </Link>
       </div>

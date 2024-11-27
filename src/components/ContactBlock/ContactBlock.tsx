@@ -42,13 +42,13 @@ const Contact = () => {
                 <p className="mb-9">
                   Vous avez un projet ou une question concernant une séance
                   photo en Loire-Atlantique ? Que ce soit pour une{" "}
-                  <Link href={"/service/portrait-studio"} rel="canonical">
+                  <Link href={"/service/portrait-studio"} rel="canonical" title="redirection-page-photo-studio">
                     séance en studio,
                   </Link>{" "}
-                  <Link href={"/service/portrait-exterieur"} rel="canonical">
+                  <Link href={"/service/portrait-exterieur"} rel="canonical" title="redirection-page-photo-exterieur">
                     en extérieur,
                   </Link>{" "}
-                  <Link href={"/service/photo-sportive"} rel="canonical">
+                  <Link href={"/service/photo-sportive"} rel="canonical" title="redirection-page-photos-sportives">
                     ou lors d’un événement spécial,
                   </Link>{" "}
                   nous sommes à votre disposition pour répondre à toutes vos
@@ -105,14 +105,15 @@ const Contact = () => {
                       Réseaux Sociaux
                     </h2>
 
-                    <a
+                    <Link
                       href="https://www.instagram.com/focusetlumiere/"
                       target="_blank"
                       rel="noopener"
                       className="unna"
+                      title="redirection-page-instagram-officiel-focus-et-lumiere"
                     >
                       @focusetlumiere
-                    </a>
+                    </Link>
                   </div>
                 </div>
 
@@ -150,7 +151,7 @@ const Contact = () => {
                     <h2 className="mb-1 text-2xl font-bold ">
                       Numéro de Téléphone
                     </h2>
-                    <a className="unna" href="tel:0781951503">
+                    <a className="unna" href="tel:0781951503" title="numéro-téléphone">
                       (+33) 7 81 95 15 03
                     </a>
                   </div>

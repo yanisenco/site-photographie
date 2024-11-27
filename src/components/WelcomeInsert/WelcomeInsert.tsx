@@ -42,7 +42,7 @@ export default function WelcomeInsert() {
         ref={textRef}
         className="relative w-11/12 sm:w-9/12 z-10 text-center text-white"
       >
-        <h1 className="text-6xl font-bold">Vos photos dans les alentours de Saint-Nazaire</h1>
+        <h1 className="text-5xl font-bold">Vos photos autour de Saint-Nazaire : portrait, animalier et sportif</h1>
         <p className="unna my-6">
         Bienvenue sur notre site de photographie professionnelle ! Nous sommes un duo de photographes passionnés
         basé à Saint-Nazaire, au cœur de la Loire-Atlantique. En tant que photographes professionnels,
@@ -52,7 +52,9 @@ export default function WelcomeInsert() {
         </p>
         <Link href="/#homepage"
         id="downArrow"
-        rel="canonical">
+        rel="canonical"
+        title="redirection-page-acceuil"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

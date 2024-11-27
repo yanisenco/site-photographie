@@ -53,7 +53,13 @@ export default function PricingTab() {
         {/* Full Circle with Four Colored Quarters */}
         <div className="w-[0px] h-[20px] lg:w-[600px] lg:h-[600px]">
           <div
-             className={`origin-center rotate-${selected * 90} relative hidden lg:block z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] transition-transform duration-300 ease-out`}
+             className={`origin-center ${ selected === 0
+              ? "rotate-0"
+              : selected === 1
+              ? "rotate-90"
+              : selected === 2
+              ? "rotate-180"
+              : ""} relative hidden lg:block z-0 w-[1000px] h-[1000px] bottom-[-100px] left-[-500px] transition-transform duration-300 ease-out`}
           >
             {/* Top-right quarter */}
             <div className="absolute top-0 right-0 w-1/2 h-1/2 z-30">

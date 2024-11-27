@@ -10,16 +10,18 @@ export default function Footer() {
         <ul className="flex flex-wrap items-center mt-3 text-sm font-medium sm:mt-0">
           <li>
             <Link
-              href="/private-policy"
+              href="/mentions-legales"
               className="hover:underline me-4 md:me-6"
               rel="canonical"
-            >
+              title="redirection-page-mention-legales"
+              >
+            
               Mentions Légales
             </Link>
           </li>
 
           <li>
-            <Link href="/#contact" className="hover:underline" rel="canonical">
+            <Link href="/#contact" className="hover:underline" rel="canonical" title="redirection-section-contact">
               Contact
             </Link>
           </li>
@@ -29,6 +31,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener"
               className=" ml-4 rounded-full p-2 shadow-md hover:shadow-inner"
+              title="redirection-page-facebook-focus-et-lumiere-officielle"
               >
               <span className="[&>svg]:h-5 [&>svg]:w-5">
                 <svg
@@ -45,6 +48,7 @@ export default function Footer() {
               className="ml-2 rounded-full p-2 shadow-md hover:shadow-inner"
               target="_blank"
               rel="noopener"
+              title="redirection-fiche-google-maps-focus-et-lumiere"
             >
               <span className="mx-auto [&>svg]:h-5 [&>svg]:w-5">
                 <svg
@@ -61,6 +65,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener"  
               className="ml-2 rounded-full p-2 shadow-md hover:shadow-inner"
+              title="redirection-page-instagram-focus-et-lumiere-officielle"
               >
               <span className="mx-auto [&>svg]:h-5 [&>svg]:w-5">
                 <svg
