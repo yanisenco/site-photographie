@@ -32,6 +32,10 @@ export async function GET(): Promise<Response> {
       url: "https://focusetlumiere.fr/mentions-legales",
       lastModified: "2024-11-15",
     },
+    {
+      url: "https://focusetlumiere.fr/vos-photos",
+      lastModified: "2024-11-27",
+    },
   ];
 
   const allPages: Page[] = [...staticPages, ...dynamicPages];
