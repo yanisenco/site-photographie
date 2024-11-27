@@ -1,21 +1,7 @@
 import Gallery from "@/components/Gallery/Gallery";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-
-async function fetchImages(folder: string) {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getImages?folder=${folder}`, {
-      next: { revalidate: 60 }, // Optionnel : Revalidation pour SSG
-    });
-    if (!res.ok) {
-      throw new Error(`Erreur HTTP : ${res.statusText}`);
-    }
-    return await res.json();
-  } catch (error) {
-    console.error("Erreur lors de la récupération des images :", error);
-    return []; // Retourne un tableau vide si une erreur se produit
-  }
-}
+import { fetchImages } from "@/utils/imagesService";
 
 interface ServiceParams {
   params: Promise<{ id: string }>;
