@@ -2,15 +2,19 @@ import Gallery from "@/components/Gallery/Gallery";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 
-
-
 async function fetchImages(folder: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getImages?folder=${folder}`);
-  if (!res.ok) {
-    console.error("Erreur lors de la récupération des images :", res.statusText);
-    return [];
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getImages?folder=${folder}`, {
+      next: { revalidate: 60 }, // Optionnel : Revalidation pour SSG
+    });
+    if (!res.ok) {
+      throw new Error(`Erreur HTTP : ${res.statusText}`);
+    }
+    return await res.json();
+  } catch (error) {
+    console.error("Erreur lors de la récupération des images :", error);
+    return []; // Retourne un tableau vide si une erreur se produit
   }
-  return res.json();
 }
 
 interface ServiceParams {
@@ -58,7 +62,7 @@ export default async function Service({ params }: ServiceParams) {
     <PageTemplate>
       <SectionTitle idSection="portrait-studio" title={title} />
       <p className="mb-10">{description}</p>
-      {images && <Gallery images={images} />}
+      {images ? <Gallery images={images} /> : null}
     </PageTemplate>
   );
 }
