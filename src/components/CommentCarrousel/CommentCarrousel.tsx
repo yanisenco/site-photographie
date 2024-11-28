@@ -22,9 +22,9 @@ export default function CommentCarrousel () {
   };
 
   useEffect(() => {
-    getYourComments();
     const container = containerRef.current;
     const content = container?.querySelector(".scroll-content");
+    getYourComments();
 
     if (container && content) {
       const contentWidth = content.scrollWidth;
