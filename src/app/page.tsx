@@ -17,8 +17,8 @@ export default function Home() {
     <div>
       <WelcomeInsert />
       <Header />
-        <main id={"homepage"}>
-          <div className="w-11/12 sm:w-9/12 m-auto">
+      <main id={"homepage"}>
+        <div className="w-11/12 sm:w-9/12 m-auto">
           <p className="mt-6">
             Situés à Saint-Nazaire, nous intervenons dans toute la
             Loire-Atlantique et la région des Pays de la Loire, notamment à La
@@ -26,28 +26,52 @@ export default function Home() {
             disponibles les week-ends et les jours fériés pour des séances photo
             en studio, à domicile ou en extérieur, dans des lieux emblématiques
             ou proches de la nature. Notre expertise inclut
-            <Link href={"/service/portrait-studio"} rel="canonical" title="redirection-page-photo-studio">
+            <Link
+              href={"/service/portrait-studio"}
+              rel="canonical"
+              title="redirection-page-photo-studio"
+            >
               la photographie de portrait,
             </Link>{" "}
             idéale pour capturer des moments uniques de partage. Nous sommes
             également spécialisés dans{" "}
-            <Link href={"/service/portrait-exterieur"} rel="canonical" title="redirection-page-photo-exterieur">
+            <Link
+              href={"/service/portrait-exterieur"}
+              rel="canonical"
+              title="redirection-page-photo-exterieur"
+            >
               les photos animalières,
             </Link>{" "}
             mettant en lumière la complicité entre vous et vos animaux de
             compagnie. Enfin, notre passion pour{" "}
-            <Link href={"/service/photo-sportive"} rel="canonical" title="redirection-page-photos-sportives">le sport</Link> nous permet
-            de photographier vos exploits ou vos événements sportifs avec
-            précision et créativité.Que vous souhaitiez{" "}
-            <Link href={"/tarifs"} rel="canonical" title="redirection-page-tarifs">offrir une photo personnalisée</Link> à un
-            proche, immortaliser un moment spécial, ou créer des images
+            <Link
+              href={"/service/photo-sportive"}
+              rel="canonical"
+              title="redirection-page-photos-sportives"
+            >
+              le sport
+            </Link>{" "}
+            nous permet de photographier vos exploits ou vos événements sportifs
+            avec précision et créativité.Que vous souhaitiez{" "}
+            <Link
+              href={"/tarifs"}
+              rel="canonical"
+              title="redirection-page-tarifs"
+            >
+              offrir une photo personnalisée
+            </Link>{" "}
+            à un proche, immortaliser un moment spécial, ou créer des images
             authentiques qui racontent votre histoire, nous mettons notre
             savoir-faire de photographes professionnels à votre service. Dans
             une ambiance à la fois conviviale et professionnelle, nous vous
             accompagnons pour transformer chaque instant en œuvre d’art
             intemporelle. Faites appel à notre duo de photographes à
             Saint-Nazaire pour des clichés qui vous ressemblent !
-            <Link href={"/#contact"} rel="canonical" title="redirection-section-contact">
+            <Link
+              href={"/#contact"}
+              rel="canonical"
+              title="redirection-section-contact"
+            >
               {" "}
               Contactez-nous dès aujourd’hui pour réserver votre séance photo et
               donner vie à vos souvenirs.
@@ -111,24 +135,24 @@ export default function Home() {
             level={3}
           />
           <AboutUsSection />
-          </div>
-          <CommentCarrousel />
-          {/* <Section>
+        </div>
+        <CommentCarrousel />
+        {/* <Section>
             <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
             
           </Section> */}
-          <div className="bg-[#FFD3B6]">
-            <div className="w-11/12 sm:w-9/12 m-auto">
-              <SectionTitle
-                idSection={"contact"}
-                title={"Prenez contact avec nous"}
-                level={6}
-              />
-              <ContactBlock />
-            </div>
+        <div className="bg-[#63588F] text-[#f5f0e1]">
+          <div className="w-11/12 sm:w-9/12 m-auto">
+            <SectionTitle
+              idSection={"contact"}
+              title={"Prenez contact avec nous"}
+              level={6}
+            />
+            <ContactBlock />
           </div>
-        </main>
-        <Footer />
+        </div>
+      </main>
+      <Footer />
     </div>
   );
 }

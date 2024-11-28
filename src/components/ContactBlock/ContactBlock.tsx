@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <>
-      <section className="relative z-10 overflow-hidden">
+      <section className="relative z-10 overflow-hidden pb-6">
         <div>
           <div className="flex flex-wrap lg:justify-between">
             <div className="w-full px-4 lg:w-1/2 xl:w-6/12">
@@ -42,13 +42,25 @@ const Contact = () => {
                 <p className="mb-9">
                   Vous avez un projet ou une question concernant une séance
                   photo en Loire-Atlantique ? Que ce soit pour une{" "}
-                  <Link href={"/service/portrait-studio"} rel="canonical" title="redirection-page-photo-studio">
+                  <Link
+                    href={"/service/portrait-studio"}
+                    rel="canonical"
+                    title="redirection-page-photo-studio"
+                  >
                     séance en studio,
                   </Link>{" "}
-                  <Link href={"/service/portrait-exterieur"} rel="canonical" title="redirection-page-photo-exterieur">
+                  <Link
+                    href={"/service/portrait-exterieur"}
+                    rel="canonical"
+                    title="redirection-page-photo-exterieur"
+                  >
                     en extérieur,
                   </Link>{" "}
-                  <Link href={"/service/photo-sportive"} rel="canonical" title="redirection-page-photos-sportives">
+                  <Link
+                    href={"/service/photo-sportive"}
+                    rel="canonical"
+                    title="redirection-page-photos-sportives"
+                  >
                     ou lors d’un événement spécial,
                   </Link>{" "}
                   nous sommes à votre disposition pour répondre à toutes vos
@@ -151,7 +163,11 @@ const Contact = () => {
                     <h2 className="mb-1 text-2xl font-bold ">
                       Numéro de Téléphone
                     </h2>
-                    <a className="unna" href="tel:0781951503" title="numéro-téléphone">
+                    <a
+                      className="unna"
+                      href="tel:0781951503"
+                      title="numéro-téléphone"
+                    >
                       (+33) 7 81 95 15 03
                     </a>
                   </div>

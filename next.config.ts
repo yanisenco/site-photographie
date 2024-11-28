@@ -1,19 +1,19 @@
 import type { NextConfig } from "next";
-import TerserPlugin from 'terser-webpack-plugin';
+import TerserPlugin from "terser-webpack-plugin";
 
 const nextConfig: NextConfig = {
   swcMinify: true,
   webpack: (config, { isServer }) => {
     // Code Splitting : divise les fichiers en chunks plus petits
     config.optimization.splitChunks = {
-      chunks: 'all', // Divise tous les fichiers (CSS, JS, etc.)
+      chunks: "all", // Divise tous les fichiers (CSS, JS, etc.)
       minSize: 20000, // Taille minimale d'un chunk (20 KB)
       maxSize: 200000, // Taille maximale d'un chunk (200 KB)
     };
 
     // Suppression des modules inutilisés sur le serveur
     if (isServer) {
-      config.externals.push('react-dom/server');
+      config.externals.push("react-dom/server");
     }
     config.optimization.minimizer = [
       new TerserPlugin({
@@ -34,6 +34,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "res.cloudinary.com",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
   async rewrites() {
@@ -47,11 +51,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)', // Applique à toutes les routes
+        source: "/(.*)", // Applique à toutes les routes
         headers: [
           {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=31536000; includeSubDomains; preload',
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
           },
         ],
       },
