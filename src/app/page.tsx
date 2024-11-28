@@ -1,6 +1,5 @@
 import ContactBlock from "../components/ContactBlock/ContactBlock";
 import PageLink from "../components/PageLink/PageLink";
-import PageTemplate from "../components/PageTemplate/PageTemplate";
 import SectionTitle from "../components/SectionTitle/SectionTitle";
 import WelcomeInsert from "../components/WelcomeInsert/WelcomeInsert";
 import photo1 from "@/images/photo-face-chat.webp";
@@ -9,14 +8,17 @@ import photo3 from "@/images/kitesurfeur.webp";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
 import Link from "next/link";
 // import Section from "@/components/Section/Section";
-// import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
+import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
     <div>
       <WelcomeInsert />
-      <PageTemplate>
+      <Header />
         <main id={"homepage"}>
+          <div className="w-11/12 sm:w-9/12 m-auto">
           <p className="mt-6">
             Situés à Saint-Nazaire, nous intervenons dans toute la
             Loire-Atlantique et la région des Pays de la Loire, notamment à La
@@ -109,19 +111,24 @@ export default function Home() {
             level={3}
           />
           <AboutUsSection />
-
+          </div>
+          <CommentCarrousel />
           {/* <Section>
             <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
-            <CommentCarrousel />
+            
           </Section> */}
-          <SectionTitle
-            idSection={"contact"}
-            title={"Prenez contact avec nous"}
-            level={6}
-          />
-          <ContactBlock />
+          <div className="bg-[#FFD3B6]">
+            <div className="w-11/12 sm:w-9/12 m-auto">
+              <SectionTitle
+                idSection={"contact"}
+                title={"Prenez contact avec nous"}
+                level={6}
+              />
+              <ContactBlock />
+            </div>
+          </div>
         </main>
-      </PageTemplate>
+        <Footer />
     </div>
   );
 }

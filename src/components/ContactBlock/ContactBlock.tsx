@@ -159,7 +159,7 @@ const Contact = () => {
               </div>
             </div>
             <div className="w-full p-6 lg:w-1/2 xl:w-5/12">
-              <div className="relative rounded-lg p-8 shadow-lg dark:bg-dark-2 sm:p-12">
+              <div className="relative rounded-lg p-8 shadow-lg bg-[#f5f0e1] sm:p-12">
                 <form onSubmit={handleSubmit} className="unna">
                   <input
                     className="w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
