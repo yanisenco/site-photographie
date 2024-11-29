@@ -14,8 +14,8 @@ export default function CommentCard({
   profile_photo_url,
 }: CommentCardProps) {
   return (
-    <div className="flex flex-col max-w-sm mx-4 my-6 min-w-64">
-      <div className=" max-h-96 px-4 py-12 shadow-lg rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-50">
+    <div className="flex flex-col max-w-sm mx-4 my-auto min-w-64">
+      <div className=" max-h-96 px-4 py-12 shadow-lg rounded-t-lg sm:px-8 md:px-12 bg-[#f5f0e1]">
         <div className="relative px-6 py-1 text-lg italic text-center dark:text-gray-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ export default function CommentCard({
           </svg>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center p-8 rounded-b-lg dark:bg-violet-600 dark:text-gray-50">
+      <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-[#63588F] text-[#f5f0e1]">
         <Image
           src={profile_photo_url}
           alt=""

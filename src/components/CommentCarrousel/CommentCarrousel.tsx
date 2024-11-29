@@ -20,42 +20,43 @@ export default function CommentCarrousel() {
 
   useEffect(() => {
     getYourComments();
+    console.log("reviewsTab");
     gsap.registerPlugin(ScrollTrigger);
     const container = containerRef.current;
     const content = container?.querySelector(".scroll-content");
-    if (content) {
-      const contentWidth = content.scrollWidth;
-      console.log(contentWidth);
-
-      // Animation du contenu horizontal avec changement d'opacité du background
-      gsap.to(content, {
-        x: () => contentWidth - window.innerWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          end: () => `+=${contentWidth}`,
-          scrub: true,
-          pin: true,
-          onUpdate: (self) => {
-            if (self) {
-              // Vérifier que self n'est pas undefined
-              const opacity = 0 + self.progress; // De 1 à 0 en fonction du scroll
-              gsap.to(content, {
-                backgroundColor: `rgba(99, 88, 143, ${opacity})`, // Transition de couleur avec opacité
-              });
-            }
+  
+      if (content) {
+        const contentWidth = content.scrollWidth;
+        console.log(contentWidth);
+        // Animation du contenu horizontal avec changement d'opacité du background
+        gsap.to(content, {
+          x: () => -(contentWidth - window.innerWidth),
+          ease: "none",
+          scrollTrigger: {
+            trigger: container,
+            start: "top top",
+            end: () => `+=${contentWidth}`,
+            scrub: true,
+            pin: true,
+            onUpdate: (self) => {
+              if (self) {
+                // Vérifier que self n'est pas undefined
+                const opacity = 0 + self.progress; // De 1 à 0 en fonction du scroll
+                gsap.to(content, {
+                  backgroundColor: `rgba(99, 88, 143, ${opacity})`, // Transition de couleur avec opacité
+                });
+              }
+            },
           },
-        },
-      });
-    }
+        });
+      }
   }, []);
 
   return (
-    <section ref={containerRef} className="h-screen overflow-hidden">
-      <div className="scroll-content flex">
+    <section ref={containerRef} className=" h-screen overflow-hidden">
+      <div className="scroll-content flex w-[500vw] sm:w-[200vw]">
         {/* Panels avec classes identifiables */}
-        <div className="w-screen h-screen flex sm:items-center sm:justify-center ">
+        <div className="h-screen flex sm:items-center sm:justify-center">
           {reviewsTab.map((review, index) => (
             <CommentCard
               key={index}
@@ -66,8 +67,10 @@ export default function CommentCarrousel() {
             />
           ))}
         </div>
-        <div className="w-screen h-screen flex items-center justify-center text-4xl font-bold">
-          Panel 3
+        <div className="h-screen flex items-center justify-center text-[#f5f0e1]">
+          <p className="text-center text-xl">
+            Ils nous ont fait confiance&nbsp;— Leurs avis comptent pour nous. Ces retours nous permettent de nous améliorer et de vous offrir un service de qualité. S&apos;ils ont été satisfaits, pourquoi pas vous ?
+          </p>
         </div>
       </div>
     </section>

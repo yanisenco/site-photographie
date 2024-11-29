@@ -7,7 +7,6 @@ import Link from "next/link";
 
 export default function AboutUsSection() {
   const paragraphsRef = useRef<HTMLParagraphElement[]>([]);
-
   const addToRefs = (el: HTMLParagraphElement | null) => {
     if (el && !paragraphsRef.current.includes(el)) {
       paragraphsRef.current.push(el);

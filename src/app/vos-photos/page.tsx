@@ -4,6 +4,7 @@ import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Gallery from "@/components/Gallery/Gallery";
 import { fetchImages } from "@/utils/imagesService";
+import FormBox from "@/components/FormBox/FormBox";
 
 export default function YourPhotos() {
   const [images, setImages] = useState<[]>([]);
@@ -11,7 +12,8 @@ export default function YourPhotos() {
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const getYourPhotos = async (id: string) => {
+  const getYourPhotos = async (event: React.FormEvent, id: string) => {
+    event.preventDefault();
     setIsLoading(true);
     const result = await fetchImages(id);
     setIsLoading(false);
@@ -39,19 +41,21 @@ export default function YourPhotos() {
           <Gallery images={images} />
         </>
       ) : (
-        <>
+        <FormBox>
           <p className="mb-4">
-            Pour accéder à vos photos, veuillez entrer le mot de passe. Il est
+            Pour accéder à vos photos, veuillez entrer le mot de passe. <br/>
+            Il est
             composé des 3 premières lettres de votre nom de famille suivi de
-            votre date de naissance (JOUR MOIS ANNEE). Exemple :
-            &quot;ABC01012000&quot;
+            votre date de naissance (JOUR MOIS ANNEE). 
+            <br/>Exemple : &quot;ABC01012000&quot;
           </p>
-          {/* {images.length === 0 && (
-            <p className="text-red-500">Mot de passe incorrect</p>
-          )} */}
-          <div className="h-full flex">
+          <form className="h-full" onSubmit={(event) => {
+                if (inputRef.current?.value) {
+                  getYourPhotos(event, inputRef.current.value);
+                }
+              }}>
             <input
-              className="unna w-full rounded border border-stroke pl-3 mr-10"
+              className="unna w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
               type="text"
               name="motdepasse"
               placeholder="Votre Mot de passe"
@@ -59,21 +63,22 @@ export default function YourPhotos() {
               ref={inputRef}
             />
             <button
-              className={`rounded border border-primary bg-[#1e3d59] p-3 text-white transition hover:bg-opacity-90 ${
-                isDisabled && "cursor-not-allowed"
+              className={`w-full rounded border border-primary bg-[#1e3d59] p-3 text-white transition hover:bg-opacity-90 ${
+                isDisabled && "bg-gray-200 hover:bg-opacity-100 cursor-not-allowed text-black"
               }`}
               disabled={isDisabled}
-              onClick={() => {
+              onClick={(event) => {
                 if (inputRef.current?.value) {
-                  getYourPhotos(inputRef.current.value);
+                  getYourPhotos(event, inputRef.current.value);
                 }
               }}
             >
               {isLoading ? "Chargement..." : "Valider"}
             </button>
-          </div>
-        </>
-      )}
+          </form>
+
+        </FormBox>
+        )}
     </PageTemplate>
   );
 }

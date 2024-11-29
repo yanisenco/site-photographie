@@ -7,17 +7,16 @@ import photo2 from "@/images/photo-cheval-blanc-ambiance-feerique.webp";
 import photo3 from "@/images/kitesurfeur.webp";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
 import Link from "next/link";
-// import Section from "@/components/Section/Section";
 import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <WelcomeInsert />
       <Header />
-      <main id={"homepage"}>
+      <main id={"accueil"}>
         <div className="w-11/12 sm:w-9/12 m-auto">
           <p className="mt-6">
             Situés à Saint-Nazaire, nous intervenons dans toute la
@@ -78,7 +77,7 @@ export default function Home() {
             </Link>{" "}
           </p>
           <SectionTitle
-            idSection={"services"}
+            idSection={"service"}
             title={"Services sur-mesure en fonction de vos envies"}
             level={2}
           />
@@ -136,11 +135,7 @@ export default function Home() {
           />
           <AboutUsSection />
         </div>
-        <CommentCarrousel />
-        {/* <Section>
-            <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
-            
-          </Section> */}
+        <CommentCarrousel />    
         <div className="bg-[#63588F] text-[#f5f0e1]">
           <div className="w-11/12 sm:w-9/12 m-auto">
             <SectionTitle
@@ -153,6 +148,6 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
