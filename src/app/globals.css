@@ -1,8 +1,23 @@
-@import url("https://fonts.googleapis.com/css2?family=Limelight&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Unna:wght@400&display=swap");
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+/* unna-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Unna';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/unna-v23-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Limelight';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/limelight-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
 :root {
   --background: #f5f0e1;
@@ -26,7 +41,10 @@ body,
 p,
 .unna {
   font-family: "Unna", serif;
-  font-size: x-large;
+  font-size: large;
+}
+button{
+  font-family: "Limelight", sans-serif;
 }
 
 html {

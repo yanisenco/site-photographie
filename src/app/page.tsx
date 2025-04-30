@@ -1,38 +1,86 @@
 import ContactBlock from "../components/ContactBlock/ContactBlock";
 import PageLink from "../components/PageLink/PageLink";
-import PageTemplate from "../components/PageTemplate/PageTemplate";
 import SectionTitle from "../components/SectionTitle/SectionTitle";
 import WelcomeInsert from "../components/WelcomeInsert/WelcomeInsert";
-import photo1 from "@/image/masterpiece.webp";
-import photo2 from "@/image/photo 1.webp";
-import photo3 from "@/image/surf_yaniskalash.webp";
+import photo1 from "@/images/photo-face-chat.webp";
+import photo2 from "@/images/photo-cheval-blanc-ambiance-feerique.webp";
+import photo3 from "@/images/kitesurfeur.webp";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
-// import Section from "@/components/Section/Section";
-// import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
+import Link from "next/link";
+import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <WelcomeInsert />
-      <PageTemplate>
-        <main id={"homepage"}>
+      <Header />
+      <main id={"accueil"}>
+        <div className="w-11/12 sm:w-9/12 m-auto">
           <p className="mt-6">
-            Bienvenue sur le site de notre duo de photographes professionnels,
-            basé en Loire-Atlantique. Passionnés par l&apos;art de la
-            photographie, nous proposons des services sur-mesure adaptés à vos
-            besoins afin de vous proposer des clichés de vos animaux domestique,
-            des portraits, ou des photos sportives. Notre expertise s&apos;étend
-            dans l&apos;ensemble de la région des Pays de la Loire. Nous sommes
-            disponibles les week-ends et jours fériés, pour des séances photo de
-            studio à domicile ou en extérieur. Immortalisez dès maintenant un
-            moment spécial, offrez une photo unique à un proche, ou révélez la
-            complicité avec vos animaux. Nous mettons notre savoir-faire à votre
-            service pour capturer des instants authentiques et mémorables.
-            Créons ensemble des images qui vous ressemblent, dans une ambiance
-            conviviale et professionnelle. Contactez-nous pour réserver votre
-            séance photo !
+            Situés à Saint-Nazaire, nous intervenons dans toute la
+            Loire-Atlantique et la région des Pays de la Loire, notamment à La
+            Baule, Guérande, Pornichet, ou encore Nantes. Nous sommes
+            disponibles les week-ends et les jours fériés pour des séances photo
+            en studio, à domicile ou en extérieur, dans des lieux emblématiques
+            ou proches de la nature. Notre expertise inclut
+            <Link
+              href={"/service/portrait-studio"}
+              rel="canonical"
+              title="redirection-page-photo-studio"
+            >
+              la photographie de portrait,
+            </Link>{" "}
+            idéale pour capturer des moments uniques de partage. Nous sommes
+            également spécialisés dans{" "}
+            <Link
+              href={"/service/portrait-exterieur"}
+              rel="canonical"
+              title="redirection-page-photo-exterieur"
+            >
+              les photos animalières,
+            </Link>{" "}
+            mettant en lumière la complicité entre vous et vos animaux de
+            compagnie. Enfin, notre passion pour{" "}
+            <Link
+              href={"/service/photo-sportive"}
+              rel="canonical"
+              title="redirection-page-photos-sportives"
+            >
+              le sport
+            </Link>{" "}
+            nous permet de photographier vos exploits ou vos événements sportifs
+            avec précision et créativité.Que vous souhaitiez{" "}
+            <Link
+              href={"/tarifs"}
+              rel="canonical"
+              title="redirection-page-tarifs"
+            >
+              offrir une photo personnalisée
+            </Link>{" "}
+            à un proche, immortaliser un moment spécial, ou créer des images
+            authentiques qui racontent votre histoire, nous mettons notre
+            savoir-faire de photographes professionnels à votre service. Dans
+            une ambiance à la fois conviviale et professionnelle, nous vous
+            accompagnons pour transformer chaque instant en œuvre d’art
+            intemporelle. Faites appel à notre duo de photographes à
+            Saint-Nazaire pour des clichés qui vous ressemblent !
+            <Link
+              href={"/#contact"}
+              rel="canonical"
+              title="redirection-section-contact"
+            >
+              {" "}
+              Contactez-nous dès aujourd’hui pour réserver votre séance photo et
+              donner vie à vos souvenirs.
+            </Link>{" "}
           </p>
-          <SectionTitle idSection={"services"} title={"Services"} />
+          <SectionTitle
+            idSection={"service"}
+            title={"Services sur-mesure en fonction de vos envies"}
+            level={2}
+          />
           <p>
             Nous proposons trois styles de shooting différents que vous pouvez
             explorer. Aussi, nous vous proposons des shootings sur-mesure afin
@@ -83,16 +131,23 @@ export default function Home() {
           <SectionTitle
             idSection={"a-propos-de-nous"}
             title={"À propos de nous"}
+            level={3}
           />
           <AboutUsSection />
-
-          {/* <Section>
-            <SectionTitle idSection={"temoignages"} title={"Témoignages"} />
-            <CommentCarrousel />
-          </Section> */}
-          <ContactBlock />
-        </main>
-      </PageTemplate>
-    </div>
+        </div>
+        <CommentCarrousel />    
+        <div className="bg-[#63588F] text-[#f5f0e1]">
+          <div className="w-11/12 sm:w-9/12 m-auto">
+            <SectionTitle
+              idSection={"contact"}
+              title={"Prenez contact avec nous"}
+              level={6}
+            />
+            <ContactBlock />
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 }

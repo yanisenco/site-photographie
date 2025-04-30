@@ -27,7 +27,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/pricing/page.tsw"
   ],
   "exclude": ["node_modules"]
 }

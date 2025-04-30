@@ -53,6 +53,8 @@ export default function Header() {
         <Link
           href="/#homepage"
           className="flex items-center space-x-3 rtl:space-x-reverse"
+          rel="canonical"
+          title="redirection-page-acceuil"
         >
           <Image
             src={Logo}
@@ -85,39 +87,36 @@ export default function Header() {
               y1="6"
               x2="20"
               y2="6"
-              className={`transition-transform duration-300 ${
+              className={`origin-center transition-transform duration-300 ${
                 isOpen ? "rotate-45 translate-y-1 -translate-x-1" : ""
               }`}
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              style={{ transformOrigin: "center" }} // Centrer la rotation
             />
             <line
               x1="4"
               y1="12"
               x2="20"
               y2="12"
-              className={`transition-opacity duration-300 ${
+              className={`origin-center transition-opacity duration-300 ${
                 isOpen ? "opacity-0" : "opacity-100"
               }`}
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              style={{ transformOrigin: "center" }} // Centrer la rotation (même si invisibilité)
             />
             <line
               x1="4"
               y1="18"
               x2="20"
               y2="18"
-              className={`transition-transform duration-300 ${
+              className={`origin-center transition-transform duration-300 ${
                 isOpen ? "-rotate-45 -translate-y-1 -translate-x-1" : ""
               }`}
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
-              style={{ transformOrigin: "center" }} // Centrer la rotation
             />
           </svg>
         </button>
@@ -155,6 +154,8 @@ export default function Header() {
                       href="/service/portrait-studio"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
+                      rel="canonical"
+                      title="redirection-page-photo-studio"
                     >
                       Portrait studio
                     </Link>
@@ -164,6 +165,8 @@ export default function Header() {
                       href="/service/portrait-exterieur"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
+                      rel="canonical"
+                      title="redirection-page-photo-exterieur"
                     >
                       Portrait extérieur
                     </Link>
@@ -173,6 +176,8 @@ export default function Header() {
                       href="/service/photo-sportive"
                       className="block px-4 py-2  hover:bg-[#ffc13b2b]"
                       onClick={() => closeDropdown()}
+                      rel="canonical"
+                      title="redirection-page-photos-sportives"
                     >
                       Photo sportive
                     </Link>
@@ -182,9 +187,11 @@ export default function Header() {
             </li>
             <li>
               <Link
-                href="/pricing"
+                href="/tarifs"
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
+                rel="canonical"
+                title="redirection-page-tarifs"
               >
                 Tarifs
               </Link>
@@ -194,6 +201,8 @@ export default function Header() {
                 href="/#contact"
                 className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
+                rel="canonical"
+                title="redirection-section-contact"
               >
                 Contact
               </Link>
@@ -203,8 +212,35 @@ export default function Header() {
                 href="/#a-propos-de-nous"
                 className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
+                rel="canonical"
+                title="redirection-section-a-propos-de-nous"
               >
                 À propos de nous
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/vos-photos"
+                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                onClick={() => closeDropdown()}
+                rel="canonical"
+                title="redirection-section-a-propos-de-nous"
+              >
+                <span className="md:hidden block">Accédez à vos photos</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="size-6 md:block hidden"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+                  />
+                </svg>
               </Link>
             </li>
           </ul>

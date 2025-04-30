@@ -33,12 +33,8 @@ export default function WelcomeInsert() {
 
   return (
     <section
-      className="relative min-h-screen w-full bg-cover bg-center bg-fixed flex items-center justify-center"
+      className="bg-[url('https://static.wixstatic.com/media/83899b_a8befa199f524c9e9244ea836431b840~mv2.jpg/v1/fit/w_1440,h_735,q_90/83899b_a8befa199f524c9e9244ea836431b840~mv2.webp')] relative min-h-screen w-full bg-cover bg-center bg-fixed flex items-center justify-center"
       onLoad={handleImageLoad}
-      style={{
-        backgroundImage:
-          "url(https://static.wixstatic.com/media/83899b_a8befa199f524c9e9244ea836431b840~mv2.jpg/v1/fit/w_1440,h_735,q_90/83899b_a8befa199f524c9e9244ea836431b840~mv2.webp)",
-      }}
     >
       <div className="absolute inset-0 bg-black opacity-50"></div>
 
@@ -46,17 +42,19 @@ export default function WelcomeInsert() {
         ref={textRef}
         className="relative w-11/12 sm:w-9/12 z-10 text-center text-white"
       >
-        <h1 className="text-6xl font-bold">Des clichés sur-mesure pour vous</h1>
-        <p className="my-6 text-lg">
-          Bienvenue sur notre site de photographie ! Nous sommes un duo de
-          photographes spécialisés en portraits animaliers, portraits humains,
-          ou les deux ensemble, en studio ou en extérieur. Nous proposons aussi
-          des services en photographie sportive. Notre mission : immortaliser
-          chaque instant avec authenticité pour créer des souvenirs
-          inoubliables. Ensemble, immortalisons vos moments les plus intenses et
-          les plus tendres en œuvres d&apos;art intemporelles.
+        <h1 className="text-5xl font-bold">Vos photos autour de Saint-Nazaire : portrait, animalier et sportif</h1>
+        <p className="unna my-6">
+        Bienvenue sur notre site de photographie professionnelle ! Nous sommes un duo de photographes passionnés
+        basé à Saint-Nazaire, au cœur de la Loire-Atlantique. En tant que photographes professionnels,
+        nous unissons nos talents pour capturer vos plus beaux moments, que ce soit à travers des portraits animaliers,
+        des portraits humains ou des photos de sport. Spécialisés dans la photographie d’animaux de compagnie, 
+        nous nous déplaçons également dans les environs de Saint-Nazaire pour des séances photo en extérieur ou en studio.
         </p>
-        <Link href="/#homepage">
+        <Link href="/#homepage"
+        id="downArrow"
+        rel="canonical"
+        title="redirection-page-acceuil"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
