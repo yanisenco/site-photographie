@@ -47,23 +47,41 @@ const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => {
                         Voici les photos commandées :
                     </p>
 
-                    <div
-                        className="photos"
-                        style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}
+                    <table
+                    role="presentation"
+                    style={{ width: "100%", borderCollapse: "collapse", margin: "20px 0" }}
                     >
-                        {selectedImages.map((src, index) => (
-                            <img
-                                key={index}
-                                src={src}
-                                alt="Image sélectionnée"
-                                style={{
-                                    width: "100px",
-                                    height: "auto",
-                                    borderRadius: "5px",
-                                }}
-                            />
+                    <tbody>
+                        {selectedImages.reduce((rows: string[][], src, index) => {
+                        if (index % 2 === 0) rows.push([]);
+                        rows[rows.length - 1].push(src);
+                        return rows;
+                        }, []).map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {row.map((src, colIndex) => (
+                            <td
+                                key={colIndex}
+                                style={{ padding: "10px", textAlign: "center", verticalAlign: "top" }}
+                            >
+                                <a href={src} target="_blank" rel="noopener noreferrer">
+                                <img
+                                    src={src}
+                                    alt={`Image ${rowIndex * 2 + colIndex + 1}`}
+                                    width="250"
+                                    style={{ display: "block", width: "100%", height: "auto", borderRadius: "5px" }}
+                                />
+                                </a>
+                            </td>
+                            ))}
+                            {row.length < 2 && (
+                            <td style={{ padding: "10px" }}></td>
+                            )}
+                        </tr>
                         ))}
-                    </div>
+                    </tbody>
+                    </table>
+
+
 
                     <p>
                         À très vite, <br />

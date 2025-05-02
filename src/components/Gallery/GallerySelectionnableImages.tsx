@@ -81,8 +81,34 @@ const Gallery = ({ images }: GalleryProps) => {
 
     setTimeout(() => {
       galleryRef.current?.fullScreen();
-    }, 100);
+    }, 10);
   };
+
+  const stored = localStorage.getItem("photo-selection");
+  useEffect(() => {
+    if (stored) {
+      try {
+        const { selectedImages, timestamp } = JSON.parse(stored);
+        const now = Date.now();
+        if (now - timestamp < 30 * 24 * 60 * 60 * 1000) {
+          setSelectedImages(selectedImages);
+        } else {
+          localStorage.removeItem("photo-selection"); // Expiré
+        }
+      } catch (error) {
+        console.error("Erreur parsing localStorage:", error);
+        localStorage.removeItem("photo-selection");
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("photo-selection", JSON.stringify({
+      selectedImages,
+      timestamp: Date.now()
+    }));
+  }, [selectedImages]); 
+
 
   return (
     <>
@@ -102,6 +128,7 @@ const Gallery = ({ images }: GalleryProps) => {
             }}
           >
               <SelectionnableImages
+                isSelected={selectedImages.includes(image.src)}
                 src={image.src}
                 alt={image.alt}
                 onCheckboxChange={handleCheckboxChange} 
@@ -119,20 +146,23 @@ const Gallery = ({ images }: GalleryProps) => {
             showThumbnails={true}
             showFullscreenButton={true}
             showPlayButton={false}
+            onSlide={(index) => setCurrentIndex(index)}
             onScreenChange={handleScreenChange}
             renderCustomControls={() => (
               <input
                 ref={checkboxRef}
                 type="checkbox"
-                className="absolute top-4 right-4 z-50 w-12 h-12 bg-white/90 border rounded"
+                checked={selectedImages.includes(galleryImages[currentIndex]?.original)}
+                className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 border rounded"
                 onClick={(e) => e.stopPropagation()}
-                onChange={(e) => handleCheckboxChange(galleryImages[currentIndex].original, e.target.checked)}
+                onChange={(e) => handleCheckboxChange(galleryImages[currentIndex]?.original, e.target.checked)}
               />
             )}
           />
         </div>
       )}
-
+      <SendingSelection selectedImages={selectedImages} />
+    
     </>
   );
 };

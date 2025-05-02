@@ -25,9 +25,9 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
 
 
   return (
-    <>
+    <div className="w-full flex flex-col items-end pr-4">
       <button
-        className={`rounded border border-primary bg-[#1e3d59] p-3 text-white transition ${selectedImages.length === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-opacity-90 "} `}
+        className={`rounded border border-primary bg-[#1e3d59] p-3 text-white transition ${selectedImages.length === 0 ? "opacity-50 cursor-not-allowed" : "hover:bg-opacity-90 "} mb-4`}
         disabled={selectedImages.length === 0} 
         onClick={() => setIsOpenModal(true)}
       >
@@ -42,7 +42,7 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
           <form onSubmit={handleSubmit} className="flex flex-col items-center">
             <h2>Récapitulatif de votre séléction :</h2>
             <p>{selectedImages.length} Photos séléctionnées</p>
-            <div className="flex flex-wrap gap-4 my-4">
+            <div className="flex flex-wrap gap-4 my-4 items-center justify-center max-h-[300px] overflow-y-auto">
               {selectedImages.map((src, index) => (
                 <Image
                   src={src}
@@ -65,7 +65,7 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
           </form>
         </Modal>
       }
-    </>
+    </div>
   );
 };
 

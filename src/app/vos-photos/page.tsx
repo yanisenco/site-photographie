@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import GallerySelectionnableImages from "@/components/Gallery/GallerySelectionnableImages";
@@ -8,8 +8,9 @@ import FormBox from "@/components/FormBox/FormBox";
 
 export default function YourPhotos() {
   const [images, setImages] = useState<[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
+  const [passwordInStorage, setPasswordInStorage] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const getYourPhotos = async (event: React.FormEvent, id: string) => {
@@ -28,32 +29,57 @@ export default function YourPhotos() {
     }
   };
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("photo-password");
+      if (stored) {
+        try {
+          const { value, timestamp } = JSON.parse(stored);
+          const now = Date.now();
+          if (now - timestamp < 30 * 24 * 60 * 60 * 1000) {
+            setPasswordInStorage(value);
+            getYourPhotos(new Event("submit") as unknown as React.FormEvent, value);
+          } else {
+            localStorage.removeItem("photo-password");
+          }
+        } catch (error) {
+          console.error("Erreur parsing localStorage:", error);
+          localStorage.removeItem("photo-password");
+        }
+      } else {
+        setIsLoading(false);
+      }
+    }
+  }, []);
+
   return (
     <PageTemplate>
       <SectionTitle idSection={"vos-photos"} title={"Vos Photos"} />
-      {images.length > 0 ? (
-        <>
-          <p className="mb-4">
-            Voici le résultat de votre shooting, vous avez 1 semaine pour
-            sélectionner et nous envoyer votre sélection pour que nous
-            retouchions vos images favorites
-          </p>
-          <GallerySelectionnableImages images={images} />
-        </>
-      ) : (
+      {isLoading && passwordInStorage && (
+        <div className="flex justify-center items-center h-full">Chargement...</div>
+      )}
+      {!passwordInStorage && !isLoading && (
         <FormBox>
           <p className="mb-4">
-            Pour accéder à vos photos, veuillez entrer le mot de passe. <br/>
-            Il est
-            composé des 3 premières lettres de votre nom de famille suivi de
-            votre date de naissance (JOUR MOIS ANNEE). 
-            <br/>Exemple : &quot;ABC01012000&quot;
+            Pour accéder à vos photos, veuillez entrer le mot de passe. <br />
+            Il est composé des 3 premières lettres de votre nom de famille suivi de
+            votre date de naissance (JOUR MOIS ANNEE). <br />
+            Exemple : &quot;ABC01012000&quot;
           </p>
-          <form className="h-full" onSubmit={(event) => {
-                if (inputRef.current?.value) {
-                  getYourPhotos(event, inputRef.current.value);
-                }
-              }}>
+          <form
+            className="h-full"
+            onSubmit={(event) => {
+              if (inputRef.current?.value) {
+                const value = inputRef.current.value;
+                localStorage.setItem(
+                  "photo-password",
+                  JSON.stringify({ value, timestamp: Date.now() })
+                );
+                setPasswordInStorage(value);
+                getYourPhotos(event, value);
+              }
+            }}
+          >
             <input
               className="unna w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
               type="text"
@@ -67,18 +93,23 @@ export default function YourPhotos() {
                 isDisabled && "bg-gray-200 hover:bg-opacity-100 cursor-not-allowed text-black"
               }`}
               disabled={isDisabled}
-              onClick={(event) => {
-                if (inputRef.current?.value) {
-                  getYourPhotos(event, inputRef.current.value);
-                }
-              }}
+              type="submit"
             >
               {isLoading ? "Chargement..." : "Valider"}
             </button>
           </form>
-
         </FormBox>
-        )}
+      )}
+      {images.length > 0 && !isLoading && (
+        <>
+          <p className="mb-4">
+            Voici le résultat de votre shooting, vous avez 1 semaine pour
+            sélectionner et nous envoyer votre sélection pour que nous
+            retouchions vos images favorites
+          </p>
+          <GallerySelectionnableImages images={images} />
+        </>
+      )}
     </PageTemplate>
   );
 }
