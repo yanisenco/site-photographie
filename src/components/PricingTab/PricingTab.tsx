@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import photo1 from "@/images/photo-bouledogue-francais-contre-plongee.webp";
-import photo2 from "@/images/photo-exterieur.webp";
-import photo3 from "@/images/photo-competition.webp";
+import photo1 from "@/images/photo-tarif-studio.webp";
+import photo2 from "@/images/photo-tarif-exterieur.webp";
+import photo3 from "@/images/photo-tarif-sportive.webp";
 
 export default function PricingTab() {
   const [selected, setSelected] = useState(0); // Track the selected position (0, 1, or 2)

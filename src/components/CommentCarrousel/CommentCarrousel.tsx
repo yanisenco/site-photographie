@@ -21,27 +21,27 @@ export default function CommentCarrousel() {
   }, []);
 
   return (
-   <section ref={containerRef}>
-    <div className="flex sm:items-center sm:justify-center my-12">
-      <div className="flex sm:items-center sm:justify-center overflow-x-auto sm:overflow-x-visible">
-        {reviewsTab.map((review, index) => (
+    <section ref={containerRef}>
+      <div className="my-12">
+        <div className="flex sm:items-center sm:justify-center overflow-x-auto sm:overflow-x-visible">
+         {reviewsTab.map((review, index) => (
           <CommentCard
-        key={index}
-        name={review.author_name}
-        comment={review.text}
-        rating={review.rating}
-        profile_photo_url={review.profile_photo_url}
-          />
-        ))}
+            key={index}
+            name={review.author_name}
+            comment={review.text}
+            rating={review.rating}
+            profile_photo_url={review.profile_photo_url}
+           />
+          ))}
+        </div>
       </div>
-    </div>
 
-    <div className="items-center justify-center text-[#63588F]  p-8">
-      <p className="text-center text-xl ">
-        Ils nous ont fait confiance — Leurs avis comptent pour nous. Ces retours nous permettent de nous améliorer et de vous offrir un service de qualité. S&apos;ils ont été satisfaits, pourquoi pas vous ?
-      </p>
-    </div>
-</section>
+      <div className="items-center justify-center text-[#63588F] p-8">
+        <p className="text-center text-xl ">
+          Ils nous ont fait confiance — Leurs avis comptent pour nous. Ces retours nous permettent de nous améliorer et de vous offrir un service de qualité. S&apos;ils ont été satisfaits, pourquoi pas vous ?
+        </p>
+      </div> 
+    </section>
 
   );
 }

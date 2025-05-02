@@ -2,35 +2,36 @@
 import Link from "next/link";
 import { useState } from "react";
 import FormBox from "../FormBox/FormBox";
+import { fetchEmail } from "@/utils/emailService";
+import ContactEmail from "@/templates/ContactEmail";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    details: "",
+  const [status, setStatus] = useState({
+    isLoading: false,
+    isSuccess: false,
+    isError: false,
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { name, email, phone, details } = formData;
-
-    // Assemble the full message content
-    const fullMessage = `${details}\n\n---\nNom: ${name}\nEmail: ${email}\nTéléphone: ${phone}`;
-
-    // Create mailto link
-    const mailtoLink = `mailto:ianaletrillard3@gmail.com?subject=Demande informations/devis&body=${encodeURIComponent(
-      fullMessage
-    )}`;
-
-    // Open the mail client with the formatted email
-    window.location.href = mailtoLink;
+      const form = e.currentTarget as HTMLFormElement;
+      const formData = {
+        name: (form.elements.namedItem("name") as HTMLInputElement)?.value || "",
+        email: (form.elements.namedItem("email") as HTMLInputElement)?.value || "",
+        phone: (form.elements.namedItem("phone") as HTMLInputElement)?.value || "",
+        details: (form.elements.namedItem("details") as HTMLTextAreaElement)?.value || "",
+      };
+    await fetchEmail(
+      "ianaletrillard3@gmail.com",
+      "Demande de contact",
+      <ContactEmail
+        name={formData.name}
+        email={formData.email}
+        phone={formData.phone}
+        details={formData.details}
+      />,
+      setStatus);
   };
 
   return (
@@ -182,39 +183,32 @@ const Contact = () => {
                     type="text"
                     name="name"
                     placeholder="Votre Nom"
-                    value={formData.name}
-                    onChange={handleChange}
                   />
                   <input
                     className="w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
                     type="text"
                     name="email"
                     placeholder="Votre Email"
-                    value={formData.email}
-                    onChange={handleChange}
                   />
                   <input
                     className="w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
                     type="text"
                     name="phone"
                     placeholder="Votre Téléphone"
-                    value={formData.phone}
-                    onChange={handleChange}
                   />
                   <textarea
                     rows={4}
                     name="details"
                     className="w-full h-48 mb-3 resize-none rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
                     placeholder="Votre Message"
-                    value={formData.details}
-                    onChange={handleChange}
                   />
                   <div>
                     <button
                       type="submit"
-                      className="w-full rounded border border-primary bg-[#1e3d59] p-3 text-white transition hover:bg-opacity-90"
+                      disabled={status.isLoading || status.isSuccess}
+                      className={`w-full rounded border border-primary bg-[#1e3d59] p-3 text-white transition ${status.isLoading || status.isSuccess ? 'bg-gray-500 hover:cursor-not-allowed':'hover:bg-opacity-90'}`}
                     >
-                      Envoyer le message
+                      {status.isLoading && "Chargement..." || status.isSuccess && "Message envoyé" || status.isError && "Erreur d'envoi" || "Envoyer le message"}
                     </button>
                   </div>
                 </form>

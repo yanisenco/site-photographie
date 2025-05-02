@@ -12,7 +12,11 @@ interface SelectedImages {
 
 const SendingSelection = ({ selectedImages }: SelectedImages ) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
-  const [, setStatus] = useState("");
+  const [status, setStatus] = useState({
+    isLoading: false,
+    isSuccess: false,
+    isError: false,
+  });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,13 +59,14 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
                 />
               ))}
             </div>
+            {status.isSuccess && <p className="text-green-500">Votre sélection a bien été envoyée ! Le récapitulatif vous a également été envoyé par e-mail.<br/>(Il se peut que l’e-mail arrive dans les spams, pensez à bien vérifier.)</p>}
             <button
                 className={`rounded border border-primary bg-[#1e3d59] p-3 text-white`}
+                disabled={status.isLoading || status.isSuccess}
                 type="submit"
             >
-                Envoyer
-            </button>
-           
+                {status.isLoading && "Envoi en cours..." || status.isSuccess && "Sélection envoyée" || status.isError && "Erreur lors de l'envoi" || "Envoyer la sélection"}
+            </button>           
           </form>
         </Modal>
       }

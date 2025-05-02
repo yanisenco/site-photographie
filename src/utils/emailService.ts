@@ -8,9 +8,9 @@ export const fetchEmail = async (
   emailForConfirmation: string,
   subject: string,
   htmlComponent: ReactElement,
-  setStatus: (status: string) => void
+  setStatus: (status: { isLoading: boolean; isSuccess: boolean; isError: boolean }) => void
 ) => {
-  setStatus("Envoi en cours...");
+  setStatus({ isLoading: true, isSuccess: false, isError: false });
 
   try {
     const htmlContent = ReactDOMServer.renderToStaticMarkup(htmlComponent);
@@ -30,12 +30,13 @@ export const fetchEmail = async (
     const result = await response.json();
 
     if (response.ok) {
-      setStatus("Email envoyé avec succès !");
+      setStatus({ isLoading: false, isSuccess: true, isError: false });
     } else {
-      setStatus(`Erreur : ${result.error}`);
+      setStatus({ isLoading: false, isSuccess: false, isError: true });
+      console.error(`Erreur : ${result.error}`);
     }
   } catch (error) {
-    setStatus("Erreur lors de l'envoi.");
+    setStatus({ isLoading: false, isSuccess: false, isError: true });
     console.error(error);
   }
 };
