@@ -2,8 +2,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import photo1 from "@/images/photo-bouledogue-francais-contre-plongee.webp";
-import photo2 from "@/images/photo-cheval-blanc-ambiance-feerique.webp";
-import photo3 from "@/images/kitesurfeur.webp";
+import photo2 from "@/images/photo-exterieur.webp";
+import photo3 from "@/images/photo-competition.webp";
 
 export default function PricingTab() {
   const [selected, setSelected] = useState(0); // Track the selected position (0, 1, or 2)

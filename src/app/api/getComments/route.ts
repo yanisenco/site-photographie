@@ -19,13 +19,16 @@ export async function GET(): Promise<NextResponse> {
     try {
         const response: ReviewResponse = await axios.get(`https://maps.googleapis.com/maps/api/place/details/json`, {
             params: {
-                place_id: process.env.GOOGLE_PLACE_ID,
-                language: "fr-FR",
-                translated: false, 
-                fields: 'review',
-                key: process.env.GOOGLE_PLACE_API_KEY, 
+            place_id: process.env.GOOGLE_PLACE_ID,
+            language: "fr-FR",
+            translated: false, 
+            fields: 'review',
+            key: process.env.GOOGLE_PLACE_API_KEY, 
             },
         });
+
+        // Keep only the first 4 reviews
+        response.data.result.reviews = response.data.result.reviews.slice(0, 4);
 
         return NextResponse.json(response.data);
     } catch (error) {

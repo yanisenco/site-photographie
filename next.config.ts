@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 import TerserPlugin from "terser-webpack-plugin";
 
 const nextConfig: NextConfig = {
-  swcMinify: true,
   webpack: (config, { isServer }) => {
     // Code Splitting : divise les fichiers en chunks plus petits
     config.optimization.splitChunks = {

@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import Gallery from "@/components/Gallery/Gallery";
+import GallerySelectionnableImages from "@/components/Gallery/GallerySelectionnableImages";
 import { fetchImages } from "@/utils/imagesService";
 import FormBox from "@/components/FormBox/FormBox";
 
@@ -38,7 +38,7 @@ export default function YourPhotos() {
             sélectionner et nous envoyer votre sélection pour que nous
             retouchions vos images favorites
           </p>
-          <Gallery images={images} />
+          <GallerySelectionnableImages images={images} />
         </>
       ) : (
         <FormBox>

@@ -7,6 +7,8 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import { gsap } from "gsap";
 import styles from "./gallery.module.css";
+import SelectionnableImages from "../SelectionnableImages/SelectionnableImages"; // Adjust the path as needed
+import SendingSelection from "../SendingSelection/SendingSelection";
 
 interface Image {
   src: string;
@@ -20,25 +22,35 @@ interface GalleryProps {
 const Gallery = ({ images }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const imageRefs = useRef<HTMLDivElement[]>([]); // Array of refs for each image
+  const imageRefs = useRef<HTMLDivElement[]>([]); 
+  const galleryRef = useRef<ImageGallery>(null);
+  const checkboxRef = useRef<HTMLInputElement>(null);
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [, setIsFullscreen] = useState(false);
 
-  const openCarousel = (index: number) => {
-    setCurrentIndex(index);
-    setIsOpen(true);
+  const handleScreenChange = (isFs: boolean) => {
+    setIsFullscreen(isFs);
+    if (!isFs) closeCarousel();
+  };
+
+  const handleCheckboxChange = (src: string, checked: boolean) => {
+    if (checked) {
+      setSelectedImages((prev) => [...prev, src]);
+    } else {
+      setSelectedImages((prev) => prev.filter((imageSrc) => imageSrc !== src));
+    }
   };
 
   const closeCarousel = () => {
     setIsOpen(false);
   };
 
-  // Préparation des images pour le carrousel
   const galleryImages = images.map((image) => ({
     original: image.src,
     thumbnail: image.src,
     description: image.alt,
   }));
 
-  // Configuration de la grille Masonry
   const breakpointColumnsObj = {
     default: 3,
     1100: 2,
@@ -46,11 +58,8 @@ const Gallery = ({ images }: GalleryProps) => {
   };
 
   useEffect(() => {
-    // Vérifier la taille de l'écran pour ne pas appliquer GSAP sur mobile
-    const isMobile = window.innerWidth <= 768; // Défini comme mobile si la largeur est inférieure ou égale à 768px
-
+    const isMobile = window.innerWidth <= 768; 
     if (!isMobile && imageRefs.current.length > 0) {
-      // Animation d'apparition avec GSAP, seulement pour les écrans plus larges
       gsap.fromTo(
         imageRefs.current,
         { opacity: 0, y: 50, force3D: true },
@@ -66,8 +75,18 @@ const Gallery = ({ images }: GalleryProps) => {
     }
   }, [images]);
 
+  const openCarousel = (index: number) => {
+  setCurrentIndex(index);
+  setIsOpen(true);
+
+    setTimeout(() => {
+      galleryRef.current?.fullScreen();
+    }, 100);
+  };
+
   return (
     <>
+      <SendingSelection selectedImages={selectedImages} />
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={styles.myMasonryGrid}
@@ -80,39 +99,40 @@ const Gallery = ({ images }: GalleryProps) => {
             onClick={() => openCarousel(index)}
             ref={(el) => {
               if (el) imageRefs.current[index] = el;
-            }} // Assign ref to each image
+            }}
           >
-              <Image
+              <SelectionnableImages
                 src={image.src}
                 alt={image.alt}
-                className={styles.image}
-                quality={70}
-                width={800}
-                height={800}
-                loading="lazy"
+                onCheckboxChange={handleCheckboxChange} 
               />
           </div>
         ))}
       </Masonry>
-
       {/* Carrousel plein écran */}
       {isOpen && (
         <div className={styles.overlay}>
           <ImageGallery
+            ref={galleryRef}
             items={galleryImages}
             startIndex={currentIndex}
-            showThumbnails={false}
+            showThumbnails={true}
             showFullscreenButton={true}
             showPlayButton={false}
-            onScreenChange={(isFullscreen: boolean) =>
-              !isFullscreen && closeCarousel()
-            }
+            onScreenChange={handleScreenChange}
+            renderCustomControls={() => (
+              <input
+                ref={checkboxRef}
+                type="checkbox"
+                className="absolute top-4 right-4 z-50 w-12 h-12 bg-white/90 border rounded"
+                onClick={(e) => e.stopPropagation()}
+                onChange={(e) => handleCheckboxChange(galleryImages[currentIndex].original, e.target.checked)}
+              />
+            )}
           />
-          <button className={styles.closeButton} onClick={closeCarousel}>
-            ✕
-          </button>
         </div>
       )}
+
     </>
   );
 };
