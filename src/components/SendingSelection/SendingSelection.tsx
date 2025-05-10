@@ -20,8 +20,10 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const email = formData.get("email") as string;
     await fetchEmail(
-      "yanis1.encognere@gmail.com",
+      email,
       "Votre commande est confirmée !",
       <CommandeEmail selectedImages={selectedImages} />,
       setStatus);
@@ -44,8 +46,8 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
           onClose={() => setIsOpenModal(false)}
         >
           <form onSubmit={handleSubmit} className="flex flex-col items-center">
-            <h2>Récapitulatif de votre séléction :</h2>
-            <p>{selectedImages.length} Photos séléctionnées</p>
+            <h2>Récapitulatif de votre sélection :</h2>
+            <p>{selectedImages.length} {selectedImages.length > 1 ? "Photos sélectionnées" : " Photo sélectionnée"} </p>
             <div className="flex flex-wrap gap-4 my-4 items-center justify-center max-h-[300px] overflow-y-auto">
               {selectedImages.map((src, index) => (
                 <Image
@@ -59,9 +61,17 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
                 />
               ))}
             </div>
-            {status.isSuccess && <p className="text-green-500">Votre sélection a bien été envoyée ! Le récapitulatif vous a également été envoyé par e-mail.<br/>(Il se peut que l’e-mail arrive dans les spams, pensez à bien vérifier.)</p>}
+            <p className="text-sm md:text-base mb-4">Veuillez entrer votre adresse e-mail pour recevoir le récapitulatif de votre sélection.</p>
+            <input
+              type="email"
+              name="email"
+              placeholder="Votre adresse e-mail"
+              className="mb-4 w-full max-w-xs p-2 border border-gray-300 rounded"
+              required
+            />
+            {status.isSuccess && <p className="text-green-500 text-sm md:text-base md:mb-3">Votre sélection a bien été prise en compte !<br/>(Il se peut que l’e-mail de confirmation arrive dans vos spams, pensez à bien vérifier.)</p>}
             <button
-                className={`rounded border border-primary bg-[#1e3d59] p-3 text-white`}
+                className={`rounded border border-primary bg-[#1e3d59] p-3 text-white ${status.isLoading || status.isSuccess ? "opacity-50 cursor-not-allowed" : "hover:bg-opacity-90 "}`}
                 disabled={status.isLoading || status.isSuccess}
                 type="submit"
             >

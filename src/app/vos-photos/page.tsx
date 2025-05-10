@@ -103,9 +103,7 @@ export default function YourPhotos() {
       {images.length > 0 && !isLoading && (
         <>
           <p className="mb-4">
-            Voici le résultat de votre shooting, vous avez 1 semaine pour
-            sélectionner et nous envoyer votre sélection pour que nous
-            retouchions vos images favorites
+            Voici le résultat de votre shooting, vous avez 1 semaine pour sélectionner et nous envoyer votre sélection.<br/> Vos photos seront ensuite retouchées et envoyées dans les 48h suivant le paiement.
           </p>
           <GallerySelectionnableImages images={images} />
         </>

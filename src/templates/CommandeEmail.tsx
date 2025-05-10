@@ -468,9 +468,9 @@ const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => {
                                                                                 color: "#151515",
                                                                                 fontSize: "14px",
                                                                             }}
-                                                                            href="mailto:contact@focusetlumiere.fr"
+                                                                            href="mailto:iana&yanis@focusetlumiere.fr"
                                                                         >
-                                                                            contact@focusetlumiere.fr
+                                                                            iana&yanis@focusetlumiere.fr
                                                                         </a>
                                                                     </p>
                                                                 </td>

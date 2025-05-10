@@ -27,8 +27,7 @@ export async function GET(): Promise<NextResponse> {
             },
         });
 
-        // Keep only the first 4 reviews
-        response.data.result.reviews = response.data.result.reviews.slice(0, 4);
+
 
         return NextResponse.json(response.data);
     } catch (error) {

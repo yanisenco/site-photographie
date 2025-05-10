@@ -128,12 +128,25 @@ export default function Home() {
               link={"/service/photo-sportive"}
             />
           </div>
+      <div className="relative overflow-hidden md:py-16">
+        <svg
+          className="absolute left-0 top-0 -z-10 h-[200vh] w-[200vw]"
+          viewBox="0 0 200 200"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill="#ffc13b"
+            d="M85.6,-142.2C107,-131,122.4,-106.2,131.6,-81.4C140.6,-56.6,143.2,-31.8,146.6,-4.6C150.2,22.8,154.6,50.6,145.4,74.6C136.2,98.6,113.4,118.8,88.6,132.8C64,146.8,38,154.8,8.6,154.6C-21,154.4,-42.2,145.8,-66.2,134.2C-90.2,122.4,-117,107.6,-131,84.6C-145,61.4,-146.4,30.8,-140.6,2.4C-134.6,-26,-121.4,-51.8,-106.2,-75C-91.2,-98.4,-74,-119,-51.4,-130.6C-28.6,-142.2,-0.4,-144.6,27.4,-144.6C55,-144.4,82.4,-141.2,85.6,-142.2Z"
+            transform="translate(100 100)"
+          />
+        </svg>
           <SectionTitle
             idSection={"a-propos-de-nous"}
             title={"À propos de nous"}
             level={3}
           />
           <AboutUsSection />
+          </div>
         </div>
         <CommentCarrousel />    
         <div className="bg-[#63588F] text-[#f5f0e1]">

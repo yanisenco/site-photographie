@@ -96,15 +96,29 @@ export default function PricingTab() {
           </div>
         </div>
         <div className="mt-10 sm:m-auto mx-10 drop-shadow-lg z-40">
-          <p className="text-4xl limelight mb-8 p-6 rounded-full">
-            <b>2 photos :{""}</b> {selected === 0 ? "40€" : "35€"}
-          </p>
-          <p className="text-4xl limelight mb-8 p-6 rounded-full">
-            <b>5 photos :{""}</b> {selected === 0 ? "75€" : "70€"}
-          </p>
-          <p className="text-4xl limelight p-6 rounded-full">
-            <b>10 photos :{""}</b> {selected === 0 ? "130€" : "125€"}
-          </p>
+          {
+          selected != 2 ?
+          <>
+            <p className="text-4xl limelight mb-8 p-6 rounded-full">
+              <b>2 photos :{""}</b> {selected === 0 ? "40€" : "35€"}
+            </p>
+            <p className="text-4xl limelight mb-8 p-6 rounded-full">
+              <b>5 photos :{""}</b> {selected === 0 ? "75€" : "70€"}
+            </p>
+            <p className="text-4xl limelight p-6 rounded-full">
+              <b>10 photos :{""}</b> {selected === 0 ? "130€" : "125€"}
+            </p>
+          </>
+          :
+          <>
+            <p className="text-4xl limelight mb-8 p-6 rounded-full">
+              <b>1 photo :{""}</b> 15€
+            </p>
+            <p className="text-xl">
+              2 photos achetées <b>= 1 offerte</b> ! 
+            </p>
+          </>
+          }
         </div>
       </div>
     </div>
