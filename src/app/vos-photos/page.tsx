@@ -17,6 +17,13 @@ export default function YourPhotos() {
     event.preventDefault();
     setIsLoading(true);
     const result = await fetchImages(id);
+    if (result.length === 0) {
+      alert("Aucune photo trouvée pour ce mot de passe.");
+      setIsLoading(false);
+    }else {
+      setPasswordInStorage(id)
+      localStorage.setItem("photo-password", JSON.stringify({ value: id, timestamp: Date.now() }))
+    }
     setIsLoading(false);
     setImages(result);
   };
@@ -62,8 +69,6 @@ export default function YourPhotos() {
         <FormBox>
           <p className="mb-4">
             Pour accéder à vos photos, veuillez entrer le mot de passe. <br />
-            Il est composé des 3 premières lettres de votre nom de famille suivi de
-            votre date de naissance (JOUR MOIS ANNEE). <br />
             Exemple : &quot;ABC01012000&quot;
           </p>
           <form
@@ -71,11 +76,6 @@ export default function YourPhotos() {
             onSubmit={(event) => {
               if (inputRef.current?.value) {
                 const value = inputRef.current.value;
-                localStorage.setItem(
-                  "photo-password",
-                  JSON.stringify({ value, timestamp: Date.now() })
-                );
-                setPasswordInStorage(value);
                 getYourPhotos(event, value);
               }
             }}
