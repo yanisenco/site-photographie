@@ -45,7 +45,7 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
           isOpenModal={isOpenModal}
           onClose={() => setIsOpenModal(false)}
         >
-          <form onSubmit={handleSubmit} className="flex flex-col items-center">
+          <form onSubmit={handleSubmit} className="flex flex-col items-center ">
             <h2>Récapitulatif de votre sélection :</h2>
             <p>{selectedImages.length} {selectedImages.length > 1 ? "Photos sélectionnées" : " Photo sélectionnée"} </p>
             <div className="flex flex-wrap gap-4 my-4 items-center justify-center max-h-[300px] overflow-y-auto">

@@ -9,7 +9,7 @@ interface FormBoxProps {
 export default function FormBox({ children }: FormBoxProps) {
     return (
         <div className="w-full p-6 lg:w-1/2 xl:w-5/12 text-black m-auto">
-              <div className="relative rounded-lg p-8 shadow-lg bg-[#f5f0e1] sm:p-12">
+              <div className="relative rounded-lg p-8 shadow-lg bg-custom-white sm:p-12">
                 {children}
                 <div>
                   <span className="absolute -right-9 -top-10 z-[-1]">

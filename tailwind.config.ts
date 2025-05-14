@@ -6,6 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
@@ -15,6 +16,7 @@ const config: Config = {
         blue: "#1e3d59",
         purple: "#63588F",
         yellow: "#ffc13b",
+        "custom-white" : "#f5f0e1",
       },
     },
   },

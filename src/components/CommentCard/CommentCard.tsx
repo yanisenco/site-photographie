@@ -15,13 +15,13 @@ export default function CommentCard({
 }: CommentCardProps) {
   return (
     <div className="flex flex-col max-w-sm mx-4 my-auto min-w-64">
-      <div className=" max-h-96 px-4 py-12 shadow-lg rounded-t-lg sm:px-8 md:px-12 bg-[#f5f0e1]">
+      <div className=" max-h-96 px-4 py-12 transition-shadow duration-300 shadow-lg dark:shadow-[0_4px_10px_#ffc13b] rounded-t-lg sm:px-8 md:px-12 bg-custom-white">
         <div className="relative px-6 py-1 text-lg italic text-center dark:text-gray-800">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             fill="currentColor"
-            className="w-8 h-8 dark:text-violet-600"
+            className="w-8 h-8 text-violet-600"
           >
             <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
             <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
@@ -32,7 +32,7 @@ export default function CommentCard({
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 512 512"
             fill="currentColor"
-            className="absolute right-0 w-8 h-8 dark:text-violet-600"
+            className="absolute right-0 w-8 h-8 text-violet-600"
           >
             <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
             <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
@@ -56,7 +56,6 @@ export default function CommentCard({
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               fill="#fbbf24"
-              stroke="currentColor"
               className="w-6 h-6 text-yellow-500"
             >
               <path

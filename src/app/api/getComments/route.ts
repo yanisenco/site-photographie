@@ -27,8 +27,6 @@ export async function GET(): Promise<NextResponse> {
             },
         });
 
-
-
         return NextResponse.json(response.data);
     } catch (error) {
         console.error("Erreur lors de la récupération des images :", error);

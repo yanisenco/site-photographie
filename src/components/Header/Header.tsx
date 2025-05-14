@@ -2,7 +2,9 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "./logoFocusEtLumiere.png";
+import LogoLight from "./LogoLightMode.svg";
+import LogoDark from "./LogoDarkMode.svg";
+import LightModeToggle from "../LightModeToggle/LightModeToggle";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,7 +50,7 @@ export default function Header() {
   }, []);
 
   return (
-    <nav className="sticky top-0 w-full z-50 bg-[#f5f0e1] shadow-lg shadow-[#ffc13b2b]">
+    <nav className="sticky top-0 w-full z-50 bg-custom-white dark:bg-blue dark:text-custom-white shadow-lg shadow-[#ffc13b2b]">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           href="/#homepage"
@@ -56,17 +58,29 @@ export default function Header() {
           rel="canonical"
           title="redirection-page-acceuil"
         >
-          <Image
-            src={Logo}
-            className="h-10 w-10"
-            alt="Logo Focus et Lumière"
-            width={32}
-            height={32}
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap ">
+          <div className="flex">
+            <Image
+              src={LogoLight}
+              alt="Logo Focus et Lumière"
+              width={64}
+              height={64}
+              className="block dark:hidden"
+            />
+            <Image
+              src={LogoDark}
+              alt="Logo Focus et Lumière"
+              width={64}
+              height={64}
+              className="hidden dark:block"
+            />
+          
+          <span className="self-center justify-center text-4xl whitespace-nowrap hidden md:block ml-2">
             Focus & Lumière
           </span>
+          </div>
+
         </Link>
+        <LightModeToggle />
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"
@@ -124,15 +138,15 @@ export default function Header() {
           className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
           id="navbar-solid-bg"
         >
-          <ul className="flex flex-col font-medium mt-4 rounded-lg bg-[#f5f0e1] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent text-xl ">
+          <ul className="flex flex-col font-medium mt-4 rounded-lg  dark:text-custom-white md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent text-xl ">
             <li className="relative" ref={dropdownRef}>
               <button
                 onClick={() => toggleDropdown()}
-                className="flex block py-2 px-3 md:p-0 rounded md:text-[#ff6e40] "
+                className="flex block py-2 px-3 md:p-0 rounded md:text-orange md:dark:text-yellow"
               >
                 Services
                 <svg
-                  className={` ml-1  -mr-1 h-5 w-5 md:text-[#ff6e40] ${
+                  className={` ml-1  -mr-1 h-5 w-5 md:text-orange md:dark:text-yellow ${
                     isDropdownOpen ? "duration-100 rotate-180" : "duration-100 "
                   }`}
                   viewBox="0 0 20 20"
@@ -148,7 +162,7 @@ export default function Header() {
                 </svg>
               </button>
               {isDropdownOpen && (
-                <ul className="absolute left-0 mt-2 bg-[#f5f0e1] rounded-lg shadow-lg ">
+                <ul className="absolute left-0 mt-2 bg-custom-white dark:bg-blue  rounded-lg shadow-lg ">
                   <li>
                     <Link
                       href="/service/portrait-studio"
@@ -188,7 +202,7 @@ export default function Header() {
             <li>
               <Link
                 href="/tarifs"
-                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-orange md:hover:dark:text-yellow hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
                 rel="canonical"
                 title="redirection-page-tarifs"
@@ -199,7 +213,7 @@ export default function Header() {
             <li>
               <Link
                 href="/#contact"
-                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-orange md:hover:dark:text-yellow hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
                 rel="canonical"
                 title="redirection-section-contact"
@@ -210,7 +224,7 @@ export default function Header() {
             <li>
               <Link
                 href="/#a-propos-de-nous"
-                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-orange md:hover:dark:text-yellow hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
                 rel="canonical"
                 title="redirection-section-a-propos-de-nous"
@@ -221,7 +235,7 @@ export default function Header() {
             <li>
               <Link
                 href="/vos-photos"
-                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
+                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-orange md:hover:dark:text-yellow hover:bg-[#ffc13b2b]"
                 onClick={() => closeDropdown()}
                 rel="canonical"
                 title="redirection-section-a-propos-de-nous"
