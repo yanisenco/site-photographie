@@ -57,7 +57,7 @@ export default function AboutUsSection() {
           </p>
           <SectionTitle
             title="Notre complémentarité, la clé de notre identité"
-            level={4}
+            level={3}
             idSection="notre-identité"
             size="s"
           />
@@ -92,7 +92,7 @@ export default function AboutUsSection() {
 
           <SectionTitle
             title="Une expérience sur-mesure pour chaque client"
-            level={5}
+            level={3}
             idSection="une-experience-sur-mesure"
             size="s"
           />

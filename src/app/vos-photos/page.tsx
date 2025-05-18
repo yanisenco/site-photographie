@@ -5,6 +5,8 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import GallerySelectionnableImages from "@/components/Gallery/GallerySelectionnableImages";
 import { fetchImages } from "@/utils/imagesService";
 import FormBox from "@/components/FormBox/FormBox";
+import FAQ from "@/components/Faq/Faq";
+import DynamicPageContent from "@/components/DynamicPageContent/DynamicPageContent";
 
 export default function YourPhotos() {
   const [images, setImages] = useState<[]>([]);
@@ -61,47 +63,51 @@ export default function YourPhotos() {
 
   return (
     <PageTemplate>
-      <SectionTitle idSection={"vos-photos"} title={"Vos Photos"} />
       {isLoading && passwordInStorage && (
         <div className="flex justify-center items-center h-full">Chargement...</div>
       )}
       {!passwordInStorage && !isLoading && (
-        <FormBox>
-          <p className="mb-4">
-            Pour accéder à vos photos, veuillez entrer le mot de passe. <br />
-            Exemple : &quot;ABC01012000&quot;
-          </p>
-          <form
-            className="h-full"
-            onSubmit={(event) => {
-              if (inputRef.current?.value) {
-                const value = inputRef.current.value;
-                getYourPhotos(event, value);
-              }
-            }}
-          >
-            <input
-              className="unna w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
-              type="text"
-              name="motdepasse"
-              placeholder="Votre Mot de passe"
-              onInput={handleInputChange}
-              ref={inputRef}
-            />
-            <button
-              className={`w-full rounded border border-primary bg-[#1e3d59] p-3 text-white transition hover:bg-opacity-90 ${
-                isDisabled && "bg-gray-200 hover:bg-opacity-100 cursor-not-allowed text-black"
-              }`}
-              disabled={isDisabled}
-              type="submit"
+        <>
+        <DynamicPageContent/>
+          <FormBox>
+            <p className="mb-4">
+              Pour accéder à vos photos, veuillez entrer le mot de passe. <br />
+              Exemple : &quot;ABC01012000&quot;
+            </p>
+            <form
+              className="h-full"
+              onSubmit={(event) => {
+                if (inputRef.current?.value) {
+                  const value = inputRef.current.value;
+                  getYourPhotos(event, value);
+                }
+              }}
             >
-              {isLoading ? "Chargement..." : "Valider"}
-            </button>
-          </form>
-        </FormBox>
+              <input
+                className="unna w-full mb-3 rounded border border-stroke px-[14px] py-3 text-base text-body-color outline-none focus:border-primary dark:border-dark-3 dark:bg-dark dark:text-dark-6"
+                type="text"
+                name="motdepasse"
+                placeholder="Votre Mot de passe"
+                onInput={handleInputChange}
+                ref={inputRef}
+              />
+              <button
+                className={`w-full rounded border border-primary bg-[#1e3d59] p-3 text-white transition hover:bg-opacity-90 ${
+                  isDisabled && "bg-gray-200 hover:bg-opacity-100 cursor-not-allowed text-black"
+                }`}
+                disabled={isDisabled}
+                type="submit"
+              >
+                {isLoading ? "Chargement..." : "Valider"}
+              </button>
+            </form>
+          </FormBox>
+          <FAQ tag={`FAQ-vos-photos`}/>
+        </>
       )}
       {images.length > 0 && !isLoading && (
         <>
+        <SectionTitle title="Le résultat de votre shooting" level={1} idSection="vos-photos"/>
           <p className="mb-4">
             Voici le résultat de votre shooting, vous avez 1 semaine pour sélectionner et nous envoyer votre sélection.<br/> Vos photos seront ensuite retouchées et envoyées dans les 48h suivant le paiement.
           </p>

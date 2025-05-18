@@ -61,14 +61,14 @@ export default function Header() {
           <div className="flex">
             <Image
               src={LogoLight}
-              alt="Logo Focus et Lumière"
+              alt="Logo Focus et Lumière en version claire"
               width={64}
               height={64}
               className="block dark:hidden"
             />
             <Image
               src={LogoDark}
-              alt="Logo Focus et Lumière"
+              alt="Logo Focus et Lumière en version sombre"
               width={64}
               height={64}
               className="hidden dark:block"

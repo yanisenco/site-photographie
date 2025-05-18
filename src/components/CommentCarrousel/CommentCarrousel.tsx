@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { fetchComments } from "@/utils/commentsService";
 import CommentCard from "../CommentCard/CommentCard";
 import useEmblaCarousel from "embla-carousel-react";

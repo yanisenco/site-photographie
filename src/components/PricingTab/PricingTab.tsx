@@ -65,7 +65,7 @@ export default function PricingTab() {
             <div className="absolute top-0 right-0 w-1/2 h-1/2 z-30">
               <Image
                 src={photo1}
-                alt={""}
+                alt={"chien lors d'une séance photo en studio"}
                 className="rounded-t-3xl"
                 width={400}
                 height={400}
@@ -76,7 +76,7 @@ export default function PricingTab() {
             <div className="absolute top-0 left-0 w-1/2 h-1/2 -rotate-90 z-20">
               <Image
                 src={photo2}
-                alt={""}
+                alt={"photo d'un chien et sa propriétaire en extérieur"}
                 className="rounded-t-3xl"
                 width={400}
                 height={400}
@@ -87,7 +87,7 @@ export default function PricingTab() {
             <div className="absolute bottom-0 left-0 w-1/2 h-1/2 -rotate-180 z-10 ">
               <Image
                 src={photo3}
-                alt={""}
+                alt={"chien sautant un obstacle lors d'une compétition d'agility"}
                 className="rounded-t-3xl"
                 width={400}
                 height={400}

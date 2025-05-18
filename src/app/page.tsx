@@ -142,8 +142,9 @@ export default function Home() {
         </svg>
           <SectionTitle
             idSection={"a-propos-de-nous"}
-            title={"À propos de nous"}
-            level={3}
+            title={"Notre Duo de Photographes : Une Passion et des Regards Complémentaires"}
+            level={2}
+            size="l"
           />
           <AboutUsSection />
           </div>
@@ -154,7 +155,7 @@ export default function Home() {
             <SectionTitle
               idSection={"contact"}
               title={"Prenez contact avec nous"}
-              level={6}
+              level={2}
             />
             <ContactBlock />
           </div>

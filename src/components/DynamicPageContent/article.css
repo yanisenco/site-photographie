@@ -1,0 +1,33 @@
+.kg-gallery-card {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+}
+
+.kg-gallery-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.kg-gallery-image {
+    flex: 1 1 30%;
+}
+
+.kg-gallery-image img {
+    width: 50%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.kg-image{
+    width: 20%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+h2{
+    font-size: xx-large;
+    margin: 1rem 0;
+}
