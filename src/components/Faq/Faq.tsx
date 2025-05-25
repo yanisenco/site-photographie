@@ -23,10 +23,10 @@ export default function FAQ({ tag }: FAQProps) {
   };
   if (loading) return <>Chargement..</>
   return (
-    <div>
-      <h2 className="text-2xl font-bold mb-4">Foire aux questions</h2>
+    <div className='px-3 sm:px-14 mb-6'>
+      <h2 className="text-4xl font-bold mb-4">Foire aux questions</h2>
       {posts && posts.map((item, index) => (
-        <div key={index} className="mb-2 border-b border-blue dark:border-custom-white">
+        <div key={index} className="mb-2 border-b border-blue dark:border-custom-white text-xl">
           <button
             className="w-full text-left font-medium py-2 flex justify-between items-center"
             onClick={() => toggle(index)}
@@ -34,9 +34,13 @@ export default function FAQ({ tag }: FAQProps) {
             {item.title}
             <span className="text-lg">{openIndex === index ? '−' : '+'}</span>
           </button>
-          {openIndex === index && (
-            <div className="pb-2 unna">{item.excerpt}</div>
-          )}
+          <div
+            className={`unna pb-2 transition-all duration-300 ease-in overflow-hidden ${
+              openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            }`}
+          >
+            {item.excerpt}
+          </div>
         </div>
       ))}
     </div>

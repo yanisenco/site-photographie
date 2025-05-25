@@ -39,7 +39,7 @@ const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => {
             </head>
             <body>
                 <div className="container">
-                    <h2>Récapitulatif de votre séléction 📸</h2>
+                    <h2>Récapitulatif de votre sélection 📸</h2>
                     <p>
                         Bonjour, <br />
                         <br />

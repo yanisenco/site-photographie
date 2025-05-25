@@ -1,3 +1,4 @@
+// @ts-expect-error: GhostAdminAPI has no type definitions available
 import GhostAdminAPI from '@tryghost/admin-api';
 import { NextRequest } from 'next/server';
 
@@ -14,7 +15,9 @@ export async function GET(req: NextRequest) {
   if (!slug) {
     return new Response(JSON.stringify({ error: 'Slug manquant' }), {
       status: 400,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json',
+        'Cache-Control': 'public, max-age=300, stale-while-revalidate=60',
+       },
     });
   }
 
@@ -28,7 +31,7 @@ export async function GET(req: NextRequest) {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(error);
     return new Response(
       JSON.stringify({ error: 'Erreur lors de la récupération de la page' }),

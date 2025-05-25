@@ -1,3 +1,4 @@
+// @ts-expect-error: GhostAdminAPI has no type definitions available
 import GhostAdminAPI from '@tryghost/admin-api';
 
 const api = new GhostAdminAPI({

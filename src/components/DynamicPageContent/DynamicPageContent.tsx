@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import SectionTitle from '../SectionTitle/SectionTitle';
 import { usePathname } from 'next/navigation';
 import './article.css';
+import DynamicPageContentSkeleton from './DynamicPageContentSkeleton';
 
 interface Page {
   id: string | number;
@@ -26,19 +27,17 @@ export default function DynamicPageContent() {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Chargement...</p>;
+  if (loading) return <DynamicPageContentSkeleton />;
   if (!page) return <p>Page non trouvée.</p>;
   return (
-    <div>
-      <ul>
+    <div className='mb-6'>
         <SectionTitle 
             title={page.title}
             idSection={String(page.title)}
             level={1}
             size="l"
         />
-        <div dangerouslySetInnerHTML={{ __html: page.html }} />
-      </ul>
+        <div dangerouslySetInnerHTML={{ __html: page.html }} className='article-content' />
     </div>
   );
 }
