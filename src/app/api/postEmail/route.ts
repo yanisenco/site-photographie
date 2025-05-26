@@ -5,9 +5,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    console.log("Contenu reçu :", body);
-
-    const response = await axios.post(
+    await axios.post(
       "https://api.brevo.com/v3/smtp/email",
       {
         sender: { name: "Focus & Lumière", email: "iana&yanis@focusetlumiere.fr" },
@@ -23,8 +21,6 @@ export async function POST(req: Request) {
         },
       }
     );
-
-    console.log("Réponse Brevo :", response.data);
 
     return NextResponse.json({ success: true });
   } catch (error: unknown) {

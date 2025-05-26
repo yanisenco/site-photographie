@@ -16,14 +16,14 @@ export default function FAQ({ tag }: FAQProps) {
             setLoading(false);
         })
         .catch(() => setLoading(false));
-    }, []);
+    }, [tag]);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
   if (loading) return <>Chargement..</>
   return (
-    <div className='px-3 sm:px-14 mb-6'>
+    <div className='px-3 sm:px-14 my-6'>
       <h2 className="text-4xl font-bold mb-4">Foire aux questions</h2>
       {posts && posts.map((item, index) => (
         <div key={index} className="mb-2 border-b border-blue dark:border-custom-white text-xl">

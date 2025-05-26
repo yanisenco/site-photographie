@@ -15,9 +15,10 @@ interface Image {
 
 interface GalleryProps {
   images: Image[];
+  id?: string;
 }
 
-const Gallery = ({ images }: GalleryProps) => {
+const Gallery = ({ images, id }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageRefs = useRef<HTMLDivElement[]>([]); // Array of refs for each image
@@ -67,7 +68,7 @@ const Gallery = ({ images }: GalleryProps) => {
   }, [images]);
 
   return (
-    <>
+    <div id={`galerie-${id}`} >
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={styles.myMasonryGrid}
@@ -113,7 +114,7 @@ const Gallery = ({ images }: GalleryProps) => {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

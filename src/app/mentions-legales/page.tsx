@@ -12,7 +12,7 @@ export default function PrivatePolicy() {
         Le site <strong>focusetlumiere.fr</strong> est édité par :
       </p>
       <p>
-        <strong>Nom de la société</strong> : Focus & Lumière
+        <strong>Nom de la société</strong> : Focus et Lumière
       </p>
       <p>
         <strong>Forme juridique</strong> : micro-entreprise
@@ -28,7 +28,7 @@ export default function PrivatePolicy() {
         <strong>Email</strong> : ianaletrillard3@gmail.com
       </p>
       <p>
-        <strong>Numéro d’immatriculation</strong> : 93511180700019
+        <strong>Numéro d’immatriculation</strong> : 93511180700027
       </p>
       <p>
         <strong>Directeur de la publication</strong> : Yanis ENCOGNERE

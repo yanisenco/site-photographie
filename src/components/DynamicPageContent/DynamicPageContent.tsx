@@ -25,7 +25,7 @@ export default function DynamicPageContent() {
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, []);
+  }, [slug]);
 
   if (loading) return <DynamicPageContentSkeleton />;
   if (!page) return <p>Page non trouvée.</p>;

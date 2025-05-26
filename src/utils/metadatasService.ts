@@ -7,7 +7,6 @@ export async function getGhostMeta(slug: string) {
     }
   
     const data = await res.json();
-    console.log('Réponse Ghost CMS:', data);
   
     if (!data.pages || data.pages.length === 0) {
       throw new Error(`Aucune page trouvée pour "${slug}". Réponse : ${JSON.stringify(data)}`);

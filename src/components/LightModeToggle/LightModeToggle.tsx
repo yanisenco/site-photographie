@@ -29,6 +29,9 @@ export default function LightModeToggle() {
     <div className="flex items-center justify-center p-6 transition-colors duration-300">
       <button
         onClick={darkModeHandler}
+        type="button"
+        aria-label="Toggle dark mode"
+        title="Basculer en mode sombre"
         className="relative flex items-center w-16 h-8 bg-gray-200 dark:bg-gray-600 rounded-full p-1 transition-colors duration-300"
       >
         <span

@@ -1,3 +1,5 @@
+import Head from "next/head";
+import Image from "next/image";
 import React from "react";
 
 
@@ -8,7 +10,7 @@ interface CommandeEmailProps {
 const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => {
     return (
         <html lang="fr">
-            <head>
+            <Head>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <title>Email Focus et Lumière</title>
@@ -36,7 +38,7 @@ const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => {
                         }
                     `}
                 </style>
-            </head>
+            </Head>
             <body>
                 <div className="container">
                     <h2>Récapitulatif de votre sélection 📸</h2>
@@ -64,10 +66,11 @@ const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => {
                                 style={{ padding: "10px", textAlign: "center", verticalAlign: "top" }}
                             >
                                 <a href={src} target="_blank" rel="noopener noreferrer">
-                                <img
+                                <Image
                                     src={src}
                                     alt={`Image ${rowIndex * 2 + colIndex + 1}`}
-                                    width="250"
+                                    width={250}
+                                    height={167}
                                     style={{ display: "block", width: "100%", height: "auto", borderRadius: "5px" }}
                                 />
                                 </a>
@@ -80,8 +83,6 @@ const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => {
                         ))}
                     </tbody>
                     </table>
-
-
 
                     <p>
                         À très vite, <br />

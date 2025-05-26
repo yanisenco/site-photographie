@@ -35,7 +35,7 @@ export default async function Service({ params }: ServiceParams) {
   return (
     <PageTemplate>
       <DynamicPageContent />
-      {images ? <Gallery images={images} /> : null}
+      {images ? <Gallery images={images} id={id}/> : null}
       <FAQ tag={`FAQ-${id}`}/>
     </PageTemplate>
   );

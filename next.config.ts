@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import TerserPlugin from "terser-webpack-plugin";
 
 const nextConfig: NextConfig = {
   webpack: (config, { isServer }) => {
@@ -14,16 +13,7 @@ const nextConfig: NextConfig = {
     if (isServer) {
       config.externals.push("react-dom/server");
     }
-    config.optimization.minimizer = [
-      new TerserPlugin({
-        terserOptions: {
-          compress: {
-            drop_console: true, // Supprime les console.log
-          },
-        },
-      }),
-    ];
-
+    
     // Retourne la configuration Webpack modifiée
     return config;
   },
