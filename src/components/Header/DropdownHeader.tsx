@@ -47,7 +47,7 @@ export default function DropdownHeader() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => toggleDropdown()}
-                className="flex block py-2 px-3 md:p-0 rounded md:text-orange md:dark:text-yellow"
+                className="relative flex block py-2 px-3 md:p-0 rounded md:text-orange md:dark:text-yellow z-30"
               >
                 Services
                 <svg
@@ -67,14 +67,16 @@ export default function DropdownHeader() {
                 </svg>
               </button>
               {isDropdownOpen && (
-                <ul className="absolute left-0 mt-2 bg-custom-white dark:bg-blue  rounded-lg shadow-lg ">
+                <div className="relative">
+                <div className="fixed sm:hidden inset-0 z-20 backdrop-blur-sm bg-black/20" onClick={closeDropdown} />
+                <ul className="absolute left-0 mt-2 bg-custom-white dark:bg-blue rounded-lg shadow-lg z-20">
                   <li>
                     <Link
                       href="/service/portrait-studio"
-                      className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => closeDropdown()}
+                      className="block px-4 py-2 hover:bg-[#ffc13b2b]"
+                      onClick={closeDropdown}
                       rel="canonical"
-                      title="redirection-page-photo-studio"
+                      title="Portrait studio"
                     >
                       Portrait studio
                     </Link>
@@ -82,10 +84,10 @@ export default function DropdownHeader() {
                   <li>
                     <Link
                       href="/service/portrait-exterieur"
-                      className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => closeDropdown()}
+                      className="block px-4 py-2 hover:bg-[#ffc13b2b]"
+                      onClick={closeDropdown}
                       rel="canonical"
-                      title="redirection-page-photo-exterieur"
+                      title="Portrait extérieur"
                     >
                       Portrait extérieur
                     </Link>
@@ -93,15 +95,16 @@ export default function DropdownHeader() {
                   <li>
                     <Link
                       href="/service/photo-sportive"
-                      className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => closeDropdown()}
+                      className="block px-4 py-2 hover:bg-[#ffc13b2b]"
+                      onClick={closeDropdown}
                       rel="canonical"
-                      title="redirection-page-photos-sportives"
+                      title="Photos sportives"
                     >
                       Photo sportive
                     </Link>
                   </li>
                 </ul>
+              </div>
               )}
             </div>
   );
