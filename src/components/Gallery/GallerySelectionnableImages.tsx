@@ -100,7 +100,7 @@ const Gallery = ({ images }: GalleryProps) => {
         localStorage.removeItem("photo-selection");
       }
     }
-  }, [stored]);
+  },[]);
 
   useEffect(() => {
     localStorage.setItem("photo-selection", JSON.stringify({
