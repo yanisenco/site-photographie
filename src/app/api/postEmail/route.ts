@@ -8,9 +8,9 @@ export async function POST(req: Request) {
     await axios.post(
       "https://api.brevo.com/v3/smtp/email",
       {
-        sender: { name: "Focus & Lumière", email: "iana&yanis@focusetlumiere.fr" },
+        sender: { name: "Focus & Lumière", email: "contact@focusetlumiere.fr" },
         to: [{ email: body.to }],
-        bcc: [{ email:"iana&yanis@focusetlumiere.fr"}],
+        bcc: [{ email:"contact@focusetlumiere.fr"}],
         subject: body.subject,
         htmlContent: body.htmlContent,
       },

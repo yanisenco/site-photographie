@@ -16,7 +16,7 @@ export default function Header() {
       id="site-header"
       className={`${isOpen ? "fixed" : "sticky"} top-0 w-full z-50 bg-custom-white dark:bg-blue dark:text-custom-white shadow-lg shadow-[#ffc13b2b]`}
     >
-      <div className="max-w-screen-xl flex items-center justify-between mx-auto p-4 relative">
+      <div className="max-w-screen-2xl flex items-center justify-between mx-auto p-4 relative">
         <Logo />
 
         <div className="md:block hidden">

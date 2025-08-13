@@ -4,12 +4,13 @@ import SectionTitle from "../components/SectionTitle/SectionTitle";
 import WelcomeInsert from "../components/WelcomeInsert/WelcomeInsert";
 import photo1 from "@/images/photo-studio.webp";
 import photo2 from "@/images/photo-exterieur.webp";
-import photo3 from "@/images/photo-competition.webp";
+import photo3 from "@/images/photo-competition2.jpg";
 import AboutUsSection from "../components/AboutUsSection/AboutUsSection";
 import Link from "next/link";
 import CommentCarrousel from "../components/CommentCarrousel/CommentCarrousel";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import InstaCloud from "@/components/InstaCloud/InstaCloud";
 
 export default function Home() {
   return (
@@ -76,6 +77,7 @@ export default function Home() {
               donner vie à vos souvenirs.
             </Link>{" "}
           </p>
+          <InstaCloud />
           <SectionTitle
             idSection={"service"}
             title={"Services sur-mesure en fonction de vos envies"}

@@ -6,16 +6,16 @@ export default function NavMenuDesktop() {
     <ul className="hidden md:flex flex-row items-center gap-8 font-bold text-lg">
       <DropdownHeader />
       <li>
-        <Link href="/tarifs" className="hover:text-yellow" title="Tarifs">Tarifs</Link>
+        <Link href="/tarifs" className="hover:text-orange dark:hover:text-yellow" title="Tarifs">Tarifs</Link>
       </li>
       <li>
-        <Link href="/#contact" className="hover:text-yellow" title="Contact">Contact</Link>
+        <Link href="/#contact" className="hover:text-orange dark:hover:text-yellow" title="Contact">Contact</Link>
       </li>
       <li>
-        <Link href="/a-propos" className="hover:text-yellow" title="À propos">À propos de nous</Link>
+        <Link href="/a-propos" className="hover:text-orange dark:hover:text-yellow" title="À propos">À propos de nous</Link>
       </li>
       <li>
-        <Link href="/vos-photos" className="hover:text-yellow flex" title="Vos photos"> Vos photos
+        <Link href="/vos-photos" className="hover:text-orange dark:hover:text-yellow flex" title="Vos photos"> Vos photos
         <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

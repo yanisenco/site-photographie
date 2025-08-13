@@ -19,6 +19,7 @@ export default function Logo() {
           height={64}
           className="block dark:hidden"
         />
+        
         <Image
           src={LogoDark}
           alt="Logo Focus et Lumière en version sombre"
@@ -27,6 +28,7 @@ export default function Logo() {
           className="hidden dark:block"
         />
       </div>
+      <p className="text-xl sm:text-2xl font-semibold limelight">Focus & Lumière</p>
     </Link>
   );
 }

@@ -13,21 +13,28 @@ export default function YourPhotos() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [passwordInStorage, setPasswordInStorage] = useState<string | null>(null);
+  const [savePassword, setSavePassword] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const getYourPhotos = async (event: React.FormEvent, id: string) => {
+  const getYourPhotos = async (event: React.FormEvent, id: string, savePassword: boolean) => {
     event.preventDefault();
     setIsLoading(true);
     const result = await fetchImages(id);
     if (result.length === 0) {
       alert("Aucune photo trouvée pour ce mot de passe.");
       setIsLoading(false);
-    }else {
-      setPasswordInStorage(id)
-      localStorage.setItem("photo-password", JSON.stringify({ value: id, timestamp: Date.now() }))
+    } else {
+      setPasswordInStorage(id);
+      console.log("isChecked value:", savePassword)
+      console.log("Ok");
+      setImages(result);
+      // Enregistrer le mot de passe après avoir mis à jour le state
+      if (savePassword) {
+        console.log("Enregistrement du mot de passe pour 30 jours");
+        localStorage.setItem("photo-password", JSON.stringify({ value: id, timestamp: Date.now() }));
+      }
     }
     setIsLoading(false);
-    setImages(result);
   };
 
   const handleInputChange = () => {
@@ -47,7 +54,7 @@ export default function YourPhotos() {
           const now = Date.now();
           if (now - timestamp < 30 * 24 * 60 * 60 * 1000) {
             setPasswordInStorage(value);
-            getYourPhotos(new Event("submit") as unknown as React.FormEvent, value);
+            getYourPhotos(new Event("submit") as unknown as React.FormEvent, value, savePassword);
           } else {
             localStorage.removeItem("photo-password");
           }
@@ -79,7 +86,7 @@ export default function YourPhotos() {
               onSubmit={(event) => {
                 if (inputRef.current?.value) {
                   const value = inputRef.current.value;
-                  getYourPhotos(event, value);
+                  getYourPhotos(event, value, savePassword);
                 }
               }}
             >
@@ -91,6 +98,15 @@ export default function YourPhotos() {
                 onInput={handleInputChange}
                 ref={inputRef}
               />
+              <input 
+                type="checkbox"
+                className="mb-3"
+                checked={savePassword}
+                onChange={e => setSavePassword(e.target.checked)}
+              />
+              <label className="unna text-sm ml-3">
+                Enregistrer le mot de passe pour 30 jours.
+              </label>
               <button
                 className={`w-full rounded border border-primary bg-[#1e3d59] p-3 text-white transition hover:bg-opacity-90 ${
                   isDisabled && "bg-gray-200 hover:bg-opacity-100 cursor-not-allowed text-black"
@@ -107,6 +123,21 @@ export default function YourPhotos() {
       )}
       {images.length > 0 && !isLoading && (
         <>
+          <button
+            className="rounded border border-primary bg-[#1e3d59] p-3 text-white transition mt-4"
+            onClick={() => {
+              localStorage.removeItem("photo-password");
+              setPasswordInStorage(null);
+              setImages([]);
+              setIsDisabled(true);
+              setSavePassword(false);
+              if (inputRef.current) {
+                inputRef.current.value = "";
+              }
+            }}
+          >
+            Consulter une autre sélection
+          </button>
         <SectionTitle title="Le résultat de votre shooting" level={1} idSection="vos-photos"/>
           <p className="mb-4">
             Voici le résultat de votre shooting, vous avez 1 semaine pour sélectionner et nous envoyer votre sélection.<br/> Vos photos seront ensuite retouchées et envoyées dans les 48h suivant le paiement.
