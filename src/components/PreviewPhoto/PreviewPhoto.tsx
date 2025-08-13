@@ -14,10 +14,15 @@ export default function PreviewPhoto() {
 const [clipValue, setClipValue] = useState(`0px, 175px, auto, 0px`);
 const [offsetX, setOffsetX] = useState<number | null>(null);
 const [isHovered, setIsHovered] = useState(false);
-const isMobile = window.innerWidth < 1280;
+const [isMobile, setIsMobile] = useState(false);
+
 const avant = isMobile ? photoSavant : photoLavant;
 const apres = isMobile ? photoSapres : photoLapres;
 const imageWidth = apres.width || 600;
+
+useEffect(() => {
+  setIsMobile(window.innerWidth < 1280);
+}, []);
 
 const handleMouseMove = (e: MouseMoveEvent) => {
     const element = e.currentTarget;
