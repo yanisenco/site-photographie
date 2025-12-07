@@ -5,8 +5,8 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import GallerySelectionnableImages from "@/components/Gallery/GallerySelectionnableImages";
 import { fetchImages } from "@/utils/imagesService";
 import FormBox from "@/components/FormBox/FormBox";
-import FAQ from "@/components/Faq/Faq";
-import DynamicPageContent from "@/components/DynamicPageContent/DynamicPageContent";
+// import FAQ from "@/components/Faq/Faq";
+// import DynamicPageContent from "@/components/DynamicPageContent/DynamicPageContent";
 
 export default function YourPhotos() {
   const [images, setImages] = useState<[]>([]);
@@ -75,7 +75,7 @@ export default function YourPhotos() {
       )}
       {!passwordInStorage && !isLoading && (
         <>
-        <DynamicPageContent/>
+        {/* <DynamicPageContent/> */}
           <FormBox>
             <p className="mb-4">
               Pour accéder à vos photos, veuillez entrer le mot de passe. <br />
@@ -118,7 +118,7 @@ export default function YourPhotos() {
               </button>
             </form>
           </FormBox>
-          <FAQ tag={`FAQ-vos-photos`}/>
+          {/* <FAQ tag={`FAQ-vos-photos`}/> */}
         </>
       )}
       {images.length > 0 && !isLoading && (
