@@ -1,46 +1,42 @@
+import { withPayload } from "@payloadcms/next/withPayload";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   webpack: (config, { isServer }) => {
-    // Code Splitting : divise les fichiers en chunks plus petits
+    if (!config.optimization) {
+      config.optimization = {};
+    }
+
     config.optimization.splitChunks = {
-      chunks: "all", // Divise tous les fichiers (CSS, JS, etc.)
-      minSize: 20000, // Taille minimale d'un chunk (20 KB)
-      maxSize: 200000, // Taille maximale d'un chunk (200 KB)
+      chunks: "all",
+      minSize: 20_000,
+      maxSize: 200_000,
     };
 
-    // Suppression des modules inutilisés sur le serveur
-    if (isServer) {
+    if (isServer && Array.isArray(config.externals)) {
       config.externals.push("react-dom/server");
     }
-    
-    // Retourne la configuration Webpack modifiée
+
     return config;
   },
+
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
-      },
+      { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "lh3.googleusercontent.com" },
     ],
   },
+
   async rewrites() {
     return [
-      {
-        source: "/sitemap.xml",
-        destination: "/api/sitemap", // Route vers l'API qui génère le sitemap
-      },
+      { source: "/sitemap.xml", destination: "/api/sitemap" },
     ];
   },
+
   async headers() {
     return [
       {
-        source: "/(.*)", // Applique à toutes les routes
+        source: "/(.*)",
         headers: [
           {
             key: "Strict-Transport-Security",
@@ -52,4 +48,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig);
