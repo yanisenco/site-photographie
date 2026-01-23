@@ -9,14 +9,20 @@ export default function FAQ({ tag }: FAQProps) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/api/getPosts?tag=${tag}`)
-        .then(res => res.json())
-        .then(data => {
-            setPosts(data);
+        const fetchFaqs = async () => {
+            setLoading(true);
+            const res = await fetch(
+                `${process.env.NEXT_PUBLIC_BASE_URL}/api/faqs?sort=order`,
+                { cache: 'no-store' } // ou revalidate
+            );
+            const { docs: faqs } = await res.json();
+            setPosts(faqs);
             setLoading(false);
-        })
-        .catch(() => setLoading(false));
+        };
+        fetchFaqs();
     }, [tag]);
+
+    console.log('FAQs loaded:', posts);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);

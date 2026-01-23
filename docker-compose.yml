@@ -11,7 +11,7 @@ services:
     environment:
       - NODE_ENV=production
       - PAYLOAD_SECRET=${PAYLOAD_SECRET:-your-secret-key-change-in-production}
-      - DATABASE_URI=${DATABASE_URI:-mongodb://mongo:27017/photographie}
+      - DATABASE_URI=${DATABASE_URI:-mongodb://mongo:27017/focus-et-lumiere}
       - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-http://localhost:3000}
     depends_on:
       mongo:
@@ -34,7 +34,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-password123}
-      - MONGO_INITDB_DATABASE=photographie
+      - MONGO_INITDB_DATABASE=focus-et-lumiere
     ports:
       - "27017:27017"
     volumes:

@@ -1,43 +1,39 @@
 "use client";
-import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import SectionTitle from '../SectionTitle/SectionTitle';
-import { usePathname } from 'next/navigation';
 import './article.css';
 import DynamicPageContentSkeleton from './DynamicPageContentSkeleton';
 
-interface Page {
-  id: string | number;
-  title: string;
-  html: string;
+interface Cover {
+  url: string;
+  alt?: string;
 }
 
-export default function DynamicPageContent() {
-  const [page, setPage] = useState<Page>();
-  const [loading, setLoading] = useState(true);
-  const pathname = usePathname();
-  const slug = pathname.split('/').filter(Boolean).pop(); 
+interface ContentItem {
+  cover?: Cover;
+  title: string;
+  // html: string;
+}
 
-  useEffect(() => {
-    fetch(`/api/getPages?slug=${slug}`)
-      .then(res => res.json())
-      .then(data => {
-        setPage(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
-  }, [slug]);
+interface DynamicPageContentProps {
+  content: ContentItem[];
+}
 
-  if (loading) return <DynamicPageContentSkeleton />;
-  if (!page) return <p>Page non trouvée.</p>;
+export default function DynamicPageContent({ content }: DynamicPageContentProps) {
+  console.log("DynamicPageContent content:", content[0].cover, content[0].title);
+
+  if (!content) return <DynamicPageContentSkeleton />;
+
   return (
     <div className='mb-6'>
         <SectionTitle 
-            title={page.title}
-            idSection={String(page.title)}
+            title={content[0].title}
+            idSection={String(content[0].title)}
             level={1}
             size="l"
         />
-        <div dangerouslySetInnerHTML={{ __html: page.html }} className='article-content' />
+        {content[0].cover && <Image src={content[0].cover.url} alt={content[0].cover.alt || ''} width={1200} height={800} className="w-full h-auto my-4" />}
+        {/* <div dangerouslySetInnerHTML={{ __html: content[0].html }} className='article-content' /> */}
     </div>
   );
 }

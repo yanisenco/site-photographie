@@ -7,7 +7,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Installer les dépendances
-RUN npm ci
+RUN npm ci --legacy-peer-deps
 
 # Copier le code source
 COPY . .
@@ -35,7 +35,7 @@ COPY --from=builder /app/public ./public
 
 # Créer un utilisateur non-root
 RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nextjs -u 1001
+  adduser -S nextjs -u 1001
 
 # Changer vers l'utilisateur non-root
 USER nextjs

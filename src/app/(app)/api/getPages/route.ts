@@ -38,3 +38,7 @@
 //     );
 //   }
 // }
+
+export async function GET() {
+  return Response.json({ message: 'getPages endpoint - not implemented' })
+}
