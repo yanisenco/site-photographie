@@ -33,6 +33,15 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      { source: "/tarifs", destination: "/services", permanent: true },
+      { source: "/service/portrait-studio", destination: "/service/portraits", permanent: true },
+      { source: "/service/portrait-exterieur", destination: "/service/animaux", permanent: true },
+      { source: "/service/photo-sportive", destination: "/service/sport-animalier", permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

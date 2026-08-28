@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import ReactDOMServer from "react-dom/server";
 
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/+$/, "");
 
 export const fetchEmail = async (
   emailForConfirmation: string,

@@ -1,5 +1,22 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { DM_Sans } from "next/font/google";
+import localFont from "next/font/local";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const limelight = localFont({
+  src: "../../../public/fonts/limelight-v19-latin-regular.woff2",
+  weight: "400",
+  style: "normal",
+  variable: "--font-limelight",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
@@ -74,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={`dark ${dmSans.variable} ${limelight.variable}`}>
       <head>
       <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -90,6 +90,7 @@ const Gallery = ({ images, id }: GalleryProps) => {
                 quality={70}
                 width={800}
                 height={800}
+                sizes="(min-width: 1100px) 33vw, (min-width: 700px) 50vw, 100vw"
                 loading="lazy"
               />
           </div>

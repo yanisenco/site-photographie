@@ -2,55 +2,23 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* unna-regular - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Unna';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/unna-v23-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Limelight';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/limelight-v19-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 :root {
-  --background: #f5f0e1;
-  --foreground: #1e3d59;
-}
-
-.dark {
   --background: #1e3d59;
   --foreground: #f5f0e1;
 }
 
-body,
-.limelight {
+body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Limelight", sans-serif;
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
 }
 
-p,
-.unna {
-  font-family: "Unna", serif;
-  font-size: large;
-}
-button{
-  font-family: "Limelight", sans-serif;
+.limelight {
+  font-family: var(--font-limelight), cursive;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 72px;
-}
-
-p {
-  padding: 0 13px;
 }
 

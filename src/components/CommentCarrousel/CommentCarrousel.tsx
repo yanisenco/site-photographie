@@ -83,14 +83,14 @@ export default function CommentCarrousel() {
           <div className="hidden md:flex 2xl:hidden justify-between absolute top-1/2 left-0 right-0 px-4 -translate-y-1/2">
             <button
               onClick={scrollPrev}
-              className="bg-white dark:bg-gray-800 p-2 rounded-full shadow"
+              className="bg-custom-white dark:bg-blue-dark border border-blue/10 dark:border-custom-white/10 text-foreground p-2 rounded-full shadow"
               aria-label="Précédent"
             >
               <FaArrowLeft />
             </button>
             <button
               onClick={scrollNext}
-              className="bg-white dark:bg-gray-800 p-2 rounded-full shadow"
+              className="bg-custom-white dark:bg-blue-dark border border-blue/10 dark:border-custom-white/10 text-foreground p-2 rounded-full shadow"
               aria-label="Suivant"
             >
               <FaArrowRight />
@@ -103,10 +103,10 @@ export default function CommentCarrousel() {
               <button
                 key={index}
                 onClick={() => emblaApi?.scrollTo(index)}
-                className={`w-3 h-3 rounded-full ${
+                className={`w-3 h-3 rounded-full transition-colors ${
                   index === selectedIndex
-                    ? "bg-purple"
-                    : "bg-gray-300 dark:bg-gray-500"
+                    ? "bg-orange"
+                    : "bg-foreground/20"
                 }`}
               />
             ))}
@@ -120,16 +120,11 @@ export default function CommentCarrousel() {
             href="https://www.google.com/maps/place/Focus+%26+Lumi%C3%A8re/@47.281767,-2.224451,17z/data=!4m8!3m7!1s0x4805650c727b2f11:0x6eae1052bd1a2961!8m2!3d47.281767!4d-2.224451!9m1!1b1!16s%2Fg%2F11y8_q3v5b?entry=ttu&g_ep=EgoyMDI1MDUxMS4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-purple dark:text-custom-white hover:underline gap-2"
+            className="flex items-center text-yellow hover:text-orange transition-colors gap-2 text-sm tracking-[0.1em] uppercase"
           >
             Voir plus d&apos;avis →
           </a>
         </div>
-      </div>
-
-      {/* Texte d'accompagnement */}
-      <div className="text-purple dark:text-custom-white p-8 text-center text-xl">
-        Ils nous ont fait confiance — Leurs avis comptent pour nous. Ces retours nous permettent de nous améliorer et de vous offrir un service de qualité. S&apos;ils ont été satisfaits, pourquoi pas vous ?
       </div>
     </section>
   );

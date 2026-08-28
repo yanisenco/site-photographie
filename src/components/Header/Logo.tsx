@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import LogoLight from "./LogoLightMode.svg";
 import LogoDark from "./LogoDarkMode.svg";
 
 export default function Logo() {
@@ -11,24 +10,14 @@ export default function Logo() {
       rel="canonical"
       title="redirection-page-accueil Focus et Lumière"
     >
-      <div className="flex">
-        <Image
-          src={LogoLight}
-          alt="Logo Focus et Lumière en version claire"
-          width={64}
-          height={64}
-          className="block dark:hidden"
-        />
-        
-        <Image
-          src={LogoDark}
-          alt="Logo Focus et Lumière en version sombre"
-          width={64}
-          height={64}
-          className="hidden dark:block"
-        />
-      </div>
-      <p className="text-xl sm:text-2xl font-semibold limelight">Focus & Lumière</p>
+      <Image
+        src={LogoDark}
+        alt="Logo Focus et Lumière"
+        width={64}
+        height={64}
+        priority
+      />
+      <p className="text-lg sm:text-xl font-serif tracking-wide">Focus & Lumière</p>
     </Link>
   );
 }

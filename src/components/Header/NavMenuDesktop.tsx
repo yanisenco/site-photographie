@@ -1,35 +1,53 @@
+"use client";
 import Link from "next/link";
-import DropdownHeader from "./DropdownHeader";
+import { usePathname } from "next/navigation";
+import { IoLockClosedOutline } from "react-icons/io5";
+
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/services", label: "Services" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/contact", label: "Contact" },
+];
 
 export default function NavMenuDesktop() {
+  const pathname = usePathname();
+
   return (
-    <ul className="hidden md:flex flex-row items-center gap-8 font-bold text-lg">
-      <DropdownHeader />
+    <ul className="hidden md:flex items-center gap-8">
+      {links.map((l) => {
+        const active =
+          pathname === l.href ||
+          (l.href === "/services" && pathname?.startsWith("/service"));
+        return (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              title={l.label}
+              rel="canonical"
+              className={`text-xs tracking-[0.18em] uppercase transition-colors duration-200 ${
+                active ? "text-yellow" : "text-foreground/55 hover:text-foreground"
+              }`}
+            >
+              {l.label}
+            </Link>
+          </li>
+        );
+      })}
       <li>
-        <Link href="/tarifs" className="hover:text-orange dark:hover:text-yellow" title="Tarifs">Tarifs</Link>
-      </li>
-      <li>
-        <Link href="/#contact" className="hover:text-orange dark:hover:text-yellow" title="Contact">Contact</Link>
-      </li>
-      <li>
-        <Link href="/a-propos" className="hover:text-orange dark:hover:text-yellow" title="À propos">À propos de nous</Link>
-      </li>
-      <li>
-        <Link href="/vos-photos" className="hover:text-orange dark:hover:text-yellow flex" title="Vos photos"> Vos photos
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            className="size-6 md:block hidden ml-1"
+        <Link
+          href="/vos-photos"
+          title="Mes photos"
+          rel="canonical"
+          className={`flex items-center gap-1.5 text-xs tracking-[0.18em] uppercase px-3 py-1.5 border transition-colors duration-200 ${
+            pathname === "/vos-photos"
+              ? "border-yellow text-yellow"
+              : "border-foreground/20 text-foreground/55 hover:text-foreground hover:border-foreground/40"
+          }`}
         >
-            <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
-            />
-        </svg>
+          <IoLockClosedOutline className="w-3.5 h-3.5" />
+          Mes photos
         </Link>
       </li>
     </ul>
