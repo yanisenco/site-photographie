@@ -1,9 +1,11 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import PageTemplate from "@/components/PageTemplate/PageTemplate";
+import Header from "@/components/Header/Header";
 import GallerySelectionnableImages from "@/components/Gallery/GallerySelectionnableImages";
 import { fetchImages } from "@/utils/imagesService";
 import { HiOutlineLockClosed } from "react-icons/hi";
+import { IoImagesOutline } from "react-icons/io5";
+import Footer from "@/components/Footer/Footer";
 
 export default function YourPhotos() {
   const [images, setImages] = useState<[]>([]);
@@ -73,26 +75,41 @@ export default function YourPhotos() {
   }, []);
 
   return (
-    <PageTemplate>
+    <>
+    <Header />
       {/* En-tête */}
-      <div className="pt-4 pb-12 text-center">
-        <div className="flex justify-center mb-6">
-          <div className="w-14 h-14 border border-foreground/15 flex items-center justify-center">
-            <HiOutlineLockClosed className="w-6 h-6 text-yellow" />
+      <section className="relative py-24 overflow-hidden bg-blue-dark text-custom-white text-center">
+
+        <div
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(45deg, #f5f0e1 0, #f5f0e1 1px, transparent 0, transparent 50%)",
+            backgroundSize: "24px 24px",
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto">
+          <div className="flex justify-center mb-6">
+            <div className="w-14 h-14 border border-custom-white/15 flex items-center justify-center">
+              <IoImagesOutline className="w-6 h-6 text-yellow" />
+            </div>
           </div>
+          <p className="text-yellow text-[10px] tracking-[0.3em] uppercase mb-4">Galeries privées</p>
+          <h1 className="font-serif text-3xl md:text-4xl mb-6">Accédez à vos photos</h1>
+          <p className="text-custom-white/55 max-w-xl mx-auto leading-relaxed">
+            Après chaque séance ou événement, vous recevez un code d&apos;accès
+            personnel pour retrouver, sélectionner et télécharger vos photos en
+            haute résolution.
+          </p>
         </div>
-        <p className="text-yellow text-[10px] tracking-[0.3em] uppercase mb-4">Galeries privées</p>
-        <h1 className="font-serif text-3xl md:text-4xl mb-6">Accédez à vos photos</h1>
-        <p className="text-foreground/55 max-w-xl mx-auto leading-relaxed">
-          Après chaque séance ou événement, vous recevez un code d&apos;accès
-          personnel pour retrouver, sélectionner et télécharger vos photos en
-          haute résolution.
-        </p>
-      </div>
+      </section>
 
       {isLoading && passwordInStorage && (
         <div className="flex justify-center items-center py-20 text-foreground/50">Chargement...</div>
       )}
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+      
 
       {!passwordInStorage && !isLoading && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start pb-24">
@@ -176,6 +193,7 @@ export default function YourPhotos() {
           </div>
         </div>
       )}
+      
 
       {images.length > 0 && !isLoading && (
         <div className="pb-24">
@@ -197,7 +215,10 @@ export default function YourPhotos() {
           </div>
           <GallerySelectionnableImages images={images} />
         </div>
+          
       )}
-    </PageTemplate>
+      </div>
+      <Footer />
+    </>
   );
 }

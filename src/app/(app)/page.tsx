@@ -4,11 +4,11 @@ import Link from "next/link";
 import CommentCarrousel from "../../components/CommentCarrousel/CommentCarrousel";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import InstaCloud from "@/components/InstaCloud/InstaCloud";
+// import InstaCloud from "@/components/InstaCloud/InstaCloud";
 import PageLink from "@/components/PageLink/PageLink";
-import photoStudio from "@/images/photo-studio.webp";
-import photoExterieur from "@/images/photo-exterieur.webp";
-import photoCompetition2 from "@/images/photo-competition2.jpg";
+import photoStudio from "@/images/accueil/photo-studio.webp";
+import photoExterieur from "@/images/accueil/photo-exterieur.webp";
+import photoCompetition from "@/images/accueil/photo-sport.webp";
 
 export default function Home() {
   return (
@@ -93,7 +93,7 @@ export default function Home() {
               <div className="row-span-2 grid grid-rows-2 gap-3 h-full">
                 <PageLink photo={photoStudio} title="Portraits" link="/service/portraits" />
                 <PageLink
-                  photo={photoCompetition2}
+                  photo={photoCompetition}
                   title="Sport"
                   link="/service/sport-animalier"
                 />

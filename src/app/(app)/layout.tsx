@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     siteName: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
     images: [
       {
-        url: "https://focusetlumiere.fr/images/photo-studio.webp",
+        url: "https://focusetlumiere.fr/images/accueil/photo-studio.webp",
         width: 1200,
         height: 630,
         alt: "Photo professionnelle de Focus & Lumière",
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
     description:
       "Photographes professionnels à Saint-Nazaire, spécialisés en portraits et photographie animalière.",
-    images: ["https://focusetlumiere.fr/images/photo-studio.webp"],
+    images: ["https://focusetlumiere.fr/images/accueil/photo-studio.webp"],
   },
 };
 
@@ -109,7 +109,7 @@ export default function RootLayout({
               name: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
               url: "https://focusetlumiere.fr",
               logo: "https://focusetlumiere.fr/logoFocusEtLumiere.png",
-              image: "https://focusetlumiere.fr/images/photo-studio.webp",
+              image: "https://focusetlumiere.fr/images/accueil/photo-studio.webp",
               description:
                 "Focus et Lumière est un duo de photographes professionnels à Saint-Nazaire, spécialisé dans les portraits animaliers, humains, et la photographie sportive.",
               address: {

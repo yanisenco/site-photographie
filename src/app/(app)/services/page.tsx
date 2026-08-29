@@ -30,7 +30,7 @@ export default function ServicesPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-24">
         {SERVICES.map((svc, index) => {
-          const image = SERVICE_IMAGES[svc.id];
+          const image = SERVICE_IMAGES[svc.id].card;
           return (
             <Link
               key={svc.id}

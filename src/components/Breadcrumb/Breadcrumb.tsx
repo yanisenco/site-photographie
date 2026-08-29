@@ -14,7 +14,7 @@ export default function Breadcrumb() {
   }, []);
 
   return (
-    <div className="pt-8 pb-2 flex items-center flex-wrap gap-2 text-[11px] tracking-[0.15em] uppercase text-foreground/40">
+    <div className="pt-8 pb-2 flex items-center flex-wrap gap-2 text-[11px] tracking-[0.15em] text-foreground/40">
       <Link href="/" className="hover:text-foreground transition-colors">
         Accueil
       </Link>

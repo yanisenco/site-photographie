@@ -1,9 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
-import photoExterieur from "@/images/photo-exterieur.webp";
-import photoStudio from "@/images/photo-studio.webp";
-import photoCompetition from "@/images/photo-competition.webp";
+import photoHero from "@/images/a-propos/trompette.webp";
+import photoJaleo from "@/images/a-propos/jaleo.webp";
+import photoGina from "@/images/a-propos/gina.webp";
+import photoDuo from "@/images/a-propos/duo.webp";
+import photoIana from "@/images/a-propos/iana.webp";
+import photoYanis from "@/images/a-propos/yanis.webp";
+
 
 export const metadata = {
   title: "À propos — Focus & Lumière, photographes à Saint-Nazaire",
@@ -31,7 +35,7 @@ const VALUES = [
 
 const TEAM = [
   {
-    image: photoStudio,
+    image: photoYanis,
     alt: "Photographie en studio",
     name: "Yanis",
     role: "Portrait & photographie artistique",
@@ -39,7 +43,7 @@ const TEAM = [
     focus: ["Portrait artistique", "Photographie de paysage", "Studio & lumière artificielle"],
   },
   {
-    image: photoExterieur,
+    image: photoIana,
     alt: "Photographie animalière en extérieur",
     name: "Iana",
     role: "Photographie animalière & extérieur",
@@ -78,7 +82,7 @@ export default function APropos() {
         </div>
         <div className="relative">
           <div className="relative w-full h-[440px] bg-blue-dark">
-            <Image src={photoCompetition} alt="Séance photo en extérieur" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+            <Image src={photoHero} alt="Séance photo en extérieur" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
           <div className="absolute -bottom-6 -left-6 w-1/2 h-1/2 border border-yellow/25 -z-10" aria-hidden />
         </div>
@@ -112,7 +116,7 @@ export default function APropos() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <div className="relative w-full h-[380px] bg-blue-dark">
-            <Image src={photoExterieur} alt="Nos débuts en photographie animalière" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+            <Image src={photoJaleo} alt="Nos débuts en photographie animalière" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
             <p className="text-orange text-[10px] tracking-[0.25em] uppercase mb-4">01</p>
@@ -145,14 +149,14 @@ export default function APropos() {
               </p>
             </div>
             <div className="relative w-full h-[380px] bg-blue">
-              <Image src={photoStudio} alt="Nos débuts en photographie de studio" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+              <Image src={photoGina} alt="Nos débuts en photographie de studio" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="relative w-full h-[380px] bg-blue-dark">
-            <Image src={photoCompetition} alt="La création de Focus et Lumière" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
+            <Image src={photoDuo} alt="La création de Focus et Lumière" fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
           </div>
           <div>
             <p className="text-orange text-[10px] tracking-[0.25em] uppercase mb-4">03</p>

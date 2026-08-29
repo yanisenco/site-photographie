@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
 import Image from "next/image";
-import photoAccueil from "@/images/photo-accueil.webp";
+import photoAccueil from "@/images/accueil/photo-accueil.webp";
 
 export default function WelcomeInsert() {
   const textRef = useRef(null);
@@ -30,7 +30,7 @@ export default function WelcomeInsert() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to right, #1e3d59 15%, rgba(30,61,89,0.72) 55%, rgba(30,61,89,0.18) 100%)",
+            "linear-gradient(to right, #1e3d59 5%, rgba(30,61,89,0.72) 50%, rgba(30,61,89,0.18) 100%)",
         }}
       />
 

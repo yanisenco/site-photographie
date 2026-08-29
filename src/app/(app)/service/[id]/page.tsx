@@ -21,7 +21,7 @@ export default async function Service({ params }: ServiceParams) {
   const svc = getService(id);
   if (!svc) return notFound();
 
-  const image = SERVICE_IMAGES[svc.id];
+  const image = SERVICE_IMAGES[svc.id].hero;
   const folder = CLOUDINARY_FOLDERS[svc.id];
   const images = folder ? await fetchImages(folder) : [];
 
