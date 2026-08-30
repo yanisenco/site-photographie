@@ -1,251 +1,57 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import Logo from "./logoFocusEtLumiere.png";
+import BurgerButton from "./BurgerButton";
+import Logo from "./Logo";
+import NavMenuMobile from "./NavMenuMobile";
+import NavMenuDesktop from "./NavMenuDesktop";
 
-export default function Header() {
+interface HeaderProps {
+  transparent?: boolean;
+}
+
+export default function Header({ transparent = false }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null); // Ref pour l'encart dropdown
-
-  const closeDropdown = () => {
-    setIsDropdownOpen(false);
-    setIsOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const [scrolled, setScrolled] = useState(!transparent);
 
   useEffect(() => {
-    // Fonction pour fermer la dropdown si l'on clique en dehors
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !(dropdownRef.current as HTMLElement).contains(event.target as Node)
-      ) {
-        setIsDropdownOpen(false);
-      }
-    };
+    if (!transparent) return;
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [transparent]);
 
-    // Fonction pour fermer la dropdown si l'on appuie sur Échap
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    // Ajouter les écouteurs d'événements
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyDown);
-
-    // Nettoyer les écouteurs lorsque le composant est démonté
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  const closeDropdown = () => setIsOpen(false);
+  const solid = !transparent || scrolled || isOpen;
 
   return (
-    <nav className="sticky top-0 w-full z-50 bg-[#f5f0e1] shadow-lg shadow-[#ffc13b2b]">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link
-          href="/#homepage"
-          className="flex items-center space-x-3 rtl:space-x-reverse"
-          rel="canonical"
-          title="redirection-page-acceuil"
-        >
-          <Image
-            src={Logo}
-            className="h-10 w-10"
-            alt="Logo Focus et Lumière"
-            width={32}
-            height={32}
-          />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap ">
-            Focus & Lumière
-          </span>
-        </Link>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-[#f5f0e2] focus:outline-none focus:ring-2 focus:ring-gray-200"
-          aria-controls="navbar-solid-bg"
-          aria-expanded={isOpen}
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-6 h-6"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
+    <header
+      id="site-header"
+      className={`${transparent ? "fixed" : "sticky"} inset-x-0 top-0 w-full z-50 transition-colors duration-300 ${
+        solid
+          ? "bg-blue/95 backdrop-blur-sm border-b border-custom-white/10"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+        <Logo />
+
+        <NavMenuDesktop />
+
+        <div className="flex items-center gap-3 sm:gap-4">
+          <Link
+            href="/contact"
+            title="Réserver une séance"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 bg-orange text-custom-white text-sm font-medium hover:bg-[#e85a30] transition-colors"
           >
-            <line
-              x1="4"
-              y1="6"
-              x2="20"
-              y2="6"
-              className={`origin-center transition-transform duration-300 ${
-                isOpen ? "rotate-45 translate-y-1 -translate-x-1" : ""
-              }`}
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            <line
-              x1="4"
-              y1="12"
-              x2="20"
-              y2="12"
-              className={`origin-center transition-opacity duration-300 ${
-                isOpen ? "opacity-0" : "opacity-100"
-              }`}
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-            <line
-              x1="4"
-              y1="18"
-              x2="20"
-              y2="18"
-              className={`origin-center transition-transform duration-300 ${
-                isOpen ? "-rotate-45 -translate-y-1 -translate-x-1" : ""
-              }`}
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-        <div
-          className={`${isOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
-          id="navbar-solid-bg"
-        >
-          <ul className="flex flex-col font-medium mt-4 rounded-lg bg-[#f5f0e1] md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent text-xl ">
-            <li className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => toggleDropdown()}
-                className="flex block py-2 px-3 md:p-0 rounded md:text-[#ff6e40] "
-              >
-                Services
-                <svg
-                  className={` ml-1  -mr-1 h-5 w-5 md:text-[#ff6e40] ${
-                    isDropdownOpen ? "duration-100 rotate-180" : "duration-100 "
-                  }`}
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  data-slot="icon"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </button>
-              {isDropdownOpen && (
-                <ul className="absolute left-0 mt-2 bg-[#f5f0e1] rounded-lg shadow-lg ">
-                  <li>
-                    <Link
-                      href="/service/portrait-studio"
-                      className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => closeDropdown()}
-                      rel="canonical"
-                      title="redirection-page-photo-studio"
-                    >
-                      Portrait studio
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/service/portrait-exterieur"
-                      className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => closeDropdown()}
-                      rel="canonical"
-                      title="redirection-page-photo-exterieur"
-                    >
-                      Portrait extérieur
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/service/photo-sportive"
-                      className="block px-4 py-2  hover:bg-[#ffc13b2b]"
-                      onClick={() => closeDropdown()}
-                      rel="canonical"
-                      title="redirection-page-photos-sportives"
-                    >
-                      Photo sportive
-                    </Link>
-                  </li>
-                </ul>
-              )}
-            </li>
-            <li>
-              <Link
-                href="/tarifs"
-                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
-                onClick={() => closeDropdown()}
-                rel="canonical"
-                title="redirection-page-tarifs"
-              >
-                Tarifs
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#contact"
-                className="block py-2 px-3 md:p-0 rounded  md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
-                onClick={() => closeDropdown()}
-                rel="canonical"
-                title="redirection-section-contact"
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/#a-propos-de-nous"
-                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
-                onClick={() => closeDropdown()}
-                rel="canonical"
-                title="redirection-section-a-propos-de-nous"
-              >
-                À propos de nous
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/vos-photos"
-                className="block py-2 px-3 md:p-0 rounded md:hover:bg-transparent md:border-0 md:hover:text-[#ff6e40] hover:bg-[#ffc13b2b]"
-                onClick={() => closeDropdown()}
-                rel="canonical"
-                title="redirection-section-a-propos-de-nous"
-              >
-                <span className="md:hidden block">Accédez à vos photos</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="size-6 md:block hidden"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
-                  />
-                </svg>
-              </Link>
-            </li>
-          </ul>
+            Réserver
+          </Link>
+          <BurgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </div>
-    </nav>
+
+      <NavMenuMobile isOpen={isOpen} closeDropdown={closeDropdown} />
+    </header>
   );
 }
