@@ -15,7 +15,7 @@ export default function CommentCarrousel() {
   }
 
   const [reviewsTab, setReviewsTab] = useState<Review[]>([]);
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center",skipSnaps: false, });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center", skipSnaps: false });
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const getYourComments = async () => {
@@ -42,14 +42,11 @@ export default function CommentCarrousel() {
 
   return (
     <section className="relative px-4 sm:px-12">
-      <div className="mt-12">
+      <div className="max-w-7xl mx-auto">
         <div className="md:relative">
           {/* Embla actif uniquement en dessous de xl */}
-          <div
-            className="embla overflow-hidden 2xl:hidden"
-            ref={emblaRef}
-          >
-            <div className="flex">
+          <div className="embla overflow-hidden 2xl:hidden" ref={emblaRef}>
+            <div className="flex items-stretch">
               {reviewsTab.map((review, index) => (
                 <div
                   className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.3333%] px-2"
@@ -67,15 +64,15 @@ export default function CommentCarrousel() {
           </div>
 
           {/* Mode XL : sans carrousel */}
-          <div className="hidden 2xl:flex sm:items-center sm:justify-center overflow-x-auto sm:overflow-x-visible">
-            {reviewsTab.map((review, index) => (
-                <CommentCard
-                  name={review.author_name}
-                  comment={review.text}
-                  rating={review.rating}
-                  profile_photo_url={review.profile_photo_url}
-                  key={index}
-                />
+          <div className="hidden 2xl:grid grid-cols-3 gap-6 items-stretch">
+            {reviewsTab.slice(0, 3).map((review, index) => (
+              <CommentCard
+                name={review.author_name}
+                comment={review.text}
+                rating={review.rating}
+                profile_photo_url={review.profile_photo_url}
+                key={index}
+              />
             ))}
           </div>
 
@@ -83,14 +80,14 @@ export default function CommentCarrousel() {
           <div className="hidden md:flex 2xl:hidden justify-between absolute top-1/2 left-0 right-0 px-4 -translate-y-1/2">
             <button
               onClick={scrollPrev}
-              className="bg-custom-white dark:bg-blue-dark border border-blue/10 dark:border-custom-white/10 text-foreground p-2 rounded-full shadow"
+              className="bg-blue-dark border border-custom-white/10 text-custom-white p-2 rounded-full shadow"
               aria-label="Précédent"
             >
               <FaArrowLeft />
             </button>
             <button
               onClick={scrollNext}
-              className="bg-custom-white dark:bg-blue-dark border border-blue/10 dark:border-custom-white/10 text-foreground p-2 rounded-full shadow"
+              className="bg-blue-dark border border-custom-white/10 text-custom-white p-2 rounded-full shadow"
               aria-label="Suivant"
             >
               <FaArrowRight />
@@ -98,24 +95,21 @@ export default function CommentCarrousel() {
           </div>
 
           {/* Points (masqués en xl) */}
-          <div className="hidden md:flex 2xl:hidden justify-center gap-2 mt-4">
+          <div className="hidden md:flex 2xl:hidden justify-center gap-2 mt-6">
             {reviewsTab.map((_, index) => (
               <button
                 key={index}
                 onClick={() => emblaApi?.scrollTo(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
-                  index === selectedIndex
-                    ? "bg-orange"
-                    : "bg-foreground/20"
+                  index === selectedIndex ? "bg-orange" : "bg-foreground/20"
                 }`}
               />
             ))}
           </div>
         </div>
 
-
         {/* Voir plus */}
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-8">
           <a
             href="https://www.google.com/maps/place/Focus+%26+Lumi%C3%A8re/@47.281767,-2.224451,17z/data=!4m8!3m7!1s0x4805650c727b2f11:0x6eae1052bd1a2961!8m2!3d47.281767!4d-2.224451!9m1!1b1!16s%2Fg%2F11y8_q3v5b?entry=ttu&g_ep=EgoyMDI1MDUxMS4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"

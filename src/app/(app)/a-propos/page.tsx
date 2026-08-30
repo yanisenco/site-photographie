@@ -132,8 +132,8 @@ export default function APropos() {
           </div>
         </div>
 
-        <div className="bg-blue-dark text-custom-white py-16 -mx-6 lg:-mx-12 px-6 lg:px-12 mb-20">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative w-screen ml-[calc(50%-50vw)] bg-blue-dark text-custom-white py-16 mb-20">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center px-6 lg:px-12">
             <div>
               <p className="text-orange text-[10px] tracking-[0.25em] uppercase mb-4">02</p>
               <h3 className="font-serif text-2xl lg:text-3xl mb-6 leading-tight">
