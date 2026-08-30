@@ -19,42 +19,48 @@ const links = [
 export default function NavMenuMobile({ isOpen, closeDropdown }: NavMenuMobileProps) {
   const pathname = usePathname();
 
-  if (!isOpen) return null;
-
   return (
-    <div className="md:hidden bg-custom-white dark:bg-blue-dark border-t border-blue/10 dark:border-custom-white/10">
-      {links.map((l) => (
-        <Link
-          key={l.href}
-          href={l.href}
-          rel="canonical"
-          onClick={closeDropdown}
-          className={`block w-full text-left px-8 py-4 text-xs tracking-[0.2em] uppercase border-b border-foreground/[0.06] ${
-            pathname === l.href ? "text-yellow" : "text-foreground/60"
-          }`}
-        >
-          {l.label}
-        </Link>
-      ))}
+    <div
+      className={`fixed inset-0 z-40 transition-all duration-300 bg-blue/90 backdrop-blur-sm ${
+        isOpen ? "flex" : "hidden"
+      } flex-col items-center justify-center gap-12 md:hidden`}
+    >
+      <ul className="flex flex-col gap-8 items-center">
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link
+              href={l.href}
+              rel="canonical"
+              onClick={closeDropdown}
+              className={`text-2xl font-serif tracking-wide transition-colors ${
+                pathname === l.href ? "text-yellow" : "text-custom-white/80 hover:text-custom-white"
+              }`}
+            >
+              {l.label}
+            </Link>
+          </li>
+        ))}
+        <li>
+          <Link
+            href="/vos-photos"
+            rel="canonical"
+            onClick={closeDropdown}
+            className={`flex items-center gap-2 text-2xl font-serif tracking-wide transition-colors ${
+              pathname === "/vos-photos" ? "text-yellow" : "text-custom-white/80 hover:text-custom-white"
+            }`}
+          >
+            <IoLockClosedOutline className="w-4 h-4" /> Mes photos
+          </Link>
+        </li>
+      </ul>
+
       <Link
-        href="/vos-photos"
-        rel="canonical"
+        href="/contact"
         onClick={closeDropdown}
-        className={`flex items-center gap-2 w-full text-left px-8 py-4 text-xs tracking-[0.2em] uppercase border-b border-foreground/[0.06] ${
-          pathname === "/vos-photos" ? "text-yellow" : "text-foreground/60"
-        }`}
+        className="px-8 py-3 bg-orange text-custom-white text-sm font-medium tracking-wide"
       >
-        <IoLockClosedOutline className="w-3 h-3" /> Mes photos
+        Réserver une séance
       </Link>
-      <div className="p-6">
-        <Link
-          href="/contact"
-          onClick={closeDropdown}
-          className="block w-full text-center py-3 bg-orange text-custom-white text-sm font-medium tracking-wide"
-        >
-          Réserver une séance
-        </Link>
-      </div>
     </div>
   );
 }

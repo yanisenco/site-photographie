@@ -6,7 +6,7 @@ import ContactEmail from "@/templates/ContactEmail";
 import { HiOutlineMail, HiOutlinePhone, HiOutlineLocationMarker } from "react-icons/hi";
 
 const inputCls =
-  "w-full bg-foreground/[0.04] border border-foreground/[0.13] px-4 py-3 text-sm focus:outline-none focus:border-orange transition-colors placeholder:text-foreground/25";
+  "w-full bg-foreground/[0.04] border border-foreground/[0.13] px-4 py-3 text-sm focus:outline-none focus:border-orange transition-colors placeholder:text-foreground/25 text-black";
 
 const Contact = () => {
   const [status, setStatus] = useState({

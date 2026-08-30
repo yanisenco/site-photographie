@@ -66,7 +66,7 @@ const SendingSelection = ({ selectedImages }: SelectedImages ) => {
               type="email"
               name="email"
               placeholder="Votre adresse e-mail"
-              className="mb-4 w-full max-w-xs p-2 border border-gray-300 rounded"
+              className="mb-4 w-full max-w-xs p-2 border border-gray-300 rounded text-black"
               required
             />
             {status.isSuccess && <p className="text-green-500 text-sm md:text-base md:mb-3">Votre sélection a bien été prise en compte !<br/>(Il se peut que l’e-mail de confirmation arrive dans vos spams, pensez à bien vérifier.)</p>}
