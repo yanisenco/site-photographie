@@ -7,37 +7,34 @@ export default function Breadcrumb() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const path = window.location.pathname; // Exemple : "/services/detail"
-      const pathSegments = path.split("/").filter((segment) => segment); // ["services", "detail"]
+      const path = window.location.pathname; // Exemple : "/service/animaux"
+      const pathSegments = path.split("/").filter((segment) => segment); // ["service", "animaux"]
       setBreadcrumbs(pathSegments);
     }
   }, []);
 
   return (
-    <div className="pt-4 flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-      {/* Accueil */}
-      <Link href="/#accueil" className="hover:underline">
+    <div className="pt-8 pb-2 flex items-center flex-wrap gap-2 text-[11px] tracking-[0.15em] text-foreground/40">
+      <Link href="/" className="hover:text-foreground transition-colors">
         Accueil
       </Link>
-      <span>/</span>
 
-      {/* Breadcrumb dynamique */}
       {breadcrumbs.map((segment, index) => {
         let href = "/" + breadcrumbs.slice(0, index + 1).join("/"); // Reconstruit l'URL jusqu'au segment actuel
-        const isLast = index === breadcrumbs.length - 1; // Vérifie si c'est le dernier élément
+        const isLast = index === breadcrumbs.length - 1;
         if (href === "/service") {
-            href = "/#service";
-          }
+          href = "/services";
+        }
         return (
-          <div key={index} className="flex items-center space-x-2">
+          <div key={index} className="flex items-center gap-2">
+            <span className="text-foreground/20">/</span>
             {!isLast ? (
-              <Link href={href} className="hover:underline capitalize">
-                {decodeURIComponent(segment)} {/* Décodage pour gérer les espaces, accents */}
+              <Link href={href} className="hover:text-foreground transition-colors capitalize">
+                {decodeURIComponent(segment)}
               </Link>
             ) : (
-              <span className="capitalize">{decodeURIComponent(segment)}</span>
+              <span className="capitalize text-foreground/70">{decodeURIComponent(segment)}</span>
             )}
-            {!isLast && <span>/</span>}
           </div>
         );
       })}

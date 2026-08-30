@@ -1,56 +1,59 @@
+"use client";
 import Link from "next/link";
-import DropdownHeader from "./DropdownHeader";
-import LightModeToggle from "../LightModeToggle/LightModeToggle";
+import { usePathname } from "next/navigation";
+import { IoLockClosedOutline } from "react-icons/io5";
 
 interface NavMenuMobileProps {
   isOpen: boolean;
   closeDropdown: () => void;
 }
 
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/services", label: "Services" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/contact", label: "Contact" },
+];
+
 export default function NavMenuMobile({ isOpen, closeDropdown }: NavMenuMobileProps) {
+  const pathname = usePathname();
+
+  if (!isOpen) return null;
+
   return (
-    <div
-      className={`
-        fixed inset-0 z-40 transition-all duration-300 
-        bg-custom-white/95 dark:bg-blue/95
-        ${isOpen ? "flex" : "hidden"}
-        flex-col items-center justify-center
-        md:static md:w-auto md:bg-transparent md:flex-row md:items-center
-      `}
-    >
-      <ul className="flex flex-col gap-8 font-bold text-xl items-center md:flex-row md:gap-10 md:text-lg">
-        <DropdownHeader />
-        <li>
-          <Link href="/tarifs"
-            className="hover:text-yellow"
-            title="redirection-page-tarifs"
-            onClick={closeDropdown}>Tarifs</Link>
-        </li>
-        <li>
-          <Link href="/#contact"
-            className="hover:text-yellow"
-            title="redirection-section-contact"
-            onClick={closeDropdown}>Contact</Link>
-        </li>
-        <li>
-          <Link href="/#a-propos-de-nous"
-            className="hover:text-yellow"
-            title="redirection-section-a-propos-de-nous"
-            onClick={closeDropdown}>À propos de nous</Link>
-        </li>
-        <li>
-          <Link href="/vos-photos"
-            className="hover:text-yellow"
-            title="redirection-section-a-propos-de-nous"
-            onClick={closeDropdown}>
-            <span className="md:hidden block">Accédez à vos photos</span>
-            <svg /* ... */ className="size-6 md:block hidden" /* ... */ />
-          </Link>
-        </li>
-      </ul>
-      
-      <div className="mt-10 md:hidden">
-        <LightModeToggle />
+    <div className="md:hidden bg-custom-white dark:bg-blue-dark border-t border-blue/10 dark:border-custom-white/10">
+      {links.map((l) => (
+        <Link
+          key={l.href}
+          href={l.href}
+          rel="canonical"
+          onClick={closeDropdown}
+          className={`block w-full text-left px-8 py-4 text-xs tracking-[0.2em] uppercase border-b border-foreground/[0.06] ${
+            pathname === l.href ? "text-yellow" : "text-foreground/60"
+          }`}
+        >
+          {l.label}
+        </Link>
+      ))}
+      <Link
+        href="/vos-photos"
+        rel="canonical"
+        onClick={closeDropdown}
+        className={`flex items-center gap-2 w-full text-left px-8 py-4 text-xs tracking-[0.2em] uppercase border-b border-foreground/[0.06] ${
+          pathname === "/vos-photos" ? "text-yellow" : "text-foreground/60"
+        }`}
+      >
+        <IoLockClosedOutline className="w-3 h-3" /> Mes photos
+      </Link>
+      <div className="p-6">
+        <Link
+          href="/contact"
+          onClick={closeDropdown}
+          className="block w-full text-center py-3 bg-orange text-custom-white text-sm font-medium tracking-wide"
+        >
+          Réserver une séance
+        </Link>
       </div>
     </div>
   );

@@ -1,46 +1,42 @@
-'use client';
-import { useState, useEffect } from 'react';
+"use client";
+import { useState } from "react";
+import { FAQ_ITEMS } from "@/data/faq";
 
-type FAQProps = { tag: string };
+export default function Faq() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-export default function FAQ({ tag }: FAQProps) {
-    const [openIndex, setOpenIndex] = useState<number | null>(null);
-    const [posts, setPosts] = useState<Array<{ title: string; excerpt: string }>>([]);
-    const [loading, setLoading] = useState(true);
+  const toggle = (index: number) => setOpenIndex(openIndex === index ? null : index);
 
-    useEffect(() => {
-        fetch(`/api/getPosts?tag=${tag}`)
-        .then(res => res.json())
-        .then(data => {
-            setPosts(data);
-            setLoading(false);
-        })
-        .catch(() => setLoading(false));
-    }, [tag]);
-
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-  if (loading) return <>Chargement..</>
   return (
-    <div className='px-3 sm:px-14 my-6'>
-      <h2 className="text-4xl font-bold mb-4">Foire aux questions</h2>
-      {posts && posts.map((item, index) => (
-        <div key={index} className="mb-2 border-b border-blue dark:border-custom-white text-xl">
+    <div className="divide-y divide-foreground/10">
+      {FAQ_ITEMS.map((item, index) => (
+        <div key={item.q}>
           <button
-            className="w-full text-left font-medium py-2 flex justify-between items-center"
+            className="w-full flex items-center justify-between gap-6 py-5 text-left group"
             onClick={() => toggle(index)}
           >
-            {item.title}
-            <span className="text-lg">{openIndex === index ? '−' : '+'}</span>
+            <span
+              className={`text-sm font-medium transition-colors duration-200 ${
+                openIndex === index ? "text-yellow" : "text-foreground/80 group-hover:text-foreground"
+              }`}
+            >
+              {item.q}
+            </span>
+            <span
+              className={`flex-shrink-0 w-6 h-6 border flex items-center justify-center transition-all duration-200 ${
+                openIndex === index
+                  ? "border-yellow text-yellow"
+                  : "border-foreground/20 text-foreground/40 group-hover:border-foreground/40"
+              }`}
+            >
+              <span className="text-base leading-none">{openIndex === index ? "−" : "+"}</span>
+            </span>
           </button>
-          <div
-            className={`unna pb-2 transition-all duration-300 ease-in overflow-hidden ${
-              openIndex === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-            }`}
-          >
-            {item.excerpt}
-          </div>
+          {openIndex === index && (
+            <p className="text-foreground/55 text-sm leading-relaxed pb-6 max-w-3xl">
+              {item.a}
+            </p>
+          )}
         </div>
       ))}
     </div>

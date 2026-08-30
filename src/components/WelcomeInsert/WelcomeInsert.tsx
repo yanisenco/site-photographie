@@ -2,76 +2,73 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Link from "next/link";
-import photoAccueil from "@/images/photo-accueil.webp";
+import Image from "next/image";
+import photoAccueil from "@/images/accueil/photo-accueil.webp";
 
 export default function WelcomeInsert() {
   const textRef = useRef(null);
 
-  const imageLoaded = useRef(false);
-
   useEffect(() => {
-    if (imageLoaded.current) {
-      gsap.fromTo(
-        textRef.current,
-        { opacity: 0, force3D: true },
-        { opacity: 1, duration: 3, force3D: true }
-      );
-    }
-  }, []);
-
-  const handleImageLoad = () => {
-    imageLoaded.current = true;
-  };
-
-  useEffect(() => {
-    // Animation en fondu
     gsap.fromTo(
       textRef.current,
-      { opacity: 0 }, // Opacité de départ
-      { opacity: 1, duration: 3 } // Opacité finale et durée
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" }
     );
   }, []);
 
   return (
-    <section
-      className="relative min-h-screen w-full bg-cover bg-center bg-fixed flex items-center justify-center"
-      style={{ backgroundImage: `url(${photoAccueil.src})` }}
-      onLoad={handleImageLoad}
-    >
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+    <section className="relative min-h-screen w-full flex flex-col justify-end overflow-hidden">
+      <Image
+        src={photoAccueil}
+        alt="Séance photo Focus & Lumière à Saint-Nazaire"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to right, #1e3d59 5%, rgba(30,61,89,0.72) 50%, rgba(30,61,89,0.18) 100%)",
+        }}
+      />
 
       <div
-      ref={textRef}
-      className="relative w-11/12 sm:w-9/12 z-10 text-center text-white"
+        ref={textRef}
+        className="relative z-10 max-w-7xl mx-auto my-auto px-6 lg:px-12 pb-28 pt-40 w-full text-custom-white"
       >
-      <h1 className="text-5xl font-bold">Vos photos autour de Saint-Nazaire : portrait, animalier et sportif</h1>
-      <p className="unna my-6">
-      Bienvenue sur notre site de photographie professionnelle ! Nous sommes un duo de photographes passionnés
-      basé à Saint-Nazaire, au cœur de la Loire-Atlantique. En tant que photographes professionnels,
-      nous unissons nos talents pour capturer vos plus beaux moments, que ce soit à travers des portraits animaliers,
-      des portraits humains ou des photos de sport. Spécialisés dans la photographie d’animaux de compagnie, 
-      nous nous déplaçons également dans les environs de Saint-Nazaire pour des séances photo en extérieur ou en studio.
-      </p>
-      <Link href="/#accueil"
-      id="downArrow"
-      rel="canonical"
-      title="redirection-page-acceuil"
-      >
-        <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="w-10 h-10 m-auto animate-bounce"
-        >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-        />
-        </svg>
-      </Link>
+        <p className="text-yellow text-[10px] tracking-[0.3em] uppercase mb-6">
+          Photographes — Saint-Nazaire &amp; Loire-Atlantique
+        </p>
+        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight mb-6 max-w-2xl">
+          Vos photos autour de Saint-Nazaire :<br />
+          <span className="italic text-yellow">portrait, animalier &amp; sportif</span>
+        </h1>
+        <p className="text-custom-white/70 text-lg leading-relaxed max-w-md mb-10">
+          Duo de photographes passionnés basé à Saint-Nazaire, en
+          Loire-Atlantique. Nous capturons vos plus beaux moments — animaux de
+          compagnie, portraits et événements sportifs — en studio comme en
+          extérieur.
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <Link
+            href="/services"
+            rel="canonical"
+            title="Découvrir nos services"
+            className="inline-flex items-center gap-2 px-7 py-3.5 bg-orange text-custom-white font-medium hover:bg-[#e85a30] transition-colors"
+          >
+            Nos services
+          </Link>
+          <Link
+            href="/portfolio"
+            rel="canonical"
+            title="Voir le portfolio"
+            className="inline-flex items-center gap-2 px-7 py-3.5 border border-custom-white/30 text-custom-white/85 hover:border-yellow hover:text-yellow transition-colors"
+          >
+            Voir le portfolio
+          </Link>
+        </div>
       </div>
     </section>
   );
