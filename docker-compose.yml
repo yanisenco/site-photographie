@@ -10,12 +10,7 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - PAYLOAD_SECRET=${PAYLOAD_SECRET:-your-secret-key-change-in-production}
-      - DATABASE_URI=${DATABASE_URI:-mongodb://mongo:27017/focus-et-lumiere}
       - NEXT_PUBLIC_SERVER_URL=${NEXT_PUBLIC_SERVER_URL:-http://localhost:3000}
-    depends_on:
-      mongo:
-        condition: service_healthy
     restart: unless-stopped
     networks:
       - photographie-network
@@ -28,32 +23,6 @@ services:
       retries: 3
       start_period: 5s
 
-  mongo:
-    image: mongo:7-alpine
-    container_name: site-photographie-mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME:-admin}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD:-password123}
-      - MONGO_INITDB_DATABASE=focus-et-lumiere
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-      - mongo-config:/data/configdb
-    restart: unless-stopped
-    networks:
-      - photographie-network
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 10s
-
 networks:
   photographie-network:
     driver: bridge
-
-volumes:
-  mongo-data:
-  mongo-config:

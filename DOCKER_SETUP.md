@@ -1,6 +1,6 @@
 # 🐳 Dockerisation - Site Photographie
 
-Guide complet pour conteneuriser et déployer votre application Next.js + Payload CMS.
+Guide complet pour conteneuriser et déployer l'application Next.js.
 
 ## 📋 Prérequis
 
@@ -33,7 +33,6 @@ docker-compose down
 ```
 
 L'application sera accessible à : **http://localhost:3000**
-L'admin Payload CMS : **http://localhost:3000/admin**
 
 ## 📦 Structure Docker
 
@@ -53,12 +52,6 @@ L'admin Payload CMS : **http://localhost:3000/admin**
 - **Port** : 3000
 - **User** : Non-root (nextjs)
 - **Health check** : Intégré
-
-#### MongoDB
-- **Port** : 27017 (local seulement)
-- **Username** : admin
-- **Password** : À changer en production !
-- **Volumes** : Données persistantes
 
 ## 🔧 Commandes utiles
 
@@ -87,17 +80,13 @@ docker-compose restart app
 ### Variables critiques à changer
 
 ```env
-PAYLOAD_SECRET=<générez-une-clé-aléatoire-forte>
-MONGO_PASSWORD=<générez-un-mot-de-passe-fort>
 NEXT_PUBLIC_SERVER_URL=https://votre-domaine.com
 ```
 
 ### Recommandations
 
-1. **Authentification MongoDB** : Activée par défaut
-2. **HTTPS** : Utilisez un reverse proxy (Nginx, Caddy)
-3. **Backups** : Planifiez des sauvegardes MongoDB
-4. **Secrets** : Utilisez des gestionnaires de secrets (Docker Secrets, Vault)
+1. **HTTPS** : Utilisez un reverse proxy (Nginx, Caddy)
+2. **Secrets** : Utilisez des gestionnaires de secrets (Docker Secrets, Vault)
 
 ## 🌐 Déploiement
 
@@ -133,9 +122,6 @@ docker-compose up -d
 # Logs du conteneur app
 docker-compose logs app
 
-# Logs de MongoDB
-docker-compose logs mongo
-
 # Logs en temps réel avec filtrage
 docker-compose logs -f app | grep ERROR
 
@@ -144,19 +130,6 @@ docker-compose ps
 ```
 
 ## 🛠️ Troubleshooting
-
-### "Cannot connect to MongoDB"
-
-```bash
-# Vérifier que mongo est actif
-docker-compose ps mongo
-
-# Voir les logs de mongo
-docker-compose logs mongo
-
-# Redémarrer
-docker-compose restart mongo
-```
 
 ### "Port 3000 already in use"
 
@@ -180,14 +153,10 @@ docker system df
 
 - [Documentation Docker](https://docs.docker.com/)
 - [Documentation Next.js Deployment](https://nextjs.org/docs/deployment)
-- [MongoDB in Docker](https://hub.docker.com/_/mongo)
-- [Payload CMS Deployment](https://payloadcms.com/docs/production/deployment)
 
 ## ✅ Checklist avant production
 
 - [ ] Variables d'environnement configurées
-- [ ] PAYLOAD_SECRET généré et sécurisé
-- [ ] MongoDB backup configuré
 - [ ] Reverse proxy (HTTPS) en place
 - [ ] Health checks testés
 - [ ] Logs configurés et archivés
