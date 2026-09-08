@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import Gallery from "@/components/Gallery/Gallery";
 import { SERVICES, getService } from "@/data/services";
 import { SERVICE_IMAGES } from "@/data/service-images";
 import { CLOUDINARY_FOLDERS } from "@/data/cloudinary-folders";
 import { fetchImages } from "@/utils/imagesService";
+import { buildMetadata } from "@/lib/seo";
 
 interface ServiceParams {
   params: Promise<{ id: string }>;
@@ -14,6 +16,25 @@ interface ServiceParams {
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ id: s.id }));
+}
+
+export async function generateMetadata({ params }: ServiceParams): Promise<Metadata> {
+  const { id } = await params;
+  const svc = getService(id);
+  if (!svc) {
+    return buildMetadata({
+      title: "Service — Focus & Lumière",
+      description: "Nos services de photographie à Saint-Nazaire.",
+      path: `/service/${id}`,
+      noIndex: true,
+    });
+  }
+
+  return buildMetadata({
+    title: `${svc.title} — Focus & Lumière, photographes à Saint-Nazaire`,
+    description: svc.shortDesc,
+    path: `/service/${svc.id}`,
+  });
 }
 
 export default async function Service({ params }: ServiceParams) {

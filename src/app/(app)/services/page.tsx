@@ -4,16 +4,36 @@ import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import Faq from "@/components/Faq/Faq";
 import { SERVICES } from "@/data/services";
 import { SERVICE_IMAGES } from "@/data/service-images";
+import { FAQ_ITEMS } from "@/data/faq";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "Services & Tarifs — Focus & Lumière, photographes à Saint-Nazaire",
   description:
     "Découvrez nos formules et tarifs : animaux de compagnie, portraits, professionnels & événements, photographie sportive animalière.",
+  path: "/services",
+});
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
+    },
+  })),
 };
 
 export default function ServicesPage() {
   return (
     <PageTemplate>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="pt-4 pb-16">
         <p className="text-yellow text-[10px] tracking-[0.3em] uppercase mb-4">
           Nos prestations

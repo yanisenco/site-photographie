@@ -26,12 +26,6 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  async rewrites() {
-    return [
-      { source: "/sitemap.xml", destination: "/api/sitemap" },
-    ];
-  },
-
   async redirects() {
     return [
       { source: "/tarifs", destination: "/services", permanent: true },

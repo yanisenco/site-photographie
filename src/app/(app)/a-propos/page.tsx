@@ -7,13 +7,14 @@ import photoGina from "@/images/a-propos/gina.webp";
 import photoDuo from "@/images/a-propos/duo.webp";
 import photoIana from "@/images/a-propos/iana.webp";
 import photoYanis from "@/images/a-propos/yanis.webp";
+import { buildMetadata } from "@/lib/seo";
 
-
-export const metadata = {
+export const metadata = buildMetadata({
   title: "À propos — Focus & Lumière, photographes à Saint-Nazaire",
   description:
     "Yanis et Iana, duo de photographes à Saint-Nazaire, spécialisés dans la photographie animalière, les portraits et les événements.",
-};
+  path: "/a-propos",
+});
 
 const VALUES = [
   {
