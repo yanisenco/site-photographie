@@ -12,9 +12,9 @@ export default function PageTemplate({ children }: PageTemplateProps) {
   return (
     <>
       <Header />
-      <div className="w-11/12 sm:w-9/12 m-auto min-h-[80vh]">
-      <Breadcrumb />
-      {children}
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 min-h-[70vh]">
+        <Breadcrumb />
+        {children}
       </div>
       <Footer />
     </>

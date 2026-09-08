@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/+$/, "");
 
 export const fetchComments = async (): Promise<[]> => {
   if (!BASE_URL) {
