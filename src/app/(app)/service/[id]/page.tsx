@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import Gallery from "@/components/Gallery/Gallery";
 import { SERVICES, getService } from "@/data/services";
+import type { ServicePricingTable } from "@/data/services";
 import { SERVICE_IMAGES } from "@/data/service-images";
 import { CLOUDINARY_FOLDERS } from "@/data/cloudinary-folders";
 import { fetchImages } from "@/utils/imagesService";
@@ -140,6 +141,7 @@ export default async function Service({ params }: ServiceParams) {
             ))}
           </div>
 
+          {svc.pricingTables && <PricingTables tables={svc.pricingTables} />}
           {svc.options && <ServiceOptions options={svc.options} />}
         </section>
       ) : (
@@ -164,55 +166,7 @@ export default async function Service({ params }: ServiceParams) {
             </div>
           </div>
 
-          {svc.pricingTables && (
-            <div className="mt-16">
-              <div className="h-px bg-foreground/10 mb-12" />
-              <p className="text-yellow text-[10px] tracking-[0.3em] uppercase mb-10 text-center">
-                Grille tarifaire
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {svc.pricingTables.map((table) => (
-                  <div key={table.title} className="bg-blue-dark text-custom-white border border-custom-white/10 overflow-hidden">
-                    <div className="px-6 pt-6 pb-4 border-b border-custom-white/10">
-                      <h3 className="font-serif text-xl text-yellow mb-1">{table.title}</h3>
-                      <p className="text-custom-white/50 text-sm leading-relaxed">{table.desc}</p>
-                    </div>
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b border-custom-white/[0.06]">
-                          <th className="text-left px-6 py-3 text-custom-white/35 text-[9px] tracking-[0.2em] uppercase">
-                            {table.colLabels?.[0] ?? "Durée"}
-                          </th>
-                          {table.rows[0].photos !== null && (
-                            <th className="text-left px-4 py-3 text-custom-white/35 text-[9px] tracking-[0.2em] uppercase">
-                              {table.colLabels?.[1] ?? "Photos"}
-                            </th>
-                          )}
-                          <th className="text-right px-6 py-3 text-custom-white/35 text-[9px] tracking-[0.2em] uppercase">
-                            {table.colLabels?.[2] ?? "Tarif"}
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {table.rows.map((row, i) => (
-                          <tr key={i} className="border-b border-custom-white/[0.05] last:border-0">
-                            <td className="px-6 py-3 text-custom-white/80 text-sm">{row.duration}</td>
-                            {row.photos !== null && (
-                              <td className="px-4 py-3 text-custom-white/55 text-sm">{row.photos}</td>
-                            )}
-                            <td className="px-6 py-3 text-right font-serif text-yellow">{row.price}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    <p className="px-6 py-4 text-custom-white/35 text-xs leading-relaxed border-t border-custom-white/[0.06]">
-                      {table.note}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          {svc.pricingTables && <PricingTables tables={svc.pricingTables} />}
 
           {svc.options && <ServiceOptions options={svc.options} />}
         </section>
@@ -282,6 +236,58 @@ export default async function Service({ params }: ServiceParams) {
         </div>
       </section>
     </PageTemplate>
+  );
+}
+
+function PricingTables({ tables }: { tables: ServicePricingTable[] }) {
+  return (
+    <div className="mt-16">
+      <div className="h-px bg-foreground/10 mb-12" />
+      <p className="text-yellow text-[10px] tracking-[0.3em] uppercase mb-10 text-center">
+        Grille tarifaire
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {tables.map((table) => (
+          <div key={table.title} className="bg-blue-dark text-custom-white border border-custom-white/10 overflow-hidden">
+            <div className="px-6 pt-6 pb-4 border-b border-custom-white/10">
+              <h3 className="font-serif text-xl text-yellow mb-1">{table.title}</h3>
+              <p className="text-custom-white/50 text-sm leading-relaxed">{table.desc}</p>
+            </div>
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-custom-white/[0.06]">
+                  <th className="text-left px-6 py-3 text-custom-white/35 text-[9px] tracking-[0.2em] uppercase">
+                    {table.colLabels?.[0] ?? "Durée"}
+                  </th>
+                  {table.rows[0].photos !== null && (
+                    <th className="text-left px-4 py-3 text-custom-white/35 text-[9px] tracking-[0.2em] uppercase">
+                      {table.colLabels?.[1] ?? "Photos"}
+                    </th>
+                  )}
+                  <th className="text-right px-6 py-3 text-custom-white/35 text-[9px] tracking-[0.2em] uppercase">
+                    {table.colLabels?.[2] ?? "Tarif"}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {table.rows.map((row, i) => (
+                  <tr key={i} className="border-b border-custom-white/[0.05] last:border-0">
+                    <td className="px-6 py-3 text-custom-white/80 text-sm">{row.duration}</td>
+                    {row.photos !== null && (
+                      <td className="px-4 py-3 text-custom-white/55 text-sm">{row.photos}</td>
+                    )}
+                    <td className="px-6 py-3 text-right font-serif text-yellow">{row.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="px-6 py-4 text-custom-white/35 text-xs leading-relaxed border-t border-custom-white/[0.06]">
+              {table.note}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

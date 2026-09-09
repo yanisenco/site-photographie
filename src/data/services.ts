@@ -55,16 +55,19 @@ export interface Service {
 export const SERVICES: Service[] = [
   {
     id: "animaux",
-    tag: "Spécialité",
+    tag: "Vos compagnons",
     title: "Animaux de compagnie",
     shortDesc:
       "Séances dédiées à votre animal : compagnon seul, duo avec vous, ou toute la famille réunie.",
-    desc: "Chaque animal a une personnalité qui lui est propre. Nos séances sont pensées pour mettre votre compagnon à l'aise et révéler ce qui le rend unique — en studio, à domicile ou en pleine nature.",
+    desc: "Chaque animal a une personnalité qui lui est propre. Nos séances sont pensées pour mettre votre compagnon à l'aise et révéler ce qui le rend unique. Chien, chat, chevaux ou autre compagnon à quatre pattes, tous les animaux sont photogéniques. Il n'est pas nécessaire qu'il sache poser, qu'il soit parfaitement calme ou habitué à l'objectif pour réaliser de belles images. Un animal timide, énergique, joueur, curieux ou même un peu têtu n'est jamais un frein à une séance photo. Au contraire, son caractère fait partie de son histoire et mérite d'être capturé.",
     includes: [
-      "Préparation et mise en confiance de l'animal",
-      "Photos retouchées haute résolution",
-      "Galerie privée en ligne partageable",
-      "Conseils de mise en scène inclus",
+      "Échange et préparation de la séance",
+      "Conseil en amont du shooting",
+      "Séance en studio à domicile ou en extérieur",
+      "Conseils et accompagnement pendant la séance",
+      "Direction naturelle des poses si vous posez avec votre animal",
+      "Galerie privée en ligne et choisissez-vous-même vos photos",
+      "Photographies soigneusement retouchées et livrées en haute définition",
     ],
     steps: [
       { n: "01", title: "Échange préalable", desc: "On discute ensemble du caractère de votre animal, du lieu idéal et du style souhaité pour préparer la séance au mieux." },
@@ -115,14 +118,15 @@ export const SERVICES: Service[] = [
     title: "Portraits individuels & familles",
     shortDesc:
       "Du portrait solo à la grande famille recomposée, des images qui vous ressemblent.",
-    desc: "Du portrait solo à la grande famille réunie, nous adaptons la séance à votre histoire. Lumière naturelle, ambiance décontractée, poses guidées avec douceur — pour des images qui vous ressemblent vraiment.",
+    desc: "Du portrait individuel à la séance en famille, nous prenons le temps de créer des images qui vous ressemblent. Que vous soyez à l’aise devant l'objectif ou que vous ne sachiez pas vraiment comment poser, nous vous guidons tout au long de la séance pour obtenir des photographies naturelles, spontanées et authentiques. En studio à domicile comme en extérieur, nous adaptons chaque séance à votre personnalité, à vos envies et à l'ambiance que vous souhaitez créer.",
     includes: [
-      "Consultation style & intention avant la séance",
-      "Session en studio, à domicile ou en extérieur",
+      "Échange et préparation de la séance",
+      "Conseil en amont du shooting",
+      "Séance en studio à domicile ou en extérieur",
+      "Conseils et accompagnement pendant la séance",
       "Direction naturelle des poses",
-      "Photos retouchées haute résolution",
-      "Galerie privée partageable",
-      "Option tirages encadrés disponible",
+      "Galerie privée en ligne et choisissez-vous-même vos photos",
+      "Photographies soigneusement retouchées et livrées en haute définition"
     ],
     steps: [
       { n: "01", title: "Consultation", desc: "On échange sur vos envies : ambiance, tenues, lieu, moments à immortaliser. C'est aussi l'occasion de répondre à toutes vos questions." },
@@ -163,13 +167,13 @@ export const SERVICES: Service[] = [
     title: "Professionnels & Événements",
     shortDesc:
       "Portraits corporate, photos d'équipe, séminaires et célébrations privées.",
-    desc: "Que vous soyez une entreprise souhaitant valoriser votre image ou un organisateur d'événement, nous intervenons avec discrétion et professionnalisme pour documenter vos moments avec naturel. Mariages non couverts.",
+    desc: "Vous êtes une entreprise souhaitant valoriser votre image ou un organisateur d'événement, nous intervenons avec discrétion et professionnalisme pour documenter vos moments avec naturel. Que ce soit pour mettre en valeur votre équipe, vos locaux, vos produits, votre savoir-faire ou immortaliser un événement, nous adaptons chaque prestation à vos besoins et à votre univers. (Mariages non couverts.) ",
     includes: [
-      "Brief préalable pour cadrer vos besoins",
-      "Reportage discret et naturel",
-      "Photos retouchées HD livrées en numérique",
-      "Déplacement offert dans Saint-Nazaire",
-      "Remise de la galerie sous 7 jours",
+      "Un échange en amont pour définir vos besoins et vos attentes",
+      "Une prestation adaptée à votre activité ou au type d’événement",
+      "Les prises de vue réalisées sur le lieu de votre choix",
+      "Selon la formule choisie, sélectionnez vous-même vos photos préférées parmi les images réalisées, ou livraison de la galerie complète de toutes les photos réussies et retouchées",
+      "Livraisons des photos en haute définition, soigneusement retouchées",
     ],
     steps: [
       { n: "01", title: "Brief préalable", desc: "On échange sur vos objectifs, le programme de l'événement ou les besoins de votre entreprise pour préparer une intervention sur mesure." },
@@ -221,18 +225,17 @@ export const SERVICES: Service[] = [
         title: "Formule Shooting",
         desc: "Shooting préparé et personnalisé. Sélectionnez vos photos préférées parmi les images réalisées, retouchées et livrées en HD.",
         rows: [
-          { duration: "45 min", photos: "3 photos", price: "70 €" },
-          { duration: "1h", photos: "5 photos", price: "100 €" },
           { duration: "1h30", photos: "10 photos", price: "180 €" },
-          { duration: "2h", photos: "15 photos", price: "280 €" },
-          { duration: "2h30", photos: "20 photos", price: "380 €" },
+          { duration: "2h", photos: "15 photos", price: "230 €" },
+          { duration: "2h30", photos: "20 photos", price: "280 €" },
+          { duration: "3h", photos: "30 photos", price: "350 €" },
         ],
-        note: "Frais de déplacement non inclus · Déplacement offert dans Saint-Nazaire, sinon 0,40 cts/km · +20 € la photo supplémentaire",
+        note: "Frais de déplacement non inclus · Déplacement offert dans Saint-Nazaire, sinon 0,40 cts/km · +15 € la photo supplémentaire",
       },
     ],
     options: [
       { label: "Déplacement", detail: "Offert dans Saint-Nazaire · 0,40 cts/km au-delà" },
-      { label: "Photo supplémentaire (Formule Shooting)", detail: "+20 € par photo au-delà du nombre inclus dans la formule" },
+      { label: "Photo supplémentaire (Formule Shooting)", detail: "+15 € par photo au-delà du nombre inclus dans la formule" },
     ],
   },
   {
@@ -241,7 +244,7 @@ export const SERVICES: Service[] = [
     title: "Photographie sportive animalière",
     shortDesc:
       "Agility, flyball, canicross — l'animal en plein effort, chaque performance immortalisée.",
-    desc: "Ce service s'adresse aux responsables de centres équestres et de clubs canins. Nous venons sur place le jour d'une compétition ou d'un événement — agility, flyball, canicross, dressage, jumping — et photographions l'ensemble des participants. Les photos sont ensuite proposées à la vente en ligne via une galerie privée sécurisée, accessible par code. En contrepartie de l'accueil sur votre site, nous offrons un lot de photos à la structure.",
+    desc: "Ce service s’adresse aux responsables de centres équestres, de clubs canins et aux structures organisant des compétitions ou événements animaliers. Nous venons sur place le jour d'une compétition ou d'un événement — agility, obéissance, canicross, dressage, jumping, reining, mountain trail, ranch riding, etc — et photographions l'ensemble des participants. Les photos sont ensuite proposées à la vente via une galerie privée sécurisée, accessible par code. En contrepartie de l'accueil sur votre site, aucun frais n’est demandé, nous offrons un lot de photos et vous bénéficierez de tous les droits d’utilisation. Vous pourrez les utiliser pour votre communication, vos réseaux sociaux, sur votre site internet, etc. ",
     includes: [
       "Présence complète sur l'événement (journée entière)",
       "Tous les participants photographiés individuellement",

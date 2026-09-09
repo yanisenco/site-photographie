@@ -40,16 +40,16 @@ const TEAM = [
     alt: "Photographie en studio",
     name: "Yanis",
     role: "Portrait & photographie artistique",
-    bio: "Passionné par la recherche de l'image unique, Yanis travaille le portrait avec une exigence constante d'originalité — dans le cadrage, la lumière, et la retouche. Il aime le studio, maîtriser chaque paramètre pour créer une image qui lui ressemble.",
-    focus: ["Portrait artistique", "Photographie de paysage", "Studio & lumière artificielle"],
+    bio: "Passionné par l'image et particulièrement attiré par le portrait, Yanis aime jouer avec la lumière, les cadrages et les ambiances pour créer des photographies qui ont leur propre identité. Ses débuts en studio et dans le portrait artistique lui ont permis de développer une approche précise et créative, où chaque détail compte.",
+    focus: ["Portrait artistique", "Photographie studio", "Travail de la lumière & mise en scène"],
   },
   {
     image: photoIana,
     alt: "Photographie animalière en extérieur",
     name: "Iana",
     role: "Photographie animalière & extérieur",
-    bio: "Passionnée par les animaux depuis toujours, Iana a affiné son regard en photographiant la faune sauvage. Cette patience et cette écoute du vivant, elle les met au service des séances en extérieur.",
-    focus: ["Animaux de compagnie", "Photo spontanée en extérieur", "Lumière naturelle"],
+    bio: " Passionnée par les animaux depuis toujours, Iana a fait ses premiers pas en photographie en photographiant la faune sauvage. Renards, martins-pêcheurs, oiseaux et autres animaux rencontrés au fil de ses sorties lui ont appris à observer, patienter et surtout à saisir les instants imprévisibles.",
+    focus: ["Animaux de compagnie", "Photo animalière en extérieur", "Approche naturelle et spontanée"],
   },
 ];
 
@@ -59,7 +59,7 @@ export default function APropos() {
       <div className="pt-4 pb-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-end">
         <div>
           <p className="text-yellow text-[10px] tracking-[0.3em] uppercase mb-4">
-            Notre histoire
+            Nous découvrir
           </p>
           <h1 className="font-serif text-4xl lg:text-5xl leading-none mb-6">
             À propos de nous
@@ -208,7 +208,26 @@ export default function APropos() {
             ))}
           </div>
         </div>
-      </section>
+     
+
+          <div className="mt-16 items-center">
+            <h3 className="font-serif text-2xl lg:text-3xl mb-6 leading-tight text-orange">
+             Notre complémentarité
+            </h3>
+            <p className="text-foreground/60 leading-relaxed">
+              Nos parcours ont commencé séparément, avec chacun notre univers et notre manière de voir la photographie. Aujourd&apos;hui, nous
+              avons choisi de réunir ces deux regards au sein de Focus & Lumière. Là où l&apos;un
+              peut être attentif à une lumière ou une composition, l&apos;autre peut anticiper un
+              mouvement, une expression ou un instant spontané.
+              C&apos;est cette complémentarité qui fait notre force. Nous ne cherchons pas à
+              photographier de la même manière : nous nous apportons mutuellement des
+              idées, des perspectives et des sensibilités différentes. Et c&apos;est justement cette
+              double vision qui nous permet de créer des images plus riches et de nous
+              adapter à chaque personne, chaque animal et chaque projet.
+            </p>
+          </div>
+
+    </section>
 
       {/* CTA */}
       <section className="py-20 text-center max-w-3xl mx-auto">
