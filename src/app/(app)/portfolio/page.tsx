@@ -3,12 +3,14 @@ import PortfolioGallery, { PortfolioImage } from "@/components/Gallery/Portfolio
 import { SERVICES } from "@/data/services";
 import { CLOUDINARY_FOLDERS } from "@/data/cloudinary-folders";
 import { fetchImages } from "@/utils/imagesService";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "Portfolio — Focus & Lumière, photographes à Saint-Nazaire",
   description:
     "Découvrez nos réalisations : animaux de compagnie, portraits, professionnels & événements, photographie sportive animalière.",
-};
+  path: "/portfolio",
+});
 
 export default async function PortfolioPage() {
   const perCategory = await Promise.all(
