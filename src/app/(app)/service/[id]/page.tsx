@@ -8,12 +8,16 @@ import { SERVICES, getService } from "@/data/services";
 import type { ServicePricingTable } from "@/data/services";
 import { SERVICE_IMAGES } from "@/data/service-images";
 import { CLOUDINARY_FOLDERS } from "@/data/cloudinary-folders";
-import { fetchImages } from "@/utils/imagesService";
+import { fetchCloudinaryImages } from "@/utils/cloudinaryImages";
 import { buildMetadata } from "@/lib/seo";
 
 interface ServiceParams {
   params: Promise<{ id: string }>;
 }
+
+// Revalidation périodique (ISR) : les nouvelles photos Cloudinary apparaissent
+// sans avoir besoin d'un redéploiement complet.
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ id: s.id }));
@@ -45,7 +49,7 @@ export default async function Service({ params }: ServiceParams) {
 
   const image = SERVICE_IMAGES[svc.id].hero;
   const folder = CLOUDINARY_FOLDERS[svc.id];
-  const images = folder ? await fetchImages(folder) : [];
+  const images = folder ? await fetchCloudinaryImages(folder) : [];
 
   return (
     <PageTemplate>

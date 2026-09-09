@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
     ],
+    // 70 = qualité utilisée explicitement par les vignettes de galerie
+    // (Gallery, SelectionnableImages, SendingSelection) ; 75 = qualité par
+    // défaut de next/image pour toutes les autres images du site.
+    qualities: [70, 75],
   },
 
   async redirects() {

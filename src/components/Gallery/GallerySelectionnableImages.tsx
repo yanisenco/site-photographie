@@ -84,8 +84,8 @@ const Gallery = ({ images }: GalleryProps) => {
     }, 10);
   };
 
-  const stored = localStorage.getItem("photo-selection");
   useEffect(() => {
+    const stored = localStorage.getItem("photo-selection");
     if (stored) {
       try {
         const { selectedImages, timestamp } = JSON.parse(stored);
