@@ -104,8 +104,11 @@ export default function VosPhotosClient() {
         </div>
       </section>
 
-      {isLoading && passwordInStorage && (
-        <div className="flex justify-center items-center py-20 text-foreground/50">Chargement...</div>
+      {isLoading && (
+        <div className="flex flex-col items-center justify-center gap-4 py-24 text-foreground/60">
+          <div className="w-10 h-10 border-2 border-foreground/15 border-t-orange rounded-full animate-spin" />
+          <p className="text-sm tracking-wide">Chargement de votre galerie…</p>
+        </div>
       )}
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
@@ -183,7 +186,7 @@ export default function VosPhotosClient() {
                   disabled={isDisabled}
                   className="w-full py-3.5 bg-orange text-custom-white text-sm font-medium tracking-wide hover:bg-[#e85a30] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 >
-                  {isLoading ? "Chargement..." : "Accéder à ma galerie"}
+                  Accéder à ma galerie
                 </button>
               </form>
               <p className="text-custom-white/25 text-xs mt-6 text-center leading-relaxed">
