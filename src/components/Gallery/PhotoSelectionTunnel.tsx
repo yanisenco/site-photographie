@@ -204,7 +204,7 @@ export default function PhotoSelectionTunnel({ images, onStepChange }: PhotoSele
                   name="email"
                   required
                   placeholder="vous@email.com"
-                  className="w-full bg-foreground/[0.04] border border-foreground/[0.13] px-4 py-3 text-sm text-center focus:outline-none focus:border-orange transition-colors placeholder:text-foreground/25"
+                  className="w-full bg-foreground/[0.04] border border-foreground/[0.13] px-4 py-3 text-black text-sm text-center focus:outline-none focus:border-orange transition-colors placeholder:text-foreground/25"
                 />
                 {status.isError && (
                   <p className="text-orange text-xs">Une erreur est survenue, réessayez.</p>
