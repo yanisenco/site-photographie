@@ -1,15 +1,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Masonry from "react-masonry-css";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import { gsap } from "gsap";
 import styles from "./gallery.module.css";
-import SelectionnableImages from "../SelectionnableImages/SelectionnableImages"; // Adjust the path as needed
-import SendingSelection from "../SendingSelection/SendingSelection";
-import type { GalleryPricingConfig } from "@/types/galleryPricing";
+import SelectionnableImages from "../SelectionnableImages/SelectionnableImages";
 
 interface Image {
   src: string;
@@ -18,29 +15,21 @@ interface Image {
 
 interface GalleryProps {
   images: Image[];
-  pricingConfig?: GalleryPricingConfig | null;
+  selectedImages: string[];
+  onToggle: (src: string, checked: boolean) => void;
 }
 
-const Gallery = ({ images, pricingConfig }: GalleryProps) => {
+const Gallery = ({ images, selectedImages, onToggle }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const imageRefs = useRef<HTMLDivElement[]>([]); 
+  const imageRefs = useRef<HTMLDivElement[]>([]);
   const galleryRef = useRef<ImageGallery>(null);
   const checkboxRef = useRef<HTMLInputElement>(null);
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [, setIsFullscreen] = useState(false);
 
   const handleScreenChange = (isFs: boolean) => {
     setIsFullscreen(isFs);
     if (!isFs) closeCarousel();
-  };
-
-  const handleCheckboxChange = (src: string, checked: boolean) => {
-    if (checked) {
-      setSelectedImages((prev) => [...prev, src]);
-    } else {
-      setSelectedImages((prev) => prev.filter((imageSrc) => imageSrc !== src));
-    }
   };
 
   const closeCarousel = () => {
@@ -60,7 +49,7 @@ const Gallery = ({ images, pricingConfig }: GalleryProps) => {
   };
 
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768; 
+    const isMobile = window.innerWidth <= 768;
     if (!isMobile && imageRefs.current.length > 0) {
       gsap.fromTo(
         imageRefs.current,
@@ -78,43 +67,16 @@ const Gallery = ({ images, pricingConfig }: GalleryProps) => {
   }, [images]);
 
   const openCarousel = (index: number) => {
-  setCurrentIndex(index);
-  setIsOpen(true);
+    setCurrentIndex(index);
+    setIsOpen(true);
 
     setTimeout(() => {
       galleryRef.current?.fullScreen();
     }, 10);
   };
 
-  useEffect(() => {
-    const stored = localStorage.getItem("photo-selection");
-    if (stored) {
-      try {
-        const { selectedImages, timestamp } = JSON.parse(stored);
-        const now = Date.now();
-        if (now - timestamp < 30 * 24 * 60 * 60 * 1000) {
-          setSelectedImages(selectedImages);
-        } else {
-          localStorage.removeItem("photo-selection"); // Expiré
-        }
-      } catch (error) {
-        console.error("Erreur parsing localStorage:", error);
-        localStorage.removeItem("photo-selection");
-      }
-    }
-  },[]);
-
-  useEffect(() => {
-    localStorage.setItem("photo-selection", JSON.stringify({
-      selectedImages,
-      timestamp: Date.now()
-    }));
-  }, [selectedImages]); 
-
-
   return (
     <>
-      <SendingSelection selectedImages={selectedImages} pricingConfig={pricingConfig} />
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={styles.myMasonryGrid}
@@ -129,12 +91,12 @@ const Gallery = ({ images, pricingConfig }: GalleryProps) => {
               if (el) imageRefs.current[index] = el;
             }}
           >
-              <SelectionnableImages
-                isSelected={selectedImages.includes(image.src)}
-                src={image.src}
-                alt={image.alt}
-                onCheckboxChange={handleCheckboxChange} 
-              />
+            <SelectionnableImages
+              isSelected={selectedImages.includes(image.src)}
+              src={image.src}
+              alt={image.alt}
+              onCheckboxChange={onToggle}
+            />
           </div>
         ))}
       </Masonry>
@@ -157,14 +119,12 @@ const Gallery = ({ images, pricingConfig }: GalleryProps) => {
                 checked={selectedImages.includes(galleryImages[currentIndex]?.original)}
                 className="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 border rounded"
                 onClick={(e) => e.stopPropagation()}
-                onChange={(e) => handleCheckboxChange(galleryImages[currentIndex]?.original, e.target.checked)}
+                onChange={(e) => onToggle(galleryImages[currentIndex]?.original, e.target.checked)}
               />
             )}
           />
         </div>
       )}
-      <SendingSelection selectedImages={selectedImages} pricingConfig={pricingConfig} />
-
     </>
   );
 };

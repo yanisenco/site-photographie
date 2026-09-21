@@ -1,7 +1,7 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Header from "@/components/Header/Header";
-import GallerySelectionnableImages from "@/components/Gallery/GallerySelectionnableImages";
+import PhotoSelectionTunnel from "@/components/Gallery/PhotoSelectionTunnel";
 import { fetchImages } from "@/utils/imagesService";
 import { fetchGalleryPricing } from "@/utils/galleryPricingService";
 import type { GalleryPricingConfig } from "@/types/galleryPricing";
@@ -17,6 +17,11 @@ export default function VosPhotosClient() {
   const [passwordInStorage, setPasswordInStorage] = useState<string | null>(null);
   const [savePassword, setSavePassword] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const galleryTopRef = useRef<HTMLDivElement>(null);
+
+  const scrollToGalleryTop = useCallback(() => {
+    galleryTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }, []);
 
   const getYourPhotos = async (event: React.FormEvent, id: string, savePassword: boolean) => {
     event.preventDefault();
@@ -205,7 +210,7 @@ export default function VosPhotosClient() {
 
       {images.length > 0 && !isLoading && (
         <div className="pb-24">
-          <div className="flex items-center justify-between mb-10 flex-wrap gap-4">
+          <div ref={galleryTopRef} className="flex items-center justify-between mb-10 flex-wrap gap-4 scroll-mt-28">
             <div>
               <span className="text-yellow text-[9px] tracking-[0.2em] uppercase">Galerie privée</span>
               <h2 className="font-serif text-2xl mt-1">Le résultat de votre séance</h2>
@@ -221,7 +226,7 @@ export default function VosPhotosClient() {
               <HiOutlineLockClosed className="w-3 h-3" /> Changer de code
             </button>
           </div>
-          <GallerySelectionnableImages images={images} pricingConfig={pricingConfig} />
+          <PhotoSelectionTunnel images={images} pricingConfig={pricingConfig} onStepChange={scrollToGalleryTop} />
         </div>
 
       )}
