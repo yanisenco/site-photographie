@@ -1,0 +1,51 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  passwordHash String
+  createdAt    DateTime       @default(now())
+  sessions     AdminSession[]
+}
+
+model AdminSession {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  userId    String
+  user      AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model GalleryPricing {
+  id              String                 @id @default(cuid())
+  code            String                 @unique
+  serviceId       String?
+  formuleLabel    String
+  includedPhotos  Int
+  basePrice       Decimal                @db.Decimal(10, 2)
+  extraPhotoPrice Decimal                @db.Decimal(10, 2)
+  options         GalleryPricingOption[]
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
+}
+
+model GalleryPricingOption {
+  id               String         @id @default(cuid())
+  label            String
+  price            Decimal        @db.Decimal(10, 2)
+  galleryPricingId String
+  galleryPricing   GalleryPricing @relation(fields: [galleryPricingId], references: [id], onDelete: Cascade)
+
+  @@index([galleryPricingId])
+}

@@ -3,13 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "docker compose up -d --wait postgres && prisma migrate deploy && next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:deploy": "prisma migrate deploy",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^6.3.1",
     "axios": "^1.7.8",
+    "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.1",
     "embla-carousel-react": "^8.6.0",
     "fortawesome": "^0.0.1-security",
@@ -30,6 +36,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^15.0.1",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -37,6 +44,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.1",
     "postcss": "^8",
+    "prisma": "^6.3.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },

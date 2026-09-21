@@ -9,6 +9,7 @@ import { gsap } from "gsap";
 import styles from "./gallery.module.css";
 import SelectionnableImages from "../SelectionnableImages/SelectionnableImages"; // Adjust the path as needed
 import SendingSelection from "../SendingSelection/SendingSelection";
+import type { GalleryPricingConfig } from "@/types/galleryPricing";
 
 interface Image {
   src: string;
@@ -17,9 +18,10 @@ interface Image {
 
 interface GalleryProps {
   images: Image[];
+  pricingConfig?: GalleryPricingConfig | null;
 }
 
-const Gallery = ({ images }: GalleryProps) => {
+const Gallery = ({ images, pricingConfig }: GalleryProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const imageRefs = useRef<HTMLDivElement[]>([]); 
@@ -112,7 +114,7 @@ const Gallery = ({ images }: GalleryProps) => {
 
   return (
     <>
-      <SendingSelection selectedImages={selectedImages} />
+      <SendingSelection selectedImages={selectedImages} pricingConfig={pricingConfig} />
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className={styles.myMasonryGrid}
@@ -161,8 +163,8 @@ const Gallery = ({ images }: GalleryProps) => {
           />
         </div>
       )}
-      <SendingSelection selectedImages={selectedImages} />
-    
+      <SendingSelection selectedImages={selectedImages} pricingConfig={pricingConfig} />
+
     </>
   );
 };

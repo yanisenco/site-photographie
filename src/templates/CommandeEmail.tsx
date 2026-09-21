@@ -3,12 +3,14 @@
    ReactDOMServer, not a Next.js page: it needs a real <head> and plain <img>
    tags (next/head and next/image don't apply outside the app router). */
 import React from "react";
+import type { PriceBreakdown } from "@/types/galleryPricing";
 
 interface CommandeEmailProps {
     selectedImages: string[];
+    priceBreakdown?: PriceBreakdown | null;
 }
 
-const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => (
+const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages, priceBreakdown }) => (
     <html lang="fr">
         <head>
             <meta charSet="UTF-8" />
@@ -52,6 +54,38 @@ const CommandeEmail: React.FC<CommandeEmailProps> = ({ selectedImages }) => (
                         ))}
                     </tbody>
                 </table>
+
+                {priceBreakdown && (
+                    <table role="presentation" width="100%" cellPadding={0} cellSpacing={0} style={{ borderCollapse: "collapse", margin: "20px 0", fontSize: "14px" }}>
+                        <tbody>
+                            <tr>
+                                <td colSpan={2} style={{ padding: "8px 0", fontWeight: "bold", borderBottom: "1px solid #dddddd" }}>
+                                    Récapitulatif tarifaire — {priceBreakdown.formuleLabel}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style={{ padding: "6px 0" }}>Formule ({priceBreakdown.includedPhotos} photo{priceBreakdown.includedPhotos > 1 ? "s" : ""} incluse{priceBreakdown.includedPhotos > 1 ? "s" : ""})</td>
+                                <td style={{ padding: "6px 0", textAlign: "right" }}>{priceBreakdown.basePrice} €</td>
+                            </tr>
+                            {priceBreakdown.extraPhotosCount > 0 && (
+                                <tr>
+                                    <td style={{ padding: "6px 0" }}>{priceBreakdown.extraPhotosCount} photo{priceBreakdown.extraPhotosCount > 1 ? "s" : ""} supplémentaire{priceBreakdown.extraPhotosCount > 1 ? "s" : ""} × {priceBreakdown.extraPhotoPrice} €</td>
+                                    <td style={{ padding: "6px 0", textAlign: "right" }}>{priceBreakdown.extraPhotosCost} €</td>
+                                </tr>
+                            )}
+                            {priceBreakdown.selectedOptions.map((option) => (
+                                <tr key={option.id}>
+                                    <td style={{ padding: "6px 0" }}>{option.label}</td>
+                                    <td style={{ padding: "6px 0", textAlign: "right" }}>{option.price} €</td>
+                                </tr>
+                            ))}
+                            <tr>
+                                <td style={{ padding: "8px 0", fontWeight: "bold", borderTop: "1px solid #dddddd" }}>Total</td>
+                                <td style={{ padding: "8px 0", textAlign: "right", fontWeight: "bold", borderTop: "1px solid #dddddd" }}>{priceBreakdown.total} €</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                )}
 
                 <p>
                     À très vite,<br />

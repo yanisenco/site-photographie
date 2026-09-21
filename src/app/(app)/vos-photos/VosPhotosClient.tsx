@@ -3,12 +3,15 @@ import { useState, useRef, useEffect } from "react";
 import Header from "@/components/Header/Header";
 import GallerySelectionnableImages from "@/components/Gallery/GallerySelectionnableImages";
 import { fetchImages } from "@/utils/imagesService";
+import { fetchGalleryPricing } from "@/utils/galleryPricingService";
+import type { GalleryPricingConfig } from "@/types/galleryPricing";
 import { HiOutlineLockClosed } from "react-icons/hi";
 import { IoImagesOutline } from "react-icons/io5";
 import Footer from "@/components/Footer/Footer";
 
 export default function VosPhotosClient() {
   const [images, setImages] = useState<[]>([]);
+  const [pricingConfig, setPricingConfig] = useState<GalleryPricingConfig | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [passwordInStorage, setPasswordInStorage] = useState<string | null>(null);
@@ -18,13 +21,14 @@ export default function VosPhotosClient() {
   const getYourPhotos = async (event: React.FormEvent, id: string, savePassword: boolean) => {
     event.preventDefault();
     setIsLoading(true);
-    const result = await fetchImages(id);
+    const [result, pricing] = await Promise.all([fetchImages(id), fetchGalleryPricing(id)]);
     if (result.length === 0) {
       alert("Aucune photo trouvée pour ce mot de passe.");
       setIsLoading(false);
     } else {
       setPasswordInStorage(id);
       setImages(result);
+      setPricingConfig(pricing);
       if (savePassword) {
         localStorage.setItem("photo-password", JSON.stringify({ value: id, timestamp: Date.now() }));
       }
@@ -44,6 +48,7 @@ export default function VosPhotosClient() {
     localStorage.removeItem("photo-password");
     setPasswordInStorage(null);
     setImages([]);
+    setPricingConfig(null);
     setIsDisabled(true);
     setSavePassword(false);
     if (inputRef.current) {
@@ -216,7 +221,7 @@ export default function VosPhotosClient() {
               <HiOutlineLockClosed className="w-3 h-3" /> Changer de code
             </button>
           </div>
-          <GallerySelectionnableImages images={images} />
+          <GallerySelectionnableImages images={images} pricingConfig={pricingConfig} />
         </div>
 
       )}
