@@ -1,5 +1,13 @@
 import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import Link from "next/link";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Mentions légales — Focus & Lumière",
+  description:
+    "Mentions légales du site focusetlumiere.fr : éditeur, hébergement, propriété intellectuelle et données personnelles.",
+  path: "/mentions-legales",
+});
 
 export default function PrivatePolicy() {
   return (

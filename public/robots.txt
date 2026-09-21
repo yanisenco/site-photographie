@@ -1,7 +1,5 @@
 User-agent: *
-Disallow: /private/
-Disallow: /temp/
-Disallow: /admin
 Allow: /
+Disallow: /api/
 
-Sitemap: https://focusetlumiere.fr/api/sitemap
+Sitemap: https://focusetlumiere.fr/sitemap.xml

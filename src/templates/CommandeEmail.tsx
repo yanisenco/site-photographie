@@ -1,3 +1,7 @@
+/* eslint-disable @next/next/no-head-element, @next/next/no-img-element --
+   This is a standalone HTML email template rendered to a static string via
+   ReactDOMServer, not a Next.js page: it needs a real <head> and plain <img>
+   tags (next/head and next/image don't apply outside the app router). */
 import React from "react";
 
 interface CommandeEmailProps {

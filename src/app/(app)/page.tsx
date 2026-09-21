@@ -15,6 +15,14 @@ import photoPortraitWork from "@/images/accueil/notre-travail/2.webp";
 import photoPortraitWork2 from "@/images/accueil/notre-travail/3.webp";
 import photoProWork from "@/images/accueil/notre-travail/4.webp";
 import photoSportiveWork from "@/images/accueil/notre-travail/5.webp";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata = buildMetadata({
+  title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+  description:
+    "Duo de photographes à Saint-Nazaire, spécialisés en photographie animalière, portraits et événements sportifs. Séances en studio ou en extérieur en Loire-Atlantique.",
+  path: "/",
+});
 
 export default function Home() {
   return (

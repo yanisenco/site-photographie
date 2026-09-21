@@ -2,19 +2,25 @@ import PageTemplate from "@/components/PageTemplate/PageTemplate";
 import PortfolioGallery, { PortfolioImage } from "@/components/Gallery/PortfolioGallery";
 import { SERVICES } from "@/data/services";
 import { CLOUDINARY_FOLDERS } from "@/data/cloudinary-folders";
-import { fetchImages } from "@/utils/imagesService";
+import { fetchCloudinaryImages } from "@/utils/cloudinaryImages";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata = {
+export const metadata = buildMetadata({
   title: "Portfolio — Focus & Lumière, photographes à Saint-Nazaire",
   description:
     "Découvrez nos réalisations : animaux de compagnie, portraits, professionnels & événements, photographie sportive animalière.",
-};
+  path: "/portfolio",
+});
+
+// Revalidation périodique (ISR) : les nouvelles photos Cloudinary apparaissent
+// sans avoir besoin d'un redéploiement complet.
+export const revalidate = 60;
 
 export default async function PortfolioPage() {
   const perCategory = await Promise.all(
     SERVICES.map(async (svc) => {
       const folder = CLOUDINARY_FOLDERS[svc.id];
-      const images = folder ? await fetchImages(folder) : [];
+      const images = folder ? await fetchCloudinaryImages(folder) : [];
       return images.map((img: { src: string; alt: string }): PortfolioImage => ({
         ...img,
         category: svc.id,
