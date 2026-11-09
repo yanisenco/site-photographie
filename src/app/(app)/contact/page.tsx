@@ -3,9 +3,9 @@ import ContactBlock from "@/components/ContactBlock/ContactBlock";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contact — Focus & Lumière, photographes à Saint-Nazaire",
+  title: "Contact — Focus & Lumière, photographes à Vigneux-de-Bretagne",
   description:
-    "Contactez Focus & Lumière pour réserver une séance photo à Saint-Nazaire et en Loire-Atlantique.",
+    "Contactez Focus & Lumière pour réserver une séance photo à Vigneux-de-Bretagne et en Loire-Atlantique.",
   path: "/contact",
 });
 

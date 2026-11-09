@@ -107,7 +107,7 @@ export const SERVICES: Service[] = [
     ],
     cardNote: "Frais de déplacement non inclus dans le tarif.",
     options: [
-      { label: "Déplacement", detail: "Offert dans Saint-Nazaire · 0,40 cts/km au-delà" },
+      { label: "Déplacement", detail: "Offert dans Vigneux-de-Bretagne · 0,40 cts/km au-delà" },
       { label: "Personne ou animal supplémentaire", detail: "+15 € par personne ou animal en plus" },
       { label: "Photo supplémentaire", detail: "+20 € par photo au-delà du forfait" },
     ],
@@ -157,7 +157,7 @@ export const SERVICES: Service[] = [
     ],
     cardNote: "Frais de déplacement non inclus dans le tarif.",
     options: [
-      { label: "Déplacement", detail: "Offert dans Saint-Nazaire · 0,40 cts/km au-delà" },
+      { label: "Déplacement", detail: "Offert dans Vigneux-de-Bretagne · 0,40 cts/km au-delà" },
       { label: "Photo supplémentaire", detail: "+20 € par photo au-delà du forfait" },
     ],
   },
@@ -219,7 +219,7 @@ export const SERVICES: Service[] = [
           { duration: "4h", photos: null, price: "450 €" },
           { duration: "6h", photos: null, price: "600 €" },
         ],
-        note: "Frais de déplacement non inclus · Déplacement offert dans Saint-Nazaire, sinon 0,40 cts/km supplémentaire",
+        note: "Frais de déplacement non inclus · Déplacement offert dans Vigneux-de-Bretagne, sinon 0,40 cts/km supplémentaire",
       },
       {
         title: "Formule Shooting",
@@ -230,11 +230,11 @@ export const SERVICES: Service[] = [
           { duration: "2h30", photos: "20 photos", price: "280 €" },
           { duration: "3h", photos: "30 photos", price: "350 €" },
         ],
-        note: "Frais de déplacement non inclus · Déplacement offert dans Saint-Nazaire, sinon 0,40 cts/km · +15 € la photo supplémentaire",
+        note: "Frais de déplacement non inclus · Déplacement offert dans Vigneux-de-Bretagne, sinon 0,40 cts/km · +15 € la photo supplémentaire",
       },
     ],
     options: [
-      { label: "Déplacement", detail: "Offert dans Saint-Nazaire · 0,40 cts/km au-delà" },
+      { label: "Déplacement", detail: "Offert dans Vigneux-de-Bretagne · 0,40 cts/km au-delà" },
       { label: "Photo supplémentaire (Formule Shooting)", detail: "+15 € par photo au-delà du nombre inclus dans la formule" },
     ],
   },

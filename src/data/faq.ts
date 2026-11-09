@@ -10,7 +10,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Où se déroulent les séances ?",
-    a: "Nous sommes basés à Saint-Nazaire et intervenons dans toute la Loire-Atlantique et ses alentours. Les séances peuvent être réalisées en extérieur, dans un lieu choisi ensemble, ou en studio à domicile pour les prestations qui s'y prêtent — les séances studio se déroulent uniquement à domicile, nous ne disposons pas de local dédié. Pour les prestations professionnelles et événementielles, nous nous déplaçons directement sur le lieu de votre activité ou de votre événement.",
+    a: "Nous sommes basés à Vigneux-de-Bretagne et intervenons dans toute la Loire-Atlantique et ses alentours. Les séances peuvent être réalisées en extérieur, dans un lieu choisi ensemble, ou en studio à domicile pour les prestations qui s'y prêtent — les séances studio se déroulent uniquement à domicile, nous ne disposons pas de local dédié. Pour les prestations professionnelles et événementielles, nous nous déplaçons directement sur le lieu de votre activité ou de votre événement.",
   },
   {
     q: "Combien de temps, après la séance, recevons-nous les photos ?",

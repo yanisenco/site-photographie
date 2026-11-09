@@ -21,11 +21,11 @@ const limelight = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+  title: "Focus & Lumière, photographes professionnels à Vigneux-de-Bretagne",
   description:
-    "Focus & Lumière, duo de photographes professionnels à Saint-Nazaire. Découvrez nos services de photographie pour en savoir plus sur nous et notre travail.",
+    "Focus & Lumière, duo de photographes professionnels à Vigneux-de-Bretagne. Découvrez nos services de photographie pour en savoir plus sur nous et notre travail.",
   keywords: [
-    "photographes Saint-Nazaire",
+    "photographes Vigneux-de-Bretagne",
     "photos animalières",
     "photos sportives",
     "portraits",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "photographie",
     "photos",
     "photo",
-    "Saint-Nazaire",
+    "Vigneux-de-Bretagne",
     "Saint-Brevin",
     "Nantes",
     "La Baule",
@@ -57,16 +57,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "fr_FR",
     url: SITE_URL,
-    title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+    title: "Focus & Lumière, photographes professionnels à Vigneux-de-Bretagne",
     description:
-      "Découvrez Focus et Lumière, votre duo de photographes professionnels à Saint-Nazaire, spécialisé en portraits humains, animaliers et photographie sportive.",
+      "Découvrez Focus et Lumière, votre duo de photographes professionnels à Vigneux-de-Bretagne, spécialisé en portraits humains, animaliers et photographie sportive.",
     siteName: SITE_NAME,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+    title: "Focus & Lumière, photographes professionnels à Vigneux-de-Bretagne",
     description:
-      "Photographes professionnels à Saint-Nazaire, spécialisés en portraits et photographie animalière.",
+      "Photographes professionnels à Vigneux-de-Bretagne, spécialisés en portraits et photographie animalière.",
   },
 };
 
@@ -102,13 +102,13 @@ export default function RootLayout({
               logo: `${SITE_URL}/logo.png`,
               image: `${SITE_URL}/social-preview.jpg`,
               description:
-                "Focus et Lumière est un duo de photographes professionnels à Saint-Nazaire, spécialisé dans les portraits animaliers, humains, et la photographie sportive.",
+                "Focus et Lumière est un duo de photographes professionnels à Vigneux-de-Bretagne, spécialisé dans les portraits animaliers, humains, et la photographie sportive.",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "6 rue Georges Escoulan",
-                addressLocality: "Saint-Nazaire",
+                streetAddress: "2 rue fontaine saint martin",
+                addressLocality: "Vigneux-de-Bretagne",
                 addressRegion: "Loire-Atlantique",
-                postalCode: "44600",
+                postalCode: "44360",
                 addressCountry: "FR",
               },
               contactPoint: {
@@ -121,7 +121,7 @@ export default function RootLayout({
               areaServed: {
                 "@type": "Place",
                 name: [
-                  "Saint-Nazaire",
+                  "Vigneux-de-Bretagne",
                   "Saint-Brevin",
                   "Nantes",
                   "La Baule",

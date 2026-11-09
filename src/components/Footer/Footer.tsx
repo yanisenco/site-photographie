@@ -16,7 +16,7 @@ export default function Footer() {
         <div>
           <p className="text-lg font-serif tracking-wide mb-4">Focus & Lumière</p>
           <p className="text-foreground/55 text-sm leading-relaxed">
-            Duo de photographes basé à Saint-Nazaire, spécialisés dans les
+            Duo de photographes basé à Vigneux-de-Bretagne, spécialisés dans les
             animaux de compagnie, les portraits et les événements.
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="space-y-2 text-sm text-foreground/55 mb-6">
             <p>contact@focusetlumiere.fr</p>
             <p>07 81 95 15 03</p>
-            <p>6 rue Georges Escoulan, 44600 Saint-Nazaire</p>
+            <p>2 rue fontaine saint martin, 44360 Vigneux-de-Bretagne</p>
           </div>
           <div className="flex gap-2">
             <Link

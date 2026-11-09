@@ -8,7 +8,7 @@ import { FAQ_ITEMS } from "@/data/faq";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Services & Tarifs — Focus & Lumière, photographes à Saint-Nazaire",
+  title: "Services & Tarifs — Focus & Lumière, photographes à Vigneux-de-Bretagne",
   description:
     "Découvrez nos formules et tarifs : animaux de compagnie, portraits, professionnels & événements, photographie sportive animalière.",
   path: "/services",

@@ -114,7 +114,7 @@ const Contact = () => {
               <div className="mt-0.5 text-orange"><HiOutlineLocationMarker className="w-4 h-4" /></div>
               <div>
                 <p className="text-foreground/35 text-[10px] tracking-[0.2em] uppercase mb-0.5">Adresse</p>
-                <p className="text-sm">6 rue Georges Escoulan, 44600 Saint-Nazaire</p>
+                <p className="text-sm">2 rue fontaine saint martin, 44360 Vigneux-de-Bretagne</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
