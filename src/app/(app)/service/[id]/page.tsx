@@ -29,14 +29,14 @@ export async function generateMetadata({ params }: ServiceParams): Promise<Metad
   if (!svc) {
     return buildMetadata({
       title: "Service — Focus & Lumière",
-      description: "Nos services de photographie à Saint-Nazaire.",
+      description: "Nos services de photographie à Vigneux-de-Bretagne.",
       path: `/service/${id}`,
       noIndex: true,
     });
   }
 
   return buildMetadata({
-    title: `${svc.title} — Focus & Lumière, photographes à Saint-Nazaire`,
+    title: `${svc.title} — Focus & Lumière, photographes à Vigneux-de-Bretagne`,
     description: svc.shortDesc,
     path: `/service/${svc.id}`,
   });

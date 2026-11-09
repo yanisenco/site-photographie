@@ -10,9 +10,9 @@ import photoYanis from "@/images/a-propos/yanis.webp";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "À propos — Focus & Lumière, photographes à Saint-Nazaire",
+  title: "À propos — Focus & Lumière, photographes à Vigneux-de-Bretagne",
   description:
-    "Yanis et Iana, duo de photographes à Saint-Nazaire, spécialisés dans la photographie animalière, les portraits et les événements.",
+    "Yanis et Iana, duo de photographes à Vigneux-de-Bretagne, spécialisés dans la photographie animalière, les portraits et les événements.",
   path: "/a-propos",
 });
 
@@ -76,7 +76,7 @@ export default function APropos() {
             Notre amour pour les animaux a naturellement pris une place
             importante dans notre pratique, jusqu&apos;à devenir l&apos;une de
             nos grandes spécialités. C&apos;est de cette passion commune
-            qu&apos;est née Focus &amp; Lumière, à Saint-Nazaire. Aujourd&apos;hui,
+            qu&apos;est née Focus &amp; Lumière, à Vigneux-de-Bretagne. Aujourd&apos;hui,
             nous formons un duo qui met son regard et sa sensibilité au
             service de vos animaux, de vos proches et de vos projets.
           </p>
@@ -171,7 +171,7 @@ export default function APropos() {
               compagnie reste au cœur de notre identité, nous proposons
               également des portraits, ainsi que des prestations pour les
               professionnels, les associations et les événements — depuis
-              Saint-Nazaire, en Loire-Atlantique.
+              Vigneux-de-Bretagne, en Loire-Atlantique.
             </p>
           </div>
         </div>

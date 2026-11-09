@@ -1,13 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import GallerySelectionnableImages from "./GallerySelectionnableImages";
 import CommandeEmail from "@/templates/CommandeEmail";
 import { fetchEmail } from "@/utils/emailService";
+import { computePriceBreakdown } from "@/types/galleryPricing";
+import type { GalleryPricingConfig } from "@/types/galleryPricing";
 
 interface PhotoSelectionTunnelProps {
   images: { src: string; alt: string }[];
+  pricingConfig?: GalleryPricingConfig | null;
   /** Appelé à chaque changement d'étape (pas au premier rendu) pour permettre
    *  au parent de replacer le scroll où il le souhaite. Par défaut, remonte
    *  en haut de la fenêtre. */
@@ -20,11 +23,27 @@ const STEPS = [
   { n: 3, label: "Confirmation" },
 ] as const;
 
-export default function PhotoSelectionTunnel({ images, onStepChange }: PhotoSelectionTunnelProps) {
+export default function PhotoSelectionTunnel({
+  images,
+  pricingConfig,
+  onStepChange,
+}: PhotoSelectionTunnelProps) {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [selectedOptionIds, setSelectedOptionIds] = useState<string[]>([]);
   const [status, setStatus] = useState({ isLoading: false, isSuccess: false, isError: false });
   const isFirstRender = useRef(true);
+
+  const breakdown = useMemo(() => {
+    if (!pricingConfig) return null;
+    return computePriceBreakdown(pricingConfig, selectedImages.length, selectedOptionIds);
+  }, [pricingConfig, selectedImages.length, selectedOptionIds]);
+
+  const toggleOption = (id: string) => {
+    setSelectedOptionIds((prev) =>
+      prev.includes(id) ? prev.filter((optId) => optId !== id) : [...prev, id]
+    );
+  };
 
   // Replace le scroll à chaque changement d'étape (pas au premier rendu).
   useEffect(() => {
@@ -77,7 +96,7 @@ export default function PhotoSelectionTunnel({ images, onStepChange }: PhotoSele
     await fetchEmail(
       email,
       "Votre commande est confirmée !",
-      <CommandeEmail selectedImages={selectedImages} />,
+      <CommandeEmail selectedImages={selectedImages} priceBreakdown={breakdown} />,
       setStatus
     );
   };
@@ -125,7 +144,17 @@ export default function PhotoSelectionTunnel({ images, onStepChange }: PhotoSele
             onToggle={handleToggle}
           />
           <div className="sticky bottom-0 z-20 mt-8 px-6 lg:px-12 py-4 bg-blue-dark/95 backdrop-blur-sm border-t border-custom-white/10 flex items-center justify-between gap-4">
-            <p className="text-custom-white text-sm">{countLabel}</p>
+            <div>
+              <p className="text-custom-white text-sm">{countLabel}</p>
+              {breakdown && count > 0 && (
+                <p className="text-custom-white/60 text-xs mt-0.5">
+                  Total actuel : <span className="text-custom-white font-medium">{breakdown.basePrice + breakdown.extraPhotosCost} €</span>
+                  {breakdown.extraPhotosCount > 0 && (
+                    <span> ({breakdown.includedPhotos} incluse{breakdown.includedPhotos > 1 ? "s" : ""} + {breakdown.extraPhotosCount} suppl.)</span>
+                  )}
+                </p>
+              )}
+            </div>
             <button
               onClick={() => setStep(2)}
               disabled={count === 0}
@@ -158,6 +187,46 @@ export default function PhotoSelectionTunnel({ images, onStepChange }: PhotoSele
               </div>
             ))}
           </div>
+
+          {breakdown && (
+            <div className="max-w-md mb-10 border border-foreground/10 bg-foreground/[0.03] p-5 text-sm">
+              <div className="flex justify-between">
+                <span>{breakdown.formuleLabel}</span>
+                <span>{breakdown.basePrice} €</span>
+              </div>
+              {breakdown.extraPhotosCount > 0 && (
+                <div className="flex justify-between text-foreground/60 mt-1">
+                  <span>
+                    {breakdown.extraPhotosCount} photo{breakdown.extraPhotosCount > 1 ? "s" : ""} suppl. ×{" "}
+                    {breakdown.extraPhotoPrice} €
+                  </span>
+                  <span>{breakdown.extraPhotosCost} €</span>
+                </div>
+              )}
+              {pricingConfig && pricingConfig.options.length > 0 && (
+                <div className="mt-3 pt-3 border-t border-foreground/10 space-y-2">
+                  {pricingConfig.options.map((option) => (
+                    <label key={option.id} className="flex items-center justify-between gap-2 cursor-pointer">
+                      <span className="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          checked={selectedOptionIds.includes(option.id)}
+                          onChange={() => toggleOption(option.id)}
+                        />
+                        {option.label}
+                      </span>
+                      <span>+{option.price} €</span>
+                    </label>
+                  ))}
+                </div>
+              )}
+              <div className="flex justify-between font-medium mt-3 pt-3 border-t border-foreground/10">
+                <span>Total</span>
+                <span>{breakdown.total} €</span>
+              </div>
+            </div>
+          )}
+
           <div className="flex items-center justify-between gap-4 flex-wrap">
             <button
               onClick={() => setStep(1)}

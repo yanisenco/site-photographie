@@ -31,8 +31,8 @@ export default function PrivatePolicy() {
             <strong>Forme juridique</strong> : micro-entreprise
           </p>
           <p className="mb-2">
-            <strong>Adresse</strong> : 6 rue Georges Escoulan, Saint-Nazaire,
-            Loire-Atlantique (44600)
+            <strong>Adresse</strong> : 2 rue fontaine saint martin, Vigneux-de-Bretagne,
+            Loire-Atlantique (44360)
           </p>
           <p className="mb-2">
             <strong>Téléphone</strong> : 07 81 95 15 03

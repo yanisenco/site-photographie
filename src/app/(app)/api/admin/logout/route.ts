@@ -1,0 +1,10 @@
+import { NextResponse } from "next/server";
+import { ADMIN_COOKIE_NAME, deleteSessionToken, getSessionTokenFromRequest } from "@/lib/adminAuth";
+
+export async function POST(req: Request) {
+  await deleteSessionToken(getSessionTokenFromRequest(req));
+
+  const response = NextResponse.json({ success: true });
+  response.cookies.set(ADMIN_COOKIE_NAME, "", { path: "/", maxAge: 0 });
+  return response;
+}

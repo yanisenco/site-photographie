@@ -6,7 +6,7 @@ import { fetchCloudinaryImages } from "@/utils/cloudinaryImages";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Portfolio — Focus & Lumière, photographes à Saint-Nazaire",
+  title: "Portfolio — Focus & Lumière, photographes à Vigneux-de-Bretagne",
   description:
     "Découvrez nos réalisations : animaux de compagnie, portraits, professionnels & événements, photographie sportive animalière.",
   path: "/portfolio",

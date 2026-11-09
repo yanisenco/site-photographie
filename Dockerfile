@@ -3,8 +3,12 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copier les fichiers de dépendances
+# Prisma a besoin d'OpenSSL pour générer/exécuter son moteur sur Alpine
+RUN apk add --no-cache openssl
+
+# Copier les fichiers de dépendances + le schéma Prisma (requis par postinstall -> prisma generate)
 COPY package*.json ./
+COPY prisma ./prisma
 
 # Installer les dépendances
 RUN npm ci --legacy-peer-deps
@@ -20,14 +24,15 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Installer dumb-init pour une gestion correcte des signaux
-RUN apk add --no-cache dumb-init
+# dumb-init pour la gestion des signaux, openssl pour le moteur Prisma
+RUN apk add --no-cache dumb-init openssl
 
-# Copier node_modules du builder
+# Copier node_modules du builder (inclut le client Prisma généré et la CLI prisma)
 COPY --from=builder /app/node_modules ./node_modules
 
-# Copier les fichiers de dépendances
+# Copier les fichiers de dépendances et le schéma/migrations Prisma
 COPY --from=builder /app/package*.json ./
+COPY --from=builder /app/prisma ./prisma
 
 # Copier les fichiers construits
 COPY --from=builder /app/.next ./.next
@@ -53,4 +58,6 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 
 # Utiliser dumb-init pour lancer l'application
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["npm", "start"]
+
+# Applique les migrations Prisma sur la base au démarrage, puis lance le serveur
+CMD ["sh", "-c", "npx prisma migrate deploy && npm start"]

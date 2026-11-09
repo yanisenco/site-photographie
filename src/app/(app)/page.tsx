@@ -18,9 +18,9 @@ import photoSportiveWork from "@/images/accueil/notre-travail/5.webp";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Focus & Lumière, photographes professionnels à Saint-Nazaire",
+  title: "Focus & Lumière, photographes professionnels à Vigneux-de-Bretagne",
   description:
-    "Duo de photographes à Saint-Nazaire, spécialisés en photographie animalière, portraits et événements sportifs. Séances en studio ou en extérieur en Loire-Atlantique.",
+    "Duo de photographes à Vigneux-de-Bretagne, spécialisés en photographie animalière, portraits et événements sportifs. Séances en studio ou en extérieur en Loire-Atlantique.",
   path: "/",
 });
 
@@ -46,8 +46,8 @@ export default function Home() {
                 <span className="text-orange">d&apos;être immortalisé</span>
               </h2>
               <p className="text-foreground/60 leading-relaxed mb-6">
-                Situés à Saint-Nazaire, nous intervenons dans toute la
-                Loire-Atlantique — La Baule, Guérande, Pornichet, Nantes —
+                Situés à Vigneux-de-Bretagne, nous intervenons dans toute la
+                Loire-Atlantique — Sautron, Saint-étienne-de-montluc, Nantes —
                 pour des séances en studio, à domicile ou en extérieur. Que ce
                 soit pour un{" "}
                 <Link
